@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  /* PRD 3.2 Color Tokens (Strict 6 tokens + error red) */
+  --cream: #F5F0E8;      /* Page background */
+  --offwhite: #FFFDF8;   /* Cards, panels, inputs */
+  --black: #111111;      /* Primary text, primary buttons, borders on form fields */
+  --charcoal: #333333;   /* Secondary text */
+  --grey: #D8D5CF;       /* Decorative dividers, disabled backgrounds */
+  --cyan: #00D9FF;       /* Accent fill (selected size, CTA hover, highlights, focus ring accent) */
+  --error-red: #B3261E;  /* Functional error red (Decision D3) */
+
+  /* Motion Tokens (PRD 7) */
+  --ease-out-custom: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-micro: 200ms;
+  --duration-reveal: 600ms;
+  --duration-hero: 1400ms;
+}
+
+@theme {
+  --color-cream: var(--cream);
+  --color-offwhite: var(--offwhite);
+  --color-black: var(--black);
+  --color-charcoal: var(--charcoal);
+  --color-grey: var(--grey);
+  --color-cyan: var(--cyan);
+  --color-error-red: var(--error-red);
+
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  --ease-out-custom: var(--ease-out-custom);
+}
+
+/* Base Document Setup */
+html {
+  background-color: var(--cream);
+  color: var(--black);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* Typography Hierarchy per PRD 3.3 & DESIGN.md */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+/* Accessible Visible Focus Ring (PRD 3.4 & WCAG 2.2 AA) */
+:focus-visible {
+  outline: 2px solid var(--black) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px var(--cyan) !important;
+}
+
+/* Reduced Motion Fallbacks (PRD 6.1 & 7) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar for Brutalist aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--black);
+  border-radius: 0px;
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#fef9f1;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#004e5d", "primary-fixed-dim": "#c8c6c5", "surface-dim": "#ded9d2", "primary-container": "#1c1b1b", "on-tertiary-fixed-variant": "#474747", "on-background": "#1d1c17", "on-primary": "#ffffff", "surface-tint": "#5f5e5e", "tertiary-fixed-dim": "#c8c6c6", "background": "#fef9f1", "secondary": "#00687b", "tertiary-fixed": "#e4e2e1", "secondary-container": "#00d9ff", "secondary-fixed": "#aeecff", "inverse-surface": "#32302b", "on-tertiary-container": "#858383", "surface-container-high": "#ece8e0", "on-secondary-container": "#005b6c", "primary-fixed": "#e5e2e1", "primary": "#000000", "surface-container-highest": "#e7e2da", "on-primary-fixed": "#1c1b1b", "tertiary-container": "#1b1c1c", "error-container": "#ffdad6", "on-error": "#ffffff", "surface-container": "#f2ede5", "outline": "#747878", "tertiary": "#000000", "surface-container-lowest": "#ffffff", "on-surface": "#1d1c17", "on-secondary": "#ffffff", "outline-variant": "#c4c7c7", "error": "#ba1a1a", "secondary-fixed-dim": "#00d9ff", "surface-bright": "#fef9f1", "surface-variant": "#e7e2da", "on-primary-container": "#858383", "on-secondary-fixed": "#001f26", "on-primary-fixed-variant": "#474646", "inverse-primary": "#c8c6c5", "on-tertiary-fixed": "#1b1c1c", "surface": "#fef9f1", "on-surface-variant": "#444748", "on-error-container": "#93000a", "inverse-on-surface": "#f5f0e8", "surface-container-low": "#f8f3eb" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "3rem", "margin-desktop": "3.5rem", "space-md": "1rem", "margin": "1.25rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter": "1.5rem", "gutter-desktop": "2.5rem", "space-xs": "0.25rem" }, "fontFamily": { "display-hero": [ "Space Grotesk" ], "label-lg": [ "Space Grotesk" ], "body-sm": [ "Inter" ], "label-code": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "label-md": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ], "display-hero-mobile": [ "Space Grotesk" ], "headline-md": [ "Space Grotesk" ], "body-lg": [ "Inter" ], "body-md": [ "Inter" ] }, "fontSize": { "display-hero": [ "96px", { "lineHeight": "92px", "letterSpacing": "-0.04em", "fontWeight": "700" } ], "label-lg": [ "14px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "body-sm": [ "13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-code": [ "10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "500" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "11px", { "lineHeight": "13px", "letterSpacing": "0.08em", "fontWeight": "700" } ], "headline-lg": [ "56px", { "lineHeight": "58px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-sm": [ "22px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "display-hero-mobile": [ "48px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-md": [ "32px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen pt-safe pb-safe"><main class="flex-1 flex flex-col relative w-full bg-surface"><div class="flex flex-col w-full bg-surface text-on-surface select-none pb-8">
+<!-- Status & Context Bar -->
+<div class="flex items-center justify-between px-margin py-space-sm bg-surface-container-high border-b border-surface-dim">
+<div class="flex items-center space-x-2">
+<span class="inline-block w-2 h-2 bg-secondary-container animate-pulse"></span>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase tracking-widest">LIVE CATALOG FEED</span>
+</div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase tracking-widest">
+      SPEC_REV // 2026.04
+    </div>
+</div>
+<!-- Main Menu Header -->
+<header class="flex items-center justify-between px-margin py-space-md bg-surface border-b border-surface-dim sticky top-0 z-30">
+<div class="flex flex-col">
+<span class="font-display-hero-mobile text-headline-sm uppercase tracking-tighter text-primary leading-none font-bold">
+        BRAND
+      </span>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase tracking-widest mt-1">
+        EDITION // 2026
+      </span>
+</div>
+<div class="hidden sm:flex flex-col items-center">
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface">
+        EXHIBITION DIRECTORY
+      </span>
+<span class="font-label-code text-label-code text-on-surface-variant">
+        SYS_NAV // 001-084
+      </span>
+</div>
+<!-- Dismiss Button -->
+<button aria-label="Close navigation overlay" class="w-11 h-11 flex items-center justify-center bg-primary text-on-primary active:bg-secondary-container active:text-primary transition-colors duration-150" id="menu-close-btn">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</header>
+<!-- Live Curatorial Subhead -->
+<div class="px-margin py-space-xs bg-surface-container flex items-center justify-between border-b border-surface-dim">
+<span class="font-label-code text-label-code text-on-surface-variant uppercase">
+      ARCHIVAL NAVIGATION MATRIX
+    </span>
+<span class="font-label-code text-label-code text-secondary font-bold uppercase">
+      [06 ARTIFACT NODES ACTIVE]
+    </span>
+</div>
+<!-- Primary Architecture Navigation Links -->
+<nav class="flex flex-col bg-surface border-b border-surface-dim">
+<!-- Item 01 -->
+<a class="group relative flex flex-col px-margin py-space-md border-b border-surface-dim active:bg-surface-container transition-colors duration-150" href="#">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline space-x-3">
+<span class="font-label-code text-label-md text-on-surface-variant tracking-wider">01 //</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight text-primary group-hover:text-secondary group-active:text-secondary font-bold">
+            NEW ARRIVALS
+          </span>
+</div>
+<span class="bg-secondary-container text-on-secondary-fixed px-2 py-0.5 font-label-code text-label-code font-bold tracking-widest uppercase">
+          NEW
+        </span>
+</div>
+<div class="mt-1 flex items-center justify-between text-on-surface-variant font-label-code text-label-code">
+<span>CURATED RUN: MONOGRAPH DROP 08</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity">EXPLORE ↗</span>
+</div>
+</a>
+<!-- Item 02 (Expandable Accordion) -->
+<div class="flex flex-col border-b border-surface-dim bg-surface">
+<button class="w-full flex items-baseline justify-between px-margin py-space-md text-left active:bg-surface-container transition-colors duration-150 group" id="collections-toggle">
+<div class="flex items-baseline space-x-3">
+<span class="font-label-code text-label-md text-on-surface-variant tracking-wider">02 //</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight text-primary font-bold">
+            COLLECTIONS
+          </span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="font-label-code text-label-code text-on-surface-variant hidden sm:inline">[04 SEGMENTS]</span>
+<span class="material-symbols-outlined text-primary transition-transform duration-200" id="accordion-icon">
+            add
+          </span>
+</div>
+</button>
+<!-- Expandable Sub-items Drawer -->
+<div class="hidden flex-col bg-surface-container border-t border-surface-dim" id="collections-menu">
+<a class="flex items-center justify-between px-8 py-3 border-b border-surface-dim active:bg-surface-container-highest transition-colors" href="#">
+<span class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface">Monograph 04: Raw Concrete</span>
+<span class="font-label-code text-label-code text-on-surface-variant">SS26</span>
+</a>
+<a class="flex items-center justify-between px-8 py-3 border-b border-surface-dim active:bg-surface-container-highest transition-colors" href="#">
+<span class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface">Architectural Tailoring</span>
+<span class="font-label-code text-label-code text-on-surface-variant">SUITS</span>
+</a>
+<a class="flex items-center justify-between px-8 py-3 border-b border-surface-dim active:bg-surface-container-highest transition-colors" href="#">
+<span class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface">Raw Edges &amp; Drapes</span>
+<span class="font-label-code text-label-code text-on-surface-variant">TEXTILES</span>
+</a>
+<a class="flex items-center justify-between px-8 py-3 active:bg-surface-container-highest transition-colors" href="#">
+<span class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface">Heavy Terry Artifacts</span>
+<span class="font-label-code text-label-code text-on-surface-variant">JERSEY</span>
+</a>
+</div>
+</div>
+<!-- Item 03 -->
+<a class="group relative flex flex-col px-margin py-space-md border-b border-surface-dim active:bg-surface-container transition-colors duration-150" href="#">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline space-x-3">
+<span class="font-label-code text-label-md text-on-surface-variant tracking-wider">03 //</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight text-primary font-bold">
+            EXHIBITIONS &amp; ARCHIVE
+          </span>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">arrow_outward</span>
+</div>
+<div class="mt-1 flex items-center justify-between text-on-surface-variant font-label-code text-label-code">
+<span>PARIS · TOKYO · MUMBAI</span>
+<span>GALLERY ITINERARY</span>
+</div>
+</a>
+<!-- Item 04 -->
+<a class="group relative flex flex-col px-margin py-space-md border-b border-surface-dim active:bg-surface-container transition-colors duration-150" href="#">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline space-x-3">
+<span class="font-label-code text-label-md text-on-surface-variant tracking-wider">04 //</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight text-primary font-bold">
+            MONOGRAPHS &amp; ESSAYS
+          </span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase">[VOL 01—12]</span>
+</div>
+<div class="mt-1 flex items-center justify-between text-on-surface-variant font-label-code text-label-code">
+<span>CRITICAL CRITIQUE ON POST-INDUSTRIAL DRAPING</span>
+</div>
+</a>
+<!-- Item 05 -->
+<a class="group relative flex flex-col px-margin py-space-md border-b border-surface-dim active:bg-surface-container transition-colors duration-150" href="#">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline space-x-3">
+<span class="font-label-code text-label-md text-on-surface-variant tracking-wider">05 //</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight text-primary font-bold">
+            PATRON ACCOUNT
+          </span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base">lock</span>
+</div>
+<div class="mt-1 flex items-center justify-between text-on-surface-variant font-label-code text-label-code">
+<span>ACQUISITION ARCHIVE &amp; CONCIERGE</span>
+</div>
+</a>
+<!-- Item 06: Cart / Bag Highlight -->
+<a class="group relative flex flex-col px-margin py-space-md bg-surface-container-high border-b border-surface-dim active:bg-surface-dim transition-colors duration-150" href="#">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline space-x-3">
+<span class="font-label-code text-label-md text-on-surface-variant tracking-wider">06 //</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight text-primary font-bold">
+            BAG [02]
+          </span>
+</div>
+<span class="bg-primary text-on-primary px-2.5 py-1 font-label-code text-label-code uppercase tracking-wider font-bold">
+          ₹23,998
+        </span>
+</div>
+<div class="mt-1 flex items-center justify-between font-label-code text-label-code">
+<span class="text-secondary font-bold uppercase">RESERVED ALLOCATION FOR 14:22 MIN</span>
+<span class="text-primary uppercase tracking-widest font-bold">CHECKOUT ↗</span>
+</div>
+</a>
+</nav>
+<!-- Curated Feature Card -->
+<section class="p-margin bg-surface">
+<div class="bg-surface-container border border-surface-dim flex flex-col">
+<div class="flex items-center justify-between p-3 border-b border-surface-dim bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">
+            FEATURED CURATION ROOM
+          </span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant">PAVILION // 08B</span>
+</div>
+<!-- Feature Image -->
+<div class="relative w-full aspect-[16/9] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Editorial brutalist architectural fashion portrait with minimalist lighting, high-contrast monochrome tones, model wearing sculptural deconstructed black wool outerwear in a minimalist raw concrete gallery space in Paris with stark shadows and cream background atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdeh625R4DPDuPrOtNlW-WrxdxQGcf0_bDC2nCL09tj2l976V-K2RW4LF47_pywTbyOK2hiCVw0x_3XgWt7N6VaJWgTOb_IechG-P3EPhQlMtIkRHqU6yBz-luOkEjJj7bP8ZL-pZvCfFnh6O1wuF6j0AadR2K_vNBnyuDaDiLwuu6JenekNZMO6e_5QFDomTL_ac23hNuvK8jeU1TPW8vI5rNV8UFjugxicLYwbtNzk1uYoFb-Lap"/>
+<div class="absolute bottom-2 left-2 bg-primary text-on-primary px-2 py-0.5 font-label-code text-label-code uppercase">
+          CURATED VOLUME AW26
+        </div>
+</div>
+<div class="p-4 flex flex-col justify-between">
+<p class="font-body-sm text-body-sm text-on-surface mb-3">
+          Specimen catalogue examining monolithic proportion through unspun raw Japanese wool and razor-cut basalt fasteners.
+        </p>
+<a class="inline-flex items-center justify-between py-2 px-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-secondary-container hover:text-primary transition-colors" href="#">
+<span>ENTER EXHIBITION ROOM</span>
+<span class="material-symbols-outlined text-sm ml-2">east</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Specimen Search Bar -->
+<div class="px-margin mb-space-lg">
+<div class="relative flex items-center bg-surface-container-lowest border border-surface-dim focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant ml-3 text-lg">search</span>
+<input class="w-full bg-transparent px-3 py-3 font-label-code text-label-md text-primary placeholder-outline focus:outline-none uppercase tracking-wider" placeholder="SEARCH ARCHIVE OR SPECIMEN ID..." type="text"/>
+<span class="font-label-code text-label-code text-outline-variant pr-3">[⌘K]</span>
+</div>
+</div>
+<!-- Regional & Global Localization Matrix -->
+<div class="px-margin mb-space-lg grid grid-cols-2 gap-2">
+<div class="flex items-center justify-between p-3 bg-surface-container border border-surface-dim">
+<span class="font-label-code text-label-code text-on-surface-variant uppercase">TERRITORY</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase">IN / INR (₹)</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container border border-surface-dim">
+<span class="font-label-code text-label-code text-on-surface-variant uppercase">DIALECT</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase">EN (GLOBAL)</span>
+</div>
+</div>
+<!-- Patron Concierge & Institutional Colophon -->
+<footer class="mt-auto px-margin pt-space-md border-t border-surface-dim bg-surface-container-low flex flex-col space-y-6">
+<div class="flex flex-col space-y-1">
+<span class="font-label-code text-label-code text-on-surface-variant uppercase tracking-widest">
+        PATRON RELATIONS &amp; PRIVATE CURATION
+      </span>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1">
+<a class="font-label-md text-label-md text-primary hover:text-secondary underline decoration-1 underline-offset-4 tracking-wider uppercase" href="mailto:care@brand.studio">
+          CARE@BRAND.STUDIO
+        </a>
+<span class="text-surface-dim">/</span>
+<a class="font-label-md text-label-md text-primary hover:text-secondary tracking-wider uppercase" href="tel:+918000459021">
+          +91 (0) 8000 459 021
+        </a>
+</div>
+</div>
+<!-- Social Index Rows -->
+<div class="flex flex-col space-y-2 border-t border-surface-dim pt-4">
+<div class="flex items-center justify-between font-label-code text-label-code tracking-widest uppercase">
+<a class="text-primary hover:text-secondary" href="#">INSTAGRAM [ARCHIVE]</a>
+<span class="text-outline-variant">·</span>
+<a class="text-primary hover:text-secondary" href="#">DISCORD [FORUM]</a>
+<span class="text-outline-variant">·</span>
+<a class="text-primary hover:text-secondary" href="#">INDEX MONOGRAPHS</a>
+</div>
+</div>
+<!-- Legal & Identity -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2 pb-6 border-t border-surface-dim text-on-surface-variant font-label-code text-label-code">
+<span>© 2026 BRAND MONOGRAPHS GMBH / ALL RIGHTS RESERVED.</span>
+<span class="mt-1 sm:mt-0 uppercase">MUSEUM ARCHIVAL DESIGN SYSTEM v4.2</span>
+</div>
+</footer>
+</div>
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('collections-toggle');
+    const menuDrawer = document.getElementById('collections-menu');
+    const accordionIcon = document.getElementById('accordion-icon');
+    const closeBtn = document.getElementById('menu-close-btn');
+
+    if (toggleBtn && menuDrawer && accordionIcon) {
+      toggleBtn.addEventListener('click', function() {
+        const isHidden = menuDrawer.classList.contains('hidden');
+        if (isHidden) {
+          menuDrawer.classList.remove('hidden');
+          menuDrawer.classList.add('flex');
+          accordionIcon.textContent = 'remove';
+        } else {
+          menuDrawer.classList.add('hidden');
+          menuDrawer.classList.remove('flex');
+          accordionIcon.textContent = 'add';
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        // Visual feedback for close interaction
+        closeBtn.classList.add('scale-95');
+        setTimeout(() => {
+          closeBtn.classList.remove('scale-95');
+        }, 150);
+      });
+    }
+  })();
+</script></main><script src="app.js"></script>
+</body></html>

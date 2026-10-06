@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#1b1c1c","on-primary-container":"#858383","on-secondary-container":"#005b6c","tertiary":"#000000","on-error-container":"#93000a","tertiary-fixed-dim":"#c8c6c6","on-tertiary-fixed-variant":"#474747","background":"#fef9f1","surface-container-low":"#f8f3eb","on-secondary-fixed-variant":"#004e5d","error-container":"#ffdad6","on-primary-fixed-variant":"#474646","on-secondary":"#ffffff","primary":"#000000","surface":"#fef9f1","primary-fixed-dim":"#c8c6c5","on-surface":"#1d1c17","primary-fixed":"#e5e2e1","on-surface-variant":"#444748","secondary-container":"#00d9ff","secondary-fixed-dim":"#00d9ff","inverse-primary":"#c8c6c5","on-tertiary-fixed":"#1b1c1c","secondary":"#00687b","surface-container":"#f2ede5","surface-tint":"#5f5e5e","on-tertiary-container":"#858383","primary-container":"#1c1b1b","outline":"#747878","secondary-fixed":"#aeecff","surface-variant":"#e7e2da","surface-bright":"#fef9f1","surface-container-high":"#ece8e0","on-background":"#1d1c17","outline-variant":"#c4c7c7","on-error":"#ffffff","inverse-on-surface":"#f5f0e8","tertiary-fixed":"#e4e2e1","surface-dim":"#ded9d2","on-primary":"#ffffff","inverse-surface":"#32302b","surface-container-lowest":"#ffffff","on-primary-fixed":"#1c1b1b","surface-container-highest":"#e7e2da","on-tertiary":"#ffffff","on-secondary-fixed":"#001f26","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","margin":"1.25rem","space-xl":"3rem","space-md":"1rem","gutter":"1.5rem","space-lg":"1.5rem","margin-desktop":"3.5rem","space-sm":"0.5rem","gutter-desktop":"2.5rem"},"fontFamily":{"body-sm":["Inter"],"body-md":["Inter"],"label-lg":["Space Grotesk"],"body-lg":["Inter"],"label-code":["Space Grotesk"],"display-hero":["Space Grotesk"],"display-hero-mobile":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"label-md":["Space Grotesk"]},"fontSize":{"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-code":["10px",{"lineHeight":"12px","letterSpacing":"0.1em","fontWeight":"500"}],"display-hero":["96px",{"lineHeight":"92px","letterSpacing":"-0.04em","fontWeight":"700"}],"display-hero-mobile":["48px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-md":["32px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg":["56px",{"lineHeight":"58px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-sm":["22px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg-mobile":["32px",{"lineHeight":"34px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["11px",{"lineHeight":"13px","letterSpacing":"0.08em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 border-b border-outline-variant"><div class="h-20 w-full px-margin md:px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-4"><img alt="BRAND Editorial Wordmark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WCz2_bmjy9zs-aQlCJ4eREcwP1Ryzu-we4oeAHAbq0HkWfubMXAfJBKjWd-JA3OElGKXw1HADYRtFEJu9vjGjgLpAz5HF1XU_mOgnvGUp7VbCPnXTdsPQj4wI_wfNgAtGxmkdOb8iZWHoAK9UQYj3_JqmbX_WuCO_6RQZcdM6ZYrL7a-H10rycML1qZPqKf_BnS2JIVts4tMQrmyzYFpFuc0FfdvexheR56vmqyC7_3plyqH7u1qRIeu0"/><span class="font-label-lg text-label-lg tracking-widest text-primary uppercase hidden sm:inline-block">BRAND</span></div><nav class="flex items-center gap-6 lg:gap-10" data-active-classes="border-b-2 border-primary text-primary"><a aria-current="page" class="font-label-lg uppercase tracking-wider transition-colors py-2 border-b-2 border-primary text-primary" data-path="shop" href="#">SHOP</a><span class="text-outline-variant">·</span><a class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-2" data-path="collections" href="#">COLLECTIONS</a><span class="text-outline-variant">·</span><a class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-2" data-path="about" href="#">ABOUT</a></nav><div class="flex items-center gap-5 lg:gap-6"><button aria-label="Search" class="text-primary hover:text-secondary-container transition-colors flex items-center" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><button aria-label="Wishlist" class="text-primary hover:text-secondary-container transition-colors flex items-center" type="button"><span class="material-symbols-outlined text-[20px]">favorite</span></button><button aria-label="Bag" class="text-primary hover:text-secondary-container transition-colors flex items-center gap-1" type="button"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="font-label-code text-label-code uppercase tracking-wider font-bold bg-secondary-container text-primary px-1.5 py-0.5">BAG (2)</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full bg-surface text-primary antialiased selection:bg-secondary-container selection:text-primary">
+<!-- SECTION 1: HERO (100vh FULL VIEWPORT) -->
+<section class="relative w-full h-[calc(100vh-80px)] -mt-0 overflow-hidden bg-surface flex flex-col justify-between border-b border-outline-variant">
+<!-- Monumental Typography Canvas Split ("BRA" & "ND") -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-between px-margin md:px-margin-desktop z-0 select-none">
+<span class="font-display-hero text-[17vw] xl:text-[18vw] leading-none uppercase tracking-tighter text-primary font-bold opacity-95">
+        BRA
+      </span>
+<span class="font-display-hero text-[17vw] xl:text-[18vw] leading-none uppercase tracking-tighter text-primary font-bold opacity-95 text-right">
+        ND
+      </span>
+</div>
+<!-- Central Centerpiece: Editorial Model Image -->
+<div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+<div class="relative h-full w-auto max-w-[90vw] md:max-w-[48vw] flex items-end justify-center">
+<img alt="BRAND Autumn Winter Editorial Campaign Protagonist" class="h-full w-full object-contain object-bottom pointer-events-auto filter drop-shadow-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBgG-EvVtHPdKDxtogDCKYVOFUfOb2l-VAcoq-U1pEqnkCauIPAAPnP180jtiW12seN8cQ-Vt0pWXm6PeRcREvFJM2aRWkSnwWLDrbCD4AFxDNEujA340Bdp7bkQp5xb2ykrR2ixmYugVt_OhZX2TX7BBcFH9j4rrbBbAf5WNk1XytlA-nh3HlhDPsXYe4VZ1iH9DybkCvwK9k0Eo6uiDshankjU83SHX7q5H8VH-VmoPy4jt6Zzvv"/>
+</div>
+</div>
+<!-- Top Sub-Header Annotation Grid -->
+<div class="relative z-20 w-full px-margin md:px-margin-desktop pt-8 flex items-start justify-between">
+<div class="flex items-center gap-3">
+<span class="inline-block w-2.5 h-2.5 bg-secondary-container"></span>
+<span class="font-label-code text-label-code uppercase tracking-widest text-on-surface-variant font-semibold">
+          EDITION 2026 // MONOGRAPH 04
+        </span>
+</div>
+<div class="hidden md:flex flex-col items-end text-right">
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">PARIS — TOKYO — MUMBAI</span>
+<span class="font-label-code text-label-code uppercase tracking-wider text-on-surface-variant">CURATED SPATIAL VOLUME</span>
+</div>
+</div>
+<!-- Bottom Interface Plane -->
+<div class="relative z-20 w-full px-margin md:px-margin-desktop pb-8 flex items-end justify-between">
+<!-- Bottom Left: CTA Action -->
+<div class="flex flex-col gap-2">
+<a class="inline-flex items-center justify-center bg-secondary-container text-primary font-label-lg text-label-lg uppercase tracking-wider px-8 py-4 rounded-[2px] font-bold border border-secondary-container hover:bg-primary hover:text-on-primary transition-colors duration-150" href="#featured-products">
+          SHOP NEW ARRIVALS →
+        </a>
+</div>
+<!-- Bottom Center: Brutalist Vertical Scroll Trigger -->
+<div class="hidden sm:flex flex-col items-center gap-2 group cursor-pointer">
+<span class="font-label-code text-label-code tracking-widest text-on-surface-variant uppercase">SCROLL</span>
+<div class="w-[1px] h-12 bg-primary"></div>
+</div>
+<!-- Bottom Right: Metadata Tag -->
+<div class="bg-surface-container-lowest border border-outline-variant px-4 py-2.5 rounded-[2px] flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-none bg-primary"></span>
+<p class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">
+          COLLECTION N° 04 / AUTUMN WINTER 2026
+        </p>
+</div>
+</div>
+</section>
+<!-- SECTION 2: FEATURED PRODUCTS -->
+<section class="w-full py-24 px-margin md:px-margin-desktop bg-surface" id="featured-products">
+<!-- Section Architectural Header -->
+<div class="border-t border-b border-outline-variant py-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label-code text-label-code uppercase tracking-widest text-secondary font-bold block mb-2">CURATED CATALOGUE</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-primary leading-none tracking-tight">
+          FEATURED /<br/>PRODUCTS
+        </h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="font-label-code text-label-code text-on-surface-variant uppercase tracking-widest">
+          [ 01 — 04 ]
+        </div>
+<div class="hidden lg:block w-32 h-[1px] bg-outline-variant"></div>
+<a class="font-label-lg text-label-lg uppercase tracking-wider text-primary border-b border-primary pb-0.5 hover:text-secondary-container hover:border-secondary-container transition-colors" href="#">
+          VIEW ENTIRE ARCHIVE
+        </a>
+</div>
+</div>
+<!-- 4-Column Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- CARD 1: Hover State Active / NEW -->
+<article class="group relative flex flex-col bg-surface-container-lowest border border-primary transition-all duration-200">
+<!-- Media Container (4:5) -->
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" data-alt="Editorial photograph of an avant-garde black oversized architectural coat with sculptural origami-pleated volume, photographed against clean brutalist off-white museum background with dramatic high-fashion studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHIu1HzCEyTCYuwYq-1EpdHvmGR-Ojb2A6DVvcacI9XcXoBNCMDRL9b6tlU20Z4u2zKmVJvCd1iEe02tDiA-FFXODrUE2nVNlwEiXoP9KzvuW2032L_Sr49JwZxGnX_-h_5-y-4fsYOMqYgaua9s8i7pcpR-ZHEMiQjPJluj-h5zS3o5-o312QwEKQnkDkMfE4EvttbUpyE1IxtZdyM7g1a4Rq00SXiE_m6O67z1Ycqya0c6KHMk7c"/>
+<!-- Top Badges -->
+<div class="absolute top-0 left-0 bg-secondary-container text-primary font-label-code text-label-code font-bold uppercase px-3 py-1.5 tracking-wider">
+            NEW
+          </div>
+<button aria-label="Add to wishlist" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-surface-container-lowest/80 text-primary hover:bg-primary hover:text-on-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<!-- Active Persistent Quick Add Bar -->
+<div class="absolute inset-x-0 bottom-0">
+<button class="w-full py-3.5 bg-primary text-surface font-label-lg text-label-lg uppercase tracking-wider font-bold hover:bg-secondary-container hover:text-primary transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+              QUICK ADD
+            </button>
+</div>
+</div>
+<!-- Specifications & Title Area -->
+<div class="p-5 flex flex-col flex-1 justify-between gap-4 border-t border-outline-variant bg-surface-container-lowest">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code uppercase tracking-wider mb-1">
+<span>ART. 804-OCT</span>
+<span>100% WOOL GABARDINE</span>
+</div>
+<h3 class="font-headline-sm text-[18px] leading-tight uppercase text-primary font-bold">
+              Oversized Architectural Coat
+            </h3>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/50">
+<span class="font-body-lg text-body-lg text-primary font-semibold tracking-tight">
+              ₹14,999
+            </span>
+<!-- Swatches -->
+<div aria-label="Color options" class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-[#111111] border border-outline-variant inline-block" title="Jet Black"></span>
+<span class="w-3.5 h-3.5 bg-[#444748] border border-outline-variant inline-block" title="Slate"></span>
+<span class="w-3.5 h-3.5 bg-[#D8D5CF] border border-outline-variant inline-block" title="Sand"></span>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 2: Sale State (-25%) -->
+<article class="group relative flex flex-col bg-surface-container-lowest border border-outline-variant hover:border-primary transition-all duration-200">
+<!-- Media Container (4:5) -->
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" data-alt="Editorial lookbook portrait of an avant-garde raw edge tailored black blazer with deconstructed lapels and high-fashion structural tailoring on a minimalist mannequin." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJIceAHjXhqXPN-YYWAhMYihhSFHzJCf6BYqC_vGCM_a1O7VtD45-MAFeTPEfWSjvZdiAfcfm-RkdRzLtITrsHgBcl50iJYw0F2Tk_5HuZh6zza5hgbFdrI67juisWIvwMVCwVHe9w_2WhOMOqok1ZCdpBSllT_L9c8vPtOO8aqeyFmRl_58g-VFoAWPsRRtcG2z19FlU_b-ub0d3JbjaQnWhzp3BH6oNdJofyp3zJJwSo_Xbry53X"/>
+<div class="absolute top-0 left-0 bg-secondary-container text-primary font-label-code text-label-code font-bold uppercase px-2.5 py-1.5 tracking-wider">
+            -25%
+          </div>
+<button aria-label="Add to wishlist" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<!-- Quick Add on Hover -->
+<div class="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="w-full py-3.5 bg-primary text-surface font-label-lg text-label-lg uppercase tracking-wider font-bold hover:bg-secondary-container hover:text-primary transition-colors" type="button">
+              QUICK ADD
+            </button>
+</div>
+</div>
+<!-- Specifications & Title Area -->
+<div class="p-5 flex flex-col flex-1 justify-between gap-4 border-t border-outline-variant bg-surface-container-lowest">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code uppercase tracking-wider mb-1">
+<span>ART. 302-BLZ</span>
+<span>TAILORED CUT</span>
+</div>
+<h3 class="font-headline-sm text-[18px] leading-tight uppercase text-primary font-bold">
+              Raw Edge Tailored Blazer
+            </h3>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/50">
+<div class="flex items-baseline gap-2">
+<span class="font-body-lg text-body-lg text-primary font-semibold tracking-tight">
+                ₹8,999
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">
+                ₹11,999
+              </span>
+</div>
+<!-- Swatches -->
+<div aria-label="Color options" class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-[#111111] border border-outline-variant inline-block" title="Onyx"></span>
+<span class="w-3.5 h-3.5 bg-[#747878] border border-outline-variant inline-block" title="Charcoal"></span>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 3: Low Stock Urgency State -->
+<article class="group relative flex flex-col bg-surface-container-lowest border border-outline-variant hover:border-primary transition-all duration-200">
+<!-- Media Container (4:5) -->
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" data-alt="Editorial studio garment shot of a heavyweight sculpted black knit pullover with ribbed architectural mock neck and dropped angular shoulder seam." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgxHG-LS27sfia9_tlLzM2bDBxHWO_AVe7qcMubZOpNg3awTavHJHOuUjc7_mHALuFpS20tvQjVi0By4Dl5zjJ6yYkVkW6Bw_e7w5pbGTX1iYDCcCQP_QJCuOHuLkuvgUIPfqesd7jmdmPeFgS_VrJpJ-YKpVn3B6RqdO--OnEW0f3NFV00RapK_HvBxyDgeWZa1uKXSMrtexTeyuvY6FBwcs7CFdC-j2z_jpNMD5zbfNpVnCp9Yls"/>
+<button aria-label="Add to wishlist" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<!-- Quick Add on Hover -->
+<div class="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="w-full py-3.5 bg-primary text-surface font-label-lg text-label-lg uppercase tracking-wider font-bold hover:bg-secondary-container hover:text-primary transition-colors" type="button">
+              QUICK ADD
+            </button>
+</div>
+</div>
+<!-- Specifications & Title Area -->
+<div class="p-5 flex flex-col flex-1 justify-between gap-4 border-t border-outline-variant bg-surface-container-lowest">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code uppercase tracking-wider mb-1">
+<span>ART. 511-KNT</span>
+<span class="text-primary italic font-medium">Only 2 left in stock</span>
+</div>
+<h3 class="font-headline-sm text-[18px] leading-tight uppercase text-primary font-bold">
+              Heavyweight Sculpted Knit
+            </h3>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/50">
+<span class="font-body-lg text-body-lg text-primary font-semibold tracking-tight">
+              ₹6,499
+            </span>
+<!-- Swatches -->
+<div aria-label="Color options" class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-[#111111] border border-outline-variant inline-block" title="Pitch Black"></span>
+<span class="w-3.5 h-3.5 bg-[#ECE8E0] border border-outline-variant inline-block" title="Raw Ecru"></span>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 4: Standard Exhibition Piece -->
+<article class="group relative flex flex-col bg-surface-container-lowest border border-outline-variant hover:border-primary transition-all duration-200">
+<!-- Media Container (4:5) -->
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" data-alt="Editorial fashion still life of wide pleated cargo trousers with utilitarian geometric straps, exaggerated drop, and high thread-count black technical cotton finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRGXNs5wxIozLS9_7p2e-xJjIHYHcplWd8mzja9i9UXwNBsUAOoSAfneBQbOqAJZPXrdmff-N_FgST-xSiWM8qVZbOZF9YwuAKGTJZaANsr9qNDbXaIw6hV73DVvTkWVYj-0uDBpuwnsbe6K0BZSm92l3GwRL-N6X5aHCbhIHZgueNNR87OL2-7omERmwNlc036N9hbIRkj_UO4VzDru9JgJUa12MCHtTm6c5fWb5RST5XwsNtzVbx"/>
+<button aria-label="Add to wishlist" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<!-- Quick Add on Hover -->
+<div class="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="w-full py-3.5 bg-primary text-surface font-label-lg text-label-lg uppercase tracking-wider font-bold hover:bg-secondary-container hover:text-primary transition-colors" type="button">
+              QUICK ADD
+            </button>
+</div>
+</div>
+<!-- Specifications & Title Area -->
+<div class="p-5 flex flex-col flex-1 justify-between gap-4 border-t border-outline-variant bg-surface-container-lowest">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code uppercase tracking-wider mb-1">
+<span>ART. 129-TRU</span>
+<span>CARGO PLEATS</span>
+</div>
+<h3 class="font-headline-sm text-[18px] leading-tight uppercase text-primary font-bold">
+              Pleated Wide Cargo Trouser
+            </h3>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/50">
+<span class="font-body-lg text-body-lg text-primary font-semibold tracking-tight">
+              ₹7,899
+            </span>
+<!-- Swatches -->
+<div aria-label="Color options" class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-[#111111] border border-outline-variant inline-block" title="Matte Black"></span>
+<span class="w-3.5 h-3.5 bg-[#333333] border border-outline-variant inline-block" title="Dark Olive Graphite"></span>
+<span class="w-3.5 h-3.5 bg-[#c4c7c7] border border-outline-variant inline-block" title="Cement"></span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- SECTION 3: HORIZONTAL COLLECTION STRIP -->
+<section class="w-full py-20 bg-surface border-t border-outline-variant overflow-hidden">
+<div class="px-margin md:px-margin-desktop mb-8 flex items-end justify-between">
+<div>
+<span class="font-label-code text-label-code uppercase tracking-widest text-on-surface-variant font-semibold block mb-2">CURATION SERIES</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-primary tracking-tight leading-none">
+          COLLECTIONS
+        </h2>
+</div>
+<!-- Carousel Navigation Arrows -->
+<div class="flex items-center gap-2">
+<button aria-label="Previous Collection" class="w-12 h-12 border border-primary bg-surface text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" id="strip-prev" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<button aria-label="Next Collection" class="w-12 h-12 border border-primary bg-secondary-container text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" id="strip-next" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Overflow Container -->
+<div class="w-full overflow-x-auto flex gap-6 px-margin md:px-margin-desktop pb-6 scrollbar-none scroll-smooth" id="collection-scroll-tray">
+<!-- ITEM 1 -->
+<a class="group flex-shrink-0 w-[300px] md:w-[360px] flex flex-col" href="#">
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Avant-garde monochromatic fashion editorial model dressed in layered asymmetric black garments standing inside an austere industrial museum concrete space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQpgiGKIpz6PS7xHu1zeIJGBKfuXWo2rewhHLx23IQ3QeUAr6qvyRJYC04savxmMcgOj2hX2XEIt7E_QqTGkl352W6m69g8rBT15S2IwbK7xJkw3lgcVCGZYbz83KXfilmuqyfBSnIbtVGNdCl2-_AAP5nbi38PaPrfRncW78rGCMb1pG2QF3bcB_Vnj6BIuOYVDaJaaw9ngaARMl5j6Ak0iO3vsNtxVuzjpIhw9osSv1WShquwqMj"/>
+<span class="absolute top-4 left-4 bg-primary text-on-primary font-label-code text-label-code font-bold uppercase px-2 py-1">
+            EXHIBIT 01
+          </span>
+</div>
+<div class="pt-4 flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm uppercase text-primary font-bold group-hover:text-secondary-container transition-colors">
+            01 / NEW ARRIVALS
+          </h3>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase font-semibold">
+            18 PIECES
+          </span>
+</div>
+</a>
+<!-- ITEM 2 -->
+<a class="group flex-shrink-0 w-[300px] md:w-[360px] flex flex-col" href="#">
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial look of structural sculpted high-fashion outerwear silhouette worn in harsh natural daylight against pale beige brutalist stone backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPje2XwPMAz1K3RcTD7crrzqNdjwLWtkciSDICb5qBgJschFw9WxcnXHRrB8G_BnlNCRSss_Sy1Hakc5ot_1O_voqFW7rwFnPm9UV4V80sBZQQHj9fZY5kood-pth-0JAYhcB97cLgIXR1EvdRUpd0f9gPGUH-Pq5HfMmvHoj69xNJ-1SxZv3Cj3ddrWLAFIQq8vSR1mFliqyUL1i_1nibTzrEeTpZEoZ89Ss_7gTiBkk0axZ0qGgr"/>
+<span class="absolute top-4 left-4 bg-primary text-on-primary font-label-code text-label-code font-bold uppercase px-2 py-1">
+            EXHIBIT 02
+          </span>
+</div>
+<div class="pt-4 flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm uppercase text-primary font-bold group-hover:text-secondary-container transition-colors">
+            02 / BEST SELLERS
+          </h3>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase font-semibold">
+            12 PIECES
+          </span>
+</div>
+</a>
+<!-- ITEM 3 -->
+<a class="group flex-shrink-0 w-[300px] md:w-[360px] flex flex-col" href="#">
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Heavyweight drop-shoulder minimalist black luxury hoodie captured in high editorial contrast studio setting highlighting texture and weight of dense French terry cotton." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjxqPcSC4sDHDbLNI0T6_Ox8EtlOlghH17cMxTJXzB0Sfyx6j87SLqpmINkRM526VEJblPX6ycLeBp3lNW7bmRsec_k2VzjUEUHncw0WbWNf3wxyf8AWSh7ognIuNwcGLSaN9prGTMtkfU8ikYwqhnXivX0ll70Dtpy1514T6G3nEtOk0rwJlcoDs3W6B0Utkdo1LsM7lLLPcyJz0-HdKaTfYPuZuJljNaak8vye6_NEmJtucwPtDS"/>
+<span class="absolute top-4 left-4 bg-primary text-on-primary font-label-code text-label-code font-bold uppercase px-2 py-1">
+            EXHIBIT 03
+          </span>
+</div>
+<div class="pt-4 flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm uppercase text-primary font-bold group-hover:text-secondary-container transition-colors">
+            03 / HEAVY HOODIES
+          </h3>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase font-semibold">
+            08 PIECES
+          </span>
+</div>
+</a>
+<!-- ITEM 4 (Partially bleeding right edge) -->
+<a class="group flex-shrink-0 w-[300px] md:w-[360px] flex flex-col" href="#">
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Utilitarian luxury technical jacket with modular harness pockets and matte metal hardware photographed in cinematic fashion editorial composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMAb2YuN4NAZ-PUAFlHiqtD30_-jOA5slZpP5BX0eI1KNRPNDmOfIxRwAvdEQku7WDSaUBFMixgDjHy8qlGJKEobZ5zo2XYYns_zdUQ_08be8jpQ7qRFkJPw2oSdW1aWztZc-rV7-M5B3mKsQZAnS5d8HxL7wx5LoQlCwNRj2GMVSwdfoI5pJsuS3mXi0XOecYmBM2mXH1sTox2GwssthiX9F-NqZvdHjZ0j7SQOU51oY32uEFm8Q8"/>
+<span class="absolute top-4 left-4 bg-primary text-on-primary font-label-code text-label-code font-bold uppercase px-2 py-1">
+            EXHIBIT 04
+          </span>
+</div>
+<div class="pt-4 flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm uppercase text-primary font-bold group-hover:text-secondary-container transition-colors">
+            04 / TECHNICAL JACKETS
+          </h3>
+<span class="font-label-code text-label-code text-on-surface-variant uppercase font-semibold">
+            14 PIECES
+          </span>
+</div>
+</a>
+</div>
+</section>
+<!-- SECTION 4: BRAND STATEMENT BAND (MANIFESTO) -->
+<section class="w-full py-28 px-margin md:px-margin-desktop bg-surface border-t border-outline-variant relative">
+<div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+<!-- Index Badge -->
+<div class="inline-flex items-center gap-2 mb-8 bg-surface-container-high px-4 py-1.5 rounded-[2px] border border-outline-variant">
+<span class="w-2 h-2 bg-secondary-container"></span>
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">
+          FOUNDING ETHOS
+        </span>
+</div>
+<!-- Monumental Headline with Highlight Accent -->
+<h2 class="font-headline-lg md:text-[58px] md:leading-[64px] uppercase text-primary font-bold tracking-tight mb-8 max-w-5xl">
+        A FASHION STORE THAT BEHAVES LIKE A 
+        <span class="inline-block bg-secondary-container text-primary px-3 py-0.5 mx-1 font-bold">
+          DIGITAL EXHIBITION.
+        </span>
+</h2>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl font-normal leading-relaxed">
+        Curated silhouettes, uncompromised craftsmanship, and architectural proportions made for the modern vanguard.
+      </p>
+<!-- Structural Specs Line -->
+<div class="mt-14 w-full pt-8 border-t border-outline-variant flex flex-wrap items-center justify-between text-on-surface-variant gap-4">
+<span class="font-label-code text-label-code uppercase tracking-widest">LIMITED EDITIONS ONLY</span>
+<span class="font-label-code text-label-code uppercase tracking-widest">PRODUCED IN NUMERICAL BATCHES</span>
+<span class="font-label-code text-label-code uppercase tracking-widest">ZERO BULK PRODUCTION</span>
+</div>
+</div>
+</section>
+<!-- Micro-interactions Controller Script -->
+<script>
+    (function initExhibitionInteractions() {
+      const scrollTray = document.getElementById('collection-scroll-tray');
+      const prevBtn = document.getElementById('strip-prev');
+      const nextBtn = document.getElementById('strip-next');
+
+      if (scrollTray && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          scrollTray.scrollBy({ left: -380, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          scrollTray.scrollBy({ left: 380, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-primary text-inverse-on-surface border-t border-primary-container"><div class="w-full px-margin md:px-margin-desktop py-space-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter-desktop"><div class="space-y-4 lg:pr-4"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-inverse-on-surface block">BRAND</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">An architectural collision of brutalist curation and uncompromising garment craft. Archived artifacts for the modern vanguard.</p></div><div><h3 class="font-label-md text-label-md uppercase tracking-widest text-on-tertiary-container mb-4">SHOP</h3><ul class="space-y-2.5 font-body-sm text-body-sm text-inverse-on-surface"><li class="hover:text-secondary-container cursor-pointer transition-colors">New Arrivals</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Collections</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Oversized</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Outerwear</li></ul></div><div><h3 class="font-label-md text-label-md uppercase tracking-widest text-on-tertiary-container mb-4">ABOUT</h3><ul class="space-y-2.5 font-body-sm text-body-sm text-inverse-on-surface"><li class="hover:text-secondary-container cursor-pointer transition-colors">Our Story</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Exhibition Space</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Sustainability</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Contact</li></ul></div><div><h3 class="font-label-md text-label-md uppercase tracking-widest text-on-tertiary-container mb-4">HELP</h3><ul class="space-y-2.5 font-body-sm text-body-sm text-inverse-on-surface"><li class="hover:text-secondary-container cursor-pointer transition-colors">Shipping &amp; Delivery</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Returns</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Size Guide</li><li class="hover:text-secondary-container cursor-pointer transition-colors">FAQs</li></ul></div><div><h3 class="font-label-md text-label-md uppercase tracking-widest text-on-tertiary-container mb-4">LEGAL &amp; NEWSLETTER</h3><ul class="space-y-2 font-body-sm text-body-sm text-inverse-on-surface mb-6"><li class="hover:text-secondary-container cursor-pointer transition-colors">Privacy Policy</li><li class="hover:text-secondary-container cursor-pointer transition-colors">Terms of Service</li></ul><div class="space-y-2"><input class="w-full bg-surface text-primary border border-surface px-3 py-2.5 font-body-sm text-body-sm placeholder:text-on-surface-variant focus:outline-none" placeholder="ENTER EMAIL" type="email"/><button class="w-full bg-secondary-container hover:bg-secondary-fixed text-primary font-label-lg text-label-lg uppercase tracking-wider py-2.5 px-4 transition-colors font-bold" type="button">SUBSCRIBE</button></div></div></div><div class="w-full border-t border-primary-container px-margin md:px-margin-desktop py-4 flex flex-col md:flex-row items-center justify-between gap-4"><p class="font-label-code text-label-code tracking-widest text-on-surface-variant uppercase">© 2026 BRAND. ALL RIGHTS RESERVED.</p><div class="flex items-center gap-6 font-label-code text-label-code text-on-surface-variant uppercase"><a class="hover:text-secondary-container transition-colors" href="#">EXHIBIT ARCHIVE</a><a class="hover:text-secondary-container transition-colors" href="#">EDITIONS</a></div></div></footer><script src="app.js"></script>
+</body></html>
