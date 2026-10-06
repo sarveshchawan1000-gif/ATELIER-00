@@ -308,8 +308,96 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS SECTION (PRD §6.1 HOME-3) */}
+      {/* DISTINCT KINDS OF CLOTH SECTION */}
       <section className="py-20 px-6 md:px-12 border-b border-black bg-offwhite">
+        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-black pb-4 gap-2">
+            <div>
+              <span className="font-display text-xs font-bold text-cyan tracking-widest uppercase block mb-1">
+                GARMENT TAXONOMY // CATEGORIES
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight uppercase text-black">
+                KINDS OF CLOTH
+              </h2>
+            </div>
+            <p className="font-body text-xs text-charcoal max-w-sm">
+              Discover individual garment categories engineered with uncompromising material specs and monolithic silhouettes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              {
+                title: 'TEES & BASICS',
+                slug: 't-shirts',
+                spec: '320 GSM COMBED COTTON',
+                img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop&q=80',
+                count: '3 PIECES',
+              },
+              {
+                title: 'TAILORED SHIRTS',
+                slug: 'shirts',
+                spec: '120s CRISP POPLIN',
+                img: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&auto=format&fit=crop&q=80',
+                count: '2 PIECES',
+              },
+              {
+                title: 'HOODIES & FLEECE',
+                slug: 'hoodies',
+                spec: '480 GSM FRENCH TERRY',
+                img: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=80',
+                count: '2 PIECES',
+              },
+              {
+                title: 'OUTERWEAR & JACKETS',
+                slug: 'jackets',
+                spec: 'DOUBLE-FACED VIRGIN WOOL',
+                img: 'https://images.unsplash.com/photo-1544441893-675973e31985?w=800&auto=format&fit=crop&q=80',
+                count: '2 PIECES',
+              },
+              {
+                title: 'BOTTOMS & PANTS',
+                slug: 'bottoms',
+                spec: 'PLEATED DRAPE & CARGO',
+                img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop&q=80',
+                count: '2 PIECES',
+              },
+            ].map((cloth) => (
+              <Link
+                key={cloth.slug}
+                href={`/shop/${cloth.slug}`}
+                className="group bg-cream border-2 border-black flex flex-col justify-between overflow-hidden hover:shadow-[6px_6px_0px_0px_rgba(17,17,17,1)] transition-all"
+              >
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-grey/30">
+                  <Image
+                    src={cloth.img}
+                    alt={cloth.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3 text-cream">
+                    <span className="font-display text-[9px] font-bold text-cyan uppercase tracking-wider">
+                      {cloth.spec}
+                    </span>
+                    <h3 className="font-display text-sm font-bold uppercase tracking-tight leading-tight">
+                      {cloth.title}
+                    </h3>
+                  </div>
+                </div>
+                <div className="p-3 bg-cream flex items-center justify-between border-t border-black text-black group-hover:bg-cyan group-hover:text-black transition-colors">
+                  <span className="font-display text-[10px] font-bold uppercase tracking-wider">
+                    {cloth.count}
+                  </span>
+                  <span className="font-display text-xs font-bold">→</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PRODUCTS SECTION (PRD §6.1 HOME-3) */}
+      <section className="py-20 px-6 md:px-12 border-b border-black bg-cream">
         <div className="max-w-7xl mx-auto flex flex-col gap-10">
           <div className="flex items-end justify-between border-b border-black pb-4">
             <div>

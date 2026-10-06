@@ -11,6 +11,28 @@ export async function getCollections(): Promise<Collection[]> {
   return SEED_COLLECTIONS;
 }
 
+export function getAllProducts(): ProductWithDetails[] {
+  if (typeof window !== 'undefined') {
+    try {
+      const stored = localStorage.getItem('atelier_custom_products');
+      if (stored) {
+        const custom: ProductWithDetails[] = JSON.parse(stored);
+        if (Array.isArray(custom) && custom.length > 0) {
+          const customIds = new Set(custom.map((p) => p.id));
+          const customSlugs = new Set(custom.map((p) => p.slug));
+          const seeds = SEED_PRODUCTS.filter(
+            (p) => !customIds.has(p.id) && !customSlugs.has(p.slug)
+          );
+          return [...custom, ...seeds];
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+  }
+  return SEED_PRODUCTS;
+}
+
 export async function getProducts(options?: {
   categorySlug?: string;
   collectionSlug?: string;
@@ -20,7 +42,7 @@ export async function getProducts(options?: {
   page?: number;
   limit?: number;
 }): Promise<{ products: ProductWithDetails[]; total: number }> {
-  let filtered = [...SEED_PRODUCTS];
+  let filtered = getAllProducts();
 
   if (options?.categorySlug) {
     filtered = filtered.filter((p) => p.category.slug === options.categorySlug);
@@ -71,10 +93,10 @@ export async function getProducts(options?: {
 }
 
 export async function getProductBySlug(slug: string): Promise<ProductWithDetails | null> {
-  const product = SEED_PRODUCTS.find((p) => p.slug === slug);
+  const product = getAllProducts().find((p) => p.slug === slug);
   return product || null;
 }
 
 export async function getRelatedProducts(productId: string, categoryId: string): Promise<ProductWithDetails[]> {
-  return SEED_PRODUCTS.filter((p) => p.id !== productId && p.category_id === categoryId).slice(0, 4);
+  return getAllProducts().filter((p) => p.id !== productId && p.category_id === categoryId).slice(0, 4);
 }

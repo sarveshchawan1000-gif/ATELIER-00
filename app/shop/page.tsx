@@ -11,7 +11,8 @@ import { Badge } from '@/components/ui/Badge';
 import { Select } from '@/components/ui/Select';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Drawer } from '@/components/ui/Drawer';
-import { Filter, X } from 'lucide-react';
+import { AddProductPhotoModal } from '@/components/admin/AddProductPhotoModal';
+import { Filter, X, Camera } from 'lucide-react';
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -24,6 +25,7 @@ function ShopContent() {
   const [collections, setCollections] = useState<Collection[]>([]);
   const [loading, setLoading] = useState(true);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [addPhotoModalOpen, setAddPhotoModalOpen] = useState(false);
 
   // Filter & Sort State from URL params
   const genderParam = searchParams.get('gender') || '';
@@ -167,19 +169,42 @@ function ShopContent() {
 
         {/* Main Shop Layout: Left Sidebar + Right Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* Desktop Filters Sidebar (PRD §6.3 SHOP-2) */}
-          <aside className="hidden md:flex md:col-span-3 flex-col gap-6 sticky top-28 bg-offwhite border border-black p-6">
-            <h3 className="font-display text-sm font-bold tracking-widest text-black uppercase border-b border-grey pb-3">
-              FILTERS & FACETS
+          {/* Desktop Filters Sidebar Shifted to Left Side (PRD §6.3 SHOP-2) */}
+          <aside className="hidden md:flex md:col-span-3 flex-col gap-6 sticky top-28 bg-offwhite border-2 border-black p-6 shadow-[4px_4px_0px_0px_#111111]">
+            {/* OWNER STUDIO ACTION: PHOTO ADDER */}
+            <div className="bg-black text-cream p-4 border border-black flex flex-col gap-2">
+              <span className="font-display text-[10px] font-bold text-cyan tracking-widest uppercase">
+                ATELIER OWNER STUDIO
+              </span>
+              <button
+                type="button"
+                onClick={() => setAddPhotoModalOpen(true)}
+                className="w-full flex items-center justify-center gap-2 bg-cyan text-black hover:bg-cream font-display text-xs font-bold py-2.5 px-3 uppercase transition-colors"
+              >
+                <Camera className="w-4 h-4" />
+                <span>+ ADD PHOTO / GARMENT</span>
+              </button>
+            </div>
+
+            <h3 className="font-display text-sm font-bold tracking-widest text-black uppercase border-b-2 border-black pb-2">
+              SECTIONS & CLOTH TYPES
             </h3>
 
-            {/* Department / Gender Sections */}
+            {/* 1. DEPARTMENTS SHIFTED TO THE LEFT */}
             <div className="flex flex-col gap-2">
-              <span className="font-display text-xs font-bold text-charcoal uppercase">SECTION / DEPARTMENT</span>
-              <div className="flex flex-col gap-1 pl-2 font-display text-xs">
+              <span className="font-display text-xs font-bold text-black uppercase tracking-wider flex items-center justify-between">
+                <span>01 // DEPARTMENTS</span>
+                <span className="text-[9px] text-cyan bg-black px-1.5 py-0.5 font-bold uppercase">LEFT NAV</span>
+              </span>
+              <div className="flex flex-col gap-1.5 pl-1 font-display text-xs">
                 <button
+                  type="button"
                   onClick={() => updateParam('gender', '')}
-                  className={`text-left uppercase py-1 ${!genderParam ? 'font-bold text-black' : 'text-charcoal hover:text-black'}`}
+                  className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
+                    !genderParam
+                      ? 'bg-black text-cyan font-bold border-black'
+                      : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
+                  }`}
                 >
                   ALL DEPARTMENTS
                 </button>
@@ -190,8 +215,13 @@ function ShopContent() {
                 ].map((sec) => (
                   <button
                     key={sec.id}
+                    type="button"
                     onClick={() => updateParam('gender', sec.id)}
-                    className={`text-left uppercase py-1 ${genderParam === sec.id ? 'font-bold text-cyan bg-black px-2' : 'text-charcoal hover:text-black'}`}
+                    className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
+                      genderParam === sec.id
+                        ? 'bg-black text-cyan font-bold border-black shadow-[2px_2px_0px_0px_#00D9FF]'
+                        : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
+                    }`}
                   >
                     {sec.label}
                   </button>
@@ -199,22 +229,39 @@ function ShopContent() {
               </div>
             </div>
 
-            {/* Categories */}
-            <div className="flex flex-col gap-2">
-              <span className="font-display text-xs font-bold text-charcoal uppercase">CATEGORY</span>
-              <div className="flex flex-col gap-1 pl-2 font-display text-xs">
+            {/* 2. DIFFERENT KINDS OF CLOTH (CATEGORIES) ON THE LEFT */}
+            <div className="flex flex-col gap-2 border-t-2 border-grey pt-4">
+              <span className="font-display text-xs font-bold text-black uppercase tracking-wider">
+                02 // KINDS OF CLOTH
+              </span>
+              <div className="flex flex-col gap-1.5 pl-1 font-display text-xs">
                 <button
+                  type="button"
                   onClick={() => updateParam('category', '')}
-                  className={`text-left uppercase py-1 ${!categoryParam ? 'font-bold text-black' : 'text-charcoal hover:text-black'}`}
+                  className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
+                    !categoryParam
+                      ? 'bg-black text-cyan font-bold border-black'
+                      : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
+                  }`}
                 >
-                  ALL CATEGORIES
+                  ALL KINDS OF CLOTH
                 </button>
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
+                    type="button"
                     onClick={() => updateParam('category', cat.slug)}
-                    className={`text-left uppercase py-1 ${categoryParam === cat.slug ? 'font-bold text-cyan bg-black px-2' : 'text-charcoal hover:text-black'}`}
+                    className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
+                      categoryParam === cat.slug
+                        ? 'bg-black text-cyan font-bold border-black shadow-[2px_2px_0px_0px_#00D9FF]'
+                        : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
+                    }`}
                   >
+                    {cat.slug === 't-shirts' && '👕 '}
+                    {cat.slug === 'shirts' && '👔 '}
+                    {cat.slug === 'hoodies' && '🧥 '}
+                    {cat.slug === 'jackets' && '🧥 '}
+                    {cat.slug === 'bottoms' && '👖 '}
                     {cat.name}
                   </button>
                 ))}
@@ -378,6 +425,19 @@ function ShopContent() {
           </Button>
         </div>
       </Drawer>
+
+      {/* Owner Add Photo & Garment Modal */}
+      <AddProductPhotoModal
+        isOpen={addPhotoModalOpen}
+        onClose={() => setAddPhotoModalOpen(false)}
+        initialGender={(genderParam as any) || 'male'}
+        initialCategorySlug={categoryParam || 't-shirts'}
+        onSuccess={() => {
+          if (typeof window !== 'undefined') {
+            window.location.reload();
+          }
+        }}
+      />
     </main>
   );
 }

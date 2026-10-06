@@ -107,24 +107,68 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </Link>
         </div>
 
+        {/* Kinds of Cloth Sections */}
+        <div className="flex flex-col gap-1.5 pb-4 border-b border-grey">
+          <span className="font-display text-[10px] font-bold text-charcoal tracking-widest uppercase">
+            KINDS OF CLOTH // CATEGORIES
+          </span>
+          <div className="grid grid-cols-2 gap-2 text-xs font-display font-bold uppercase">
+            <Link
+              href="/shop/t-shirts"
+              onClick={onClose}
+              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+            >
+              👕 TEES
+            </Link>
+            <Link
+              href="/shop/shirts"
+              onClick={onClose}
+              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+            >
+              👔 SHIRTS
+            </Link>
+            <Link
+              href="/shop/hoodies"
+              onClick={onClose}
+              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+            >
+              🧥 HOODIES
+            </Link>
+            <Link
+              href="/shop/jackets"
+              onClick={onClose}
+              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+            >
+              🧥 JACKETS
+            </Link>
+            <Link
+              href="/shop/bottoms"
+              onClick={onClose}
+              className="col-span-2 py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors text-center"
+            >
+              👖 BOTTOMS / PANTS
+            </Link>
+          </div>
+        </div>
+
         <Link
           href="/shop"
           onClick={onClose}
-          className="font-display text-xl font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
+          className="font-display text-lg font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
         >
           ALL ARCHIVE CATALOGUE
         </Link>
         <Link
           href="/collections"
           onClick={onClose}
-          className="font-display text-xl font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
+          className="font-display text-lg font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
         >
           COLLECTIONS
         </Link>
         <Link
           href="/about"
           onClick={onClose}
-          className="font-display text-xl font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
+          className="font-display text-lg font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
         >
           ABOUT ATELIER
         </Link>

@@ -6,13 +6,15 @@ import { CONFIG } from '@/lib/config';
 import { useCartStore } from '@/lib/cart-store';
 import { useWishlistStore } from '@/lib/wishlist-store';
 import { MobileMenu } from './MobileMenu';
-import { ShoppingBag, Heart, Search, User, Menu } from 'lucide-react';
+import { AddProductPhotoModal } from '@/components/admin/AddProductPhotoModal';
+import { ShoppingBag, Heart, Search, User, Menu, Camera } from 'lucide-react';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [addPhotoModalOpen, setAddPhotoModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -61,48 +63,78 @@ export function Header() {
         } ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
-          {/* LOGO Left */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open navigation menu"
-              className="md:hidden p-2 -ml-2 text-black hover:bg-cyan transition-colors"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-            <Link
-              href="/"
-              className="font-display text-xl md:text-2xl font-bold tracking-tighter text-black uppercase"
-            >
-              {CONFIG.brandName}
-            </Link>
+          {/* LEFT SIDE: Brand Logo + Shifted MALE, FEMALE, KIDS Sections + Kinds of Cloth */}
+          <div className="flex items-center gap-4 lg:gap-6">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                aria-label="Open navigation menu"
+                className="md:hidden p-2 -ml-2 text-black hover:bg-cyan transition-colors"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+              <Link
+                href="/"
+                className="font-display text-xl md:text-2xl font-bold tracking-tighter text-black uppercase whitespace-nowrap"
+              >
+                {CONFIG.brandName}
+              </Link>
+            </div>
+
+            {/* Shifted to the LEFT: MALE, FEMALE, KIDS Sections */}
+            <nav className="hidden md:flex items-center gap-2 lg:gap-3 font-display text-xs tracking-widest font-bold uppercase border-l-2 border-black pl-4">
+              <Link
+                href="/shop?gender=male"
+                className="hover:text-cyan hover:bg-black py-1.5 px-2.5 border border-transparent hover:border-black transition-colors"
+              >
+                MALE
+              </Link>
+              <Link
+                href="/shop?gender=female"
+                className="hover:text-cyan hover:bg-black py-1.5 px-2.5 border border-transparent hover:border-black transition-colors"
+              >
+                FEMALE
+              </Link>
+              <Link
+                href="/shop?gender=kids"
+                className="hover:text-cyan hover:bg-black py-1.5 px-2.5 border border-transparent hover:border-black transition-colors"
+              >
+                KIDS
+              </Link>
+              <span className="text-grey select-none">|</span>
+
+              {/* Different Kinds of Cloth on Left */}
+              <div className="hidden xl:flex items-center gap-2 text-[11px] text-charcoal font-semibold">
+                <Link href="/shop/t-shirts" className="hover:text-black hover:underline px-1 py-1">
+                  TEES
+                </Link>
+                <Link href="/shop/shirts" className="hover:text-black hover:underline px-1 py-1">
+                  SHIRTS
+                </Link>
+                <Link href="/shop/hoodies" className="hover:text-black hover:underline px-1 py-1">
+                  HOODIES
+                </Link>
+                <Link href="/shop/jackets" className="hover:text-black hover:underline px-1 py-1">
+                  JACKETS
+                </Link>
+                <Link href="/shop/bottoms" className="hover:text-black hover:underline px-1 py-1">
+                  BOTTOMS
+                </Link>
+              </div>
+            </nav>
           </div>
 
-          {/* Desktop Nav Centre: MALE, FEMALE, KIDS Sections */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-display text-xs tracking-widest font-bold uppercase">
-            <Link href="/shop?gender=male" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
-              MALE
-            </Link>
-            <Link href="/shop?gender=female" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
-              FEMALE
-            </Link>
-            <Link href="/shop?gender=kids" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
-              KIDS
-            </Link>
-            <span className="text-grey select-none">|</span>
-            <Link href="/shop" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black text-charcoal">
-              ALL
-            </Link>
-            <Link href="/collections" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black text-charcoal">
-              COLLECTIONS
-            </Link>
-            <Link href="/about" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black text-charcoal">
-              ABOUT
-            </Link>
-          </nav>
-
-          {/* Icons Right */}
-          <div className="flex items-center gap-2 md:gap-4 font-display text-xs tracking-wider">
+          {/* RIGHT SIDE: Owner Add Photo button + Search + Wishlist + Account + Bag */}
+          <div className="flex items-center gap-2 md:gap-3 font-display text-xs tracking-wider">
+            {/* Owner Add Photo Action */}
+            <button
+              onClick={() => setAddPhotoModalOpen(true)}
+              className="flex items-center gap-1.5 bg-black text-cyan hover:bg-cyan hover:text-black px-2.5 py-1.5 border border-black font-display text-[10px] font-bold uppercase transition-colors"
+              title="Add garment photo as owner"
+            >
+              <Camera className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">+ ADD PHOTO</span>
+            </button>
             {/* Search */}
             <Link
               href="/search"
@@ -150,6 +182,18 @@ export function Header() {
 
       {/* Full-screen Mobile Menu Overlay */}
       <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+
+      {/* Owner Add Photo & Garment Studio Modal */}
+      <AddProductPhotoModal
+        isOpen={addPhotoModalOpen}
+        onClose={() => setAddPhotoModalOpen(false)}
+        onSuccess={() => {
+          // Trigger page reload if on shop or home so new item renders immediately
+          if (typeof window !== 'undefined') {
+            window.location.reload();
+          }
+        }}
+      />
     </>
   );
 }
