@@ -124,7 +124,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         </div>
 
         <Link
-          href="/collections/new-arrivals"
+          href="/collections"
           onClick={onClose}
           className="font-display text-3xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase border-b border-grey/30 pb-2"
         >

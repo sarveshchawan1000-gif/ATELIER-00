@@ -75,7 +75,7 @@ export function Header() {
             <Link href="/shop" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
               SHOP
             </Link>
-            <Link href="/collections/new-arrivals" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
+            <Link href="/collections" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
               COLLECTIONS
             </Link>
             <Link href="/about" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">

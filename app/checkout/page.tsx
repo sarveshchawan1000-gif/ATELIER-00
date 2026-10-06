@@ -41,6 +41,9 @@ export default function CheckoutPage() {
     pincode: '',
   });
 
+  const [confirmedOrderNo, setConfirmedOrderNo] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const subtotalPaise = getSubtotalPaise();
   const shippingPaise = calculateShippingFee(
     subtotalPaise,
@@ -51,8 +54,30 @@ export default function CheckoutPage() {
 
   const currentStepIndex = STEPS.indexOf(currentStep);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const updated = { ...form, [name]: value };
+    setForm(updated);
+
+    // Auto-lookup city/state when 6-digit PIN code entered
+    if (name === 'pincode' && value.trim().length === 6 && /^\d{6}$/.test(value.trim())) {
+      try {
+        const res = await fetch(`/api/pincode/lookup?pincode=${encodeURIComponent(value.trim())}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.city && data.state) {
+            setForm((prev) => ({
+              ...prev,
+              city: prev.city || data.city,
+              state: prev.state || data.state,
+            }));
+            showToast(`DELIVERY AVAILABLE IN ${data.city.toUpperCase()}`);
+          }
+        }
+      } catch {
+        // Fallback silently if lookup fails
+      }
+    }
   };
 
   const handleNext = () => {
@@ -67,10 +92,45 @@ export default function CheckoutPage() {
     }
   };
 
-  const handlePlaceOrder = () => {
-    // In production, this creates Razorpay order and opens gateway
-    setOrderPlaced(true);
-    clearCart();
+  const handlePlaceOrder = async () => {
+    try {
+      setIsSubmitting(true);
+      const res = await fetch('/api/checkout/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: items.map((i) => ({ variantId: i.variantId, quantity: i.quantity })),
+          customer: {
+            email: form.email,
+            phone: form.phone,
+            name: `${form.firstName} ${form.lastName}`.trim(),
+          },
+          address: {
+            line1: form.address1,
+            line2: form.address2,
+            landmark: form.landmark,
+            city: form.city,
+            state: form.state,
+            pincode: form.pincode,
+          },
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        showToast(data.error || 'ORDER CREATION FAILED');
+        setIsSubmitting(false);
+        return;
+      }
+
+      setConfirmedOrderNo(data.orderNo);
+      setOrderPlaced(true);
+      clearCart();
+    } catch {
+      showToast('FAILED TO COMMUNICATE WITH CHECKOUT SERVER');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (items.length === 0 && !orderPlaced) {
@@ -103,7 +163,7 @@ export default function CheckoutPage() {
               ORDER CONFIRMED
             </h1>
             <p className="font-display text-sm text-charcoal tracking-wider uppercase">
-              ORDER #{Math.random().toString(36).substring(2, 10).toUpperCase()}
+              ORDER #{confirmedOrderNo || 'BRD-2026-CONFIRMED'}
             </p>
           </div>
           <p className="font-body text-sm text-charcoal max-w-md">
@@ -360,8 +420,14 @@ export default function CheckoutPage() {
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     BACK
                   </Button>
-                  <Button variant="primary" size="lg" onClick={handlePlaceOrder} fullWidth>
-                    PAY {formatINR(totalPaise)}
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={handlePlaceOrder}
+                    fullWidth
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'INITIALIZING RAZORPAY...' : `PAY ${formatINR(totalPaise)}`}
                   </Button>
                 </div>
               </div>
