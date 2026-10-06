@@ -26,6 +26,7 @@ function ShopContent() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Filter & Sort State from URL params
+  const genderParam = searchParams.get('gender') || '';
   const categoryParam = searchParams.get('category') || '';
   const collectionParam = searchParams.get('collection') || '';
   const sizeParam = searchParams.get('size') || '';
@@ -42,6 +43,7 @@ function ShopContent() {
         getProducts({
           categorySlug: categoryParam,
           collectionSlug: collectionParam,
+          gender: genderParam,
           sortBy: sortParam,
           page: pageParam,
           limit: 24,
@@ -65,7 +67,7 @@ function ShopContent() {
       setLoading(false);
     }
     loadData();
-  }, [categoryParam, collectionParam, sizeParam, colorParam, sortParam, pageParam]);
+  }, [genderParam, categoryParam, collectionParam, sizeParam, colorParam, sortParam, pageParam]);
 
   const updateParam = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -82,7 +84,7 @@ function ShopContent() {
     router.push(pathname);
   };
 
-  const hasActiveFilters = categoryParam || collectionParam || sizeParam || colorParam;
+  const hasActiveFilters = categoryParam || collectionParam || sizeParam || colorParam || genderParam;
 
   return (
     <main className="flex-1 bg-cream min-h-screen pt-28 pb-20 px-6 md:px-12">
@@ -91,10 +93,10 @@ function ShopContent() {
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-black pb-6 gap-4">
           <div>
             <span className="font-display text-xs font-bold text-cyan tracking-widest uppercase block mb-1">
-              DIGITAL EXHIBITION CATALOGUE
+              DIGITAL EXHIBITION CATALOGUE {genderParam && `// ${genderParam.toUpperCase()}`}
             </span>
             <h1 className="font-display text-3xl md:text-5xl font-bold tracking-tight uppercase text-black">
-              SHOP ARCHIVE ({totalCount})
+              {genderParam ? `${genderParam.toUpperCase()} ARCHIVE` : 'SHOP ARCHIVE'} ({totalCount})
             </h1>
           </div>
 
@@ -129,6 +131,11 @@ function ShopContent() {
             <span className="font-display text-[11px] font-bold text-charcoal uppercase mr-2">
               ACTIVE FILTERS:
             </span>
+            {genderParam && (
+              <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('gender', '')}>
+                SECTION: {genderParam.toUpperCase()} <X className="w-3 h-3" />
+              </Badge>
+            )}
             {categoryParam && (
               <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('category', '')}>
                 CATEGORY: {categoryParam} <X className="w-3 h-3" />
@@ -165,6 +172,32 @@ function ShopContent() {
             <h3 className="font-display text-sm font-bold tracking-widest text-black uppercase border-b border-grey pb-3">
               FILTERS & FACETS
             </h3>
+
+            {/* Department / Gender Sections */}
+            <div className="flex flex-col gap-2">
+              <span className="font-display text-xs font-bold text-charcoal uppercase">SECTION / DEPARTMENT</span>
+              <div className="flex flex-col gap-1 pl-2 font-display text-xs">
+                <button
+                  onClick={() => updateParam('gender', '')}
+                  className={`text-left uppercase py-1 ${!genderParam ? 'font-bold text-black' : 'text-charcoal hover:text-black'}`}
+                >
+                  ALL DEPARTMENTS
+                </button>
+                {[
+                  { id: 'male', label: '1. MALE (MENSWEAR)' },
+                  { id: 'female', label: '2. FEMALE (WOMENSWEAR)' },
+                  { id: 'kids', label: '3. KIDS (JUNIOR)' },
+                ].map((sec) => (
+                  <button
+                    key={sec.id}
+                    onClick={() => updateParam('gender', sec.id)}
+                    className={`text-left uppercase py-1 ${genderParam === sec.id ? 'font-bold text-cyan bg-black px-2' : 'text-charcoal hover:text-black'}`}
+                  >
+                    {sec.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Categories */}
             <div className="flex flex-col gap-2">
@@ -292,6 +325,24 @@ function ShopContent() {
       >
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
+            <span className="font-display text-xs font-bold text-charcoal uppercase">SECTION / DEPARTMENT</span>
+            {[
+              { id: 'male', label: '1. MALE (MENSWEAR)' },
+              { id: 'female', label: '2. FEMALE (WOMENSWEAR)' },
+              { id: 'kids', label: '3. KIDS (JUNIOR)' },
+            ].map((sec) => (
+              <Checkbox
+                key={sec.id}
+                label={sec.label}
+                checked={genderParam === sec.id}
+                onChange={() => {
+                  updateParam('gender', genderParam === sec.id ? '' : sec.id);
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-2 border-t border-grey pt-4">
             <span className="font-display text-xs font-bold text-charcoal uppercase">CATEGORY</span>
             {categories.map((cat) => (
               <Checkbox

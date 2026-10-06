@@ -89,33 +89,28 @@ export function Footer() {
             <h4 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">SHOP</h4>
             <ul className="flex flex-col gap-2 font-body text-xs text-grey">
               <li>
+                <Link href="/shop?gender=male" className="hover:text-cyan font-bold text-cream transition-colors">
+                  01 // MALE (MENSWEAR)
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?gender=female" className="hover:text-cyan font-bold text-cream transition-colors">
+                  02 // FEMALE (WOMENSWEAR)
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?gender=kids" className="hover:text-cyan font-bold text-cream transition-colors">
+                  03 // KIDS (JUNIOR)
+                </Link>
+              </li>
+              <li className="border-t border-charcoal/40 my-1 pt-1">
                 <Link href="/collections/new-arrivals" className="hover:text-cream transition-colors">
                   NEW ARRIVALS
                 </Link>
               </li>
               <li>
-                <Link href="/shop/t-shirts" className="hover:text-cream transition-colors">
-                  T-SHIRTS & TOPS
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/shirts" className="hover:text-cream transition-colors">
-                  SHIRTS
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/hoodies" className="hover:text-cream transition-colors">
-                  HOODIES & SWEATS
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/jackets" className="hover:text-cream transition-colors">
-                  JACKETS
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/bottoms" className="hover:text-cream transition-colors">
-                  BOTTOMS
+                <Link href="/shop" className="hover:text-cream transition-colors">
+                  ALL PIECES ARCHIVE
                 </Link>
               </li>
             </ul>

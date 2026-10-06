@@ -78,15 +78,25 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Desktop Nav Centre */}
-          <nav className="hidden md:flex items-center gap-8 font-display text-xs tracking-widest font-bold uppercase">
-            <Link href="/shop" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
-              SHOP
+          {/* Desktop Nav Centre: MALE, FEMALE, KIDS Sections */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-display text-xs tracking-widest font-bold uppercase">
+            <Link href="/shop?gender=male" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
+              MALE
             </Link>
-            <Link href="/collections" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
+            <Link href="/shop?gender=female" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
+              FEMALE
+            </Link>
+            <Link href="/shop?gender=kids" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
+              KIDS
+            </Link>
+            <span className="text-grey select-none">|</span>
+            <Link href="/shop" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black text-charcoal">
+              ALL
+            </Link>
+            <Link href="/collections" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black text-charcoal">
               COLLECTIONS
             </Link>
-            <Link href="/about" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black">
+            <Link href="/about" className="hover:text-cyan transition-colors py-2 border-b-2 border-transparent hover:border-black text-charcoal">
               ABOUT
             </Link>
           </nav>

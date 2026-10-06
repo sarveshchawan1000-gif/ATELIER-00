@@ -14,6 +14,7 @@ export async function getCollections(): Promise<Collection[]> {
 export async function getProducts(options?: {
   categorySlug?: string;
   collectionSlug?: string;
+  gender?: string;
   searchQuery?: string;
   sortBy?: 'recommended' | 'newest' | 'price-asc' | 'price-desc' | 'rating';
   page?: number;
@@ -29,6 +30,11 @@ export async function getProducts(options?: {
     filtered = filtered.filter((p) =>
       p.collections.some((c) => c.slug === options.collectionSlug)
     );
+  }
+
+  if (options?.gender) {
+    const g = options.gender.toLowerCase();
+    filtered = filtered.filter((p) => p.gender === g || p.tags.includes(g));
   }
 
   if (options?.searchQuery) {

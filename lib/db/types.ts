@@ -62,6 +62,7 @@ export interface Product {
   care: string;
   weight_g: number;
   country_of_origin: string;
+  gender?: 'male' | 'female' | 'kids' | 'unisex';
   tags: string[];
   status: ProductStatus;
   created_at: string;

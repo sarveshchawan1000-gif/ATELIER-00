@@ -131,15 +131,16 @@ test('DATABASE: Schema migration defines all 19 required tables and RLS', () => 
 });
 
 // 5. Seed Catalog Verification
-test('CATALOG: Seed data includes active products with variants and images', () => {
+test('CATALOG: Seed data includes active products across Male, Female, and Kids sections', () => {
   const seedPath = path.resolve(process.cwd(), 'lib/db/seed-data.ts');
   assert.ok(fs.existsSync(seedPath), 'Seed data file must exist');
 
   const seedContent = fs.readFileSync(seedPath, 'utf8');
   assert.ok(seedContent.includes('OVERSIZED COTTON TEE'));
-  assert.ok(seedContent.includes('HEAVYWEIGHT ZIP HOODIE'));
-  assert.ok(seedContent.includes('STRUCTURED TAILORED SHIRT'));
-  assert.ok(seedContent.includes('TECHNICAL BOMBER JACKET'));
-  assert.ok(seedContent.includes('RELAXED PLEATED TROUSERS'));
+  assert.ok(seedContent.includes('SCULPTURAL COCOON COAT'));
+  assert.ok(seedContent.includes('JUNIOR HEAVYWEIGHT BOX TEE'));
+  assert.ok(seedContent.includes("gender: 'male'"), 'Must contain male items');
+  assert.ok(seedContent.includes("gender: 'female'"), 'Must contain female items');
+  assert.ok(seedContent.includes("gender: 'kids'"), 'Must contain kids items');
   assert.ok(seedContent.includes('499900'), 'Prices must be defined in integer paise');
 });

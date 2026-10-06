@@ -75,66 +75,56 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       </div>
 
       {/* Main Links List */}
-      <nav className="flex-1 flex flex-col justify-center gap-6 my-8">
-        <Link
-          href="/shop"
-          onClick={onClose}
-          className="font-display text-3xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase border-b border-grey/30 pb-2"
-        >
-          SHOP
-        </Link>
-
-        {/* Categories Nested */}
-        <div className="flex flex-col gap-2 pl-4 border-l-2 border-black/20 my-1">
+      <nav className="flex-1 flex flex-col justify-center gap-4 my-6 overflow-y-auto">
+        {/* The 3 Core Sections: MALE, FEMALE, KIDS */}
+        <div className="flex flex-col gap-2 pb-4 border-b border-grey">
+          <span className="font-display text-[10px] font-bold text-cyan tracking-widest uppercase">
+            DEPARTMENTS // SECTIONS
+          </span>
           <Link
-            href="/shop/t-shirts"
+            href="/shop?gender=male"
             onClick={onClose}
-            className="font-display text-sm text-charcoal hover:text-black uppercase tracking-wider"
+            className="font-display text-2xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase flex items-center justify-between py-1"
           >
-            T-SHIRTS & TOPS
+            <span>01 // MALE</span>
+            <span className="text-cyan font-bold">→</span>
           </Link>
           <Link
-            href="/shop/shirts"
+            href="/shop?gender=female"
             onClick={onClose}
-            className="font-display text-sm text-charcoal hover:text-black uppercase tracking-wider"
+            className="font-display text-2xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase flex items-center justify-between py-1"
           >
-            SHIRTS
+            <span>02 // FEMALE</span>
+            <span className="text-cyan font-bold">→</span>
           </Link>
           <Link
-            href="/shop/hoodies"
+            href="/shop?gender=kids"
             onClick={onClose}
-            className="font-display text-sm text-charcoal hover:text-black uppercase tracking-wider"
+            className="font-display text-2xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase flex items-center justify-between py-1"
           >
-            HOODIES & SWEATS
-          </Link>
-          <Link
-            href="/shop/jackets"
-            onClick={onClose}
-            className="font-display text-sm text-charcoal hover:text-black uppercase tracking-wider"
-          >
-            JACKETS & OUTERWEAR
-          </Link>
-          <Link
-            href="/shop/bottoms"
-            onClick={onClose}
-            className="font-display text-sm text-charcoal hover:text-black uppercase tracking-wider"
-          >
-            BOTTOMS
+            <span>03 // KIDS</span>
+            <span className="text-cyan font-bold">→</span>
           </Link>
         </div>
 
         <Link
+          href="/shop"
+          onClick={onClose}
+          className="font-display text-xl font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
+        >
+          ALL ARCHIVE CATALOGUE
+        </Link>
+        <Link
           href="/collections"
           onClick={onClose}
-          className="font-display text-3xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase border-b border-grey/30 pb-2"
+          className="font-display text-xl font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
         >
           COLLECTIONS
         </Link>
-
         <Link
           href="/about"
           onClick={onClose}
-          className="font-display text-3xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase border-b border-grey/30 pb-2"
+          className="font-display text-xl font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
         >
           ABOUT ATELIER
         </Link>
