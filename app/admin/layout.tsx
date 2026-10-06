@@ -5,7 +5,7 @@ import { CONFIG } from '@/lib/config';
 import { LayoutDashboard, ShoppingBag, Package, AlertCircle, MessageSquare, ArrowLeft, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Admin Console | BRAND Operations',
+  title: `Admin Console | ${CONFIG.brandName} Operations`,
   description: 'Operations, inventory, orders and catalog administration.',
 };
 

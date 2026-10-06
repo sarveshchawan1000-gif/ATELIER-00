@@ -123,7 +123,7 @@ export default function StyleguidePage() {
           <div>
             <span className="font-display text-[10px] text-charcoal">DISPLAY HERO (~12vw / fluid)</span>
             <p className="font-display text-4xl md:text-6xl font-bold tracking-tighter uppercase">
-              BRAND ATELIER 2026
+              ATELIER 00 2026
             </p>
           </div>
           <div>

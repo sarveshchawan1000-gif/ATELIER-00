@@ -13,10 +13,18 @@ export function Header() {
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const cartCount = useCartStore((state) => state.getItemCount());
   const openCart = useCartStore((state) => state.openCart);
   const wishlistCount = useWishlistStore((state) => state.getItemCount());
+
+  const displayCartCount = mounted ? cartCount : 0;
+  const displayWishlistCount = mounted ? wishlistCount : 0;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,13 +105,13 @@ export function Header() {
             {/* Wishlist */}
             <Link
               href="/wishlist"
-              aria-label={`Wishlist with ${wishlistCount} items`}
+              aria-label={`Wishlist with ${displayWishlistCount} items`}
               className="p-2 text-black hover:bg-cyan transition-colors relative"
             >
-              <Heart className={`w-5 h-5 ${wishlistCount > 0 ? 'fill-black' : ''}`} />
-              {wishlistCount > 0 && (
+              <Heart className={`w-5 h-5 ${displayWishlistCount > 0 ? 'fill-black' : ''}`} />
+              {displayWishlistCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-cyan text-black font-bold text-[10px] w-4 h-4 flex items-center justify-center rounded-none">
-                  {wishlistCount}
+                  {displayWishlistCount}
                 </span>
               )}
             </Link>
@@ -120,11 +128,11 @@ export function Header() {
             {/* Bag Drawer Trigger */}
             <button
               onClick={openCart}
-              aria-label={`Shopping bag with ${cartCount} items`}
+              aria-label={`Shopping bag with ${displayCartCount} items`}
               className="p-2 text-black hover:bg-cyan transition-colors flex items-center gap-1.5 font-bold"
             >
               <ShoppingBag className="w-5 h-5" />
-              <span className="font-display text-xs tracking-wider">[{cartCount.toString().padStart(2, '0')}]</span>
+              <span className="font-display text-xs tracking-wider">[{displayCartCount.toString().padStart(2, '0')}]</span>
             </button>
           </div>
         </div>

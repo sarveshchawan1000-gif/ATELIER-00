@@ -4,7 +4,7 @@
  */
 
 export const CONFIG = {
-  brandName: process.env.NEXT_PUBLIC_BRAND_NAME || 'BRAND',
+  brandName: process.env.NEXT_PUBLIC_BRAND_NAME || 'ATELIER 00',
   currency: 'INR',
   currencySymbol: '₹',
 

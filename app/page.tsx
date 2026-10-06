@@ -106,7 +106,7 @@ export default function HomePage() {
         >
           <Image
             src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1600&auto=format&fit=crop&q=80"
-            alt="BRAND Signature Fashion Hero Exhibition"
+            alt="ATELIER 00 Signature Fashion Hero Exhibition"
             fill
             priority
             className="object-cover object-center opacity-25"
@@ -121,12 +121,12 @@ export default function HomePage() {
 
         {/* Signature Split Wordmark Entrance */}
         <div className="relative z-10 my-auto py-12 flex flex-col items-center justify-center overflow-hidden">
-          <div className="flex flex-col md:flex-row items-center justify-center font-display font-bold tracking-tighter uppercase leading-none text-[14vw] md:text-[12vw] select-none text-black">
+          <div className="flex flex-col md:flex-row items-center justify-center font-display font-bold tracking-tighter uppercase leading-none text-[12vw] md:text-[10vw] select-none text-black gap-2 md:gap-6">
             <h1 ref={leftWordmarkRef} className="will-change-transform">
-              BR
+              ATELIER
             </h1>
             <h1 ref={rightWordmarkRef} className="will-change-transform">
-              AND
+              00
             </h1>
           </div>
           <p className="font-body text-xs md:text-sm text-charcoal tracking-widest uppercase mt-4 max-w-md text-center">
