@@ -141,15 +141,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       </nav>
 
       {/* Bottom Utility Links */}
-      <div className="pt-6 border-t border-grey flex items-center justify-between font-display text-xs tracking-widest text-charcoal uppercase">
+      <div className="pt-6 border-t border-grey flex flex-wrap items-center justify-between gap-3 font-display text-xs tracking-widest text-charcoal uppercase">
         <Link href="/account" onClick={onClose} className="hover:text-black underline">
           MY ACCOUNT
         </Link>
         <Link href="/wishlist" onClick={onClose} className="hover:text-black underline">
           WISHLIST
         </Link>
-        <Link href="/contact" onClick={onClose} className="hover:text-black underline">
-          CONTACT
+        <Link href="/account/orders/BRD-2026-981245" onClick={onClose} className="hover:text-black underline">
+          TRACK ORDER
+        </Link>
+        <Link href="/admin" onClick={onClose} className="text-cyan font-bold hover:underline">
+          ADMIN
         </Link>
       </div>
     </div>

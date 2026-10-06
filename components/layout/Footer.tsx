@@ -191,8 +191,23 @@ export function Footer() {
 
       {/* Footer Bottom Metadata Bar */}
       <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-display text-[11px] tracking-wider text-grey/80 uppercase">
-        <p>© 2026 {CONFIG.brandName}. ALL RIGHTS RESERVED.</p>
-        <p>{CONFIG.taxes.gstInclusiveNote} | {CONFIG.taxes.gstNumberPlaceholder}</p>
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+          <p>© 2026 {CONFIG.brandName}. ALL RIGHTS RESERVED.</p>
+          <p>{CONFIG.taxes.gstInclusiveNote} | {CONFIG.taxes.gstNumberPlaceholder}</p>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-4 text-cyan font-bold">
+          <Link href="/account/orders/BRD-2026-981245" className="hover:underline">
+            ORDER TRACKING
+          </Link>
+          <span className="text-charcoal">/</span>
+          <Link href="/admin" className="hover:underline">
+            ATELIER CONSOLE [ADMIN]
+          </Link>
+          <span className="text-charcoal">/</span>
+          <Link href="/dev/styleguide" className="hover:underline">
+            STYLEGUIDE
+          </Link>
+        </div>
       </div>
     </footer>
   );

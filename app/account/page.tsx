@@ -283,6 +283,20 @@ export default function AccountPage() {
               </div>
             </div>
           </div>
+
+          {/* Quick Tracking / Admin Jump */}
+          <div className="pt-6 border-t border-grey/30 flex flex-col gap-3 font-display text-xs">
+            <span className="text-cyan font-bold tracking-wider uppercase">
+              LOOKING FOR AN EXISTING DISPATCH?
+            </span>
+            <Link
+              href="/account/orders/BRD-2026-981245"
+              className="text-cream hover:text-cyan underline uppercase flex items-center justify-between"
+            >
+              <span>TRACK LIVE ORDER #BRD-2026-981245</span>
+              <span>→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </main>
