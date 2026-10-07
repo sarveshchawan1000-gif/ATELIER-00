@@ -12,10 +12,10 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 export function Badge({ children, variant = 'outline', className, onClick, ...props }: BadgeProps) {
   const variantStyles = {
-    accent: 'bg-cyan text-black font-bold border border-cyan',
-    outline: 'bg-offwhite text-charcoal border border-grey',
-    error: 'bg-error-red text-cream font-bold border border-error-red',
-    dark: 'bg-black text-cream font-bold border border-black',
+    accent: 'bg-[#111111] text-white border-0',
+    outline: 'bg-transparent text-[#6B6B6B] border border-[#D9D6D0]',
+    error: 'bg-error-red text-white border-0',
+    dark: 'bg-[#111111] text-white border-0',
   };
 
   return (
@@ -23,9 +23,9 @@ export function Badge({ children, variant = 'outline', className, onClick, ...pr
       onClick={onClick}
       className={twMerge(
         clsx(
-          'inline-flex items-center justify-center px-2 py-0.5 font-display text-[10px] tracking-widest uppercase rounded-none leading-none select-none',
+          'inline-flex items-center justify-center px-2 py-0.5 text-[11px] tracking-[0.04em] uppercase rounded-none leading-none select-none',
           variantStyles[variant],
-          onClick && 'cursor-pointer hover:opacity-90',
+          onClick && 'cursor-pointer hover:opacity-80',
           className
         )
       )}

@@ -2,162 +2,150 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CONFIG } from '@/lib/config';
 import { Button } from '@/components/ui/Button';
-import { ArrowRight, Compass, Shield, Sparkles } from 'lucide-react';
+import { Ruler, Layers, BadgeCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About | Monograph & Atelier',
-  description: 'Architectural garment engineering meets high-contrast editorial curation.',
+  title: 'Our Story',
+  description: 'Considered clothing, made in India. Clean silhouettes, honest fabrics and skilled craftsmanship.',
 };
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto space-y-20 md:space-y-32">
-        {/* Monograph Header */}
-        <section className="border-b-2 border-black pb-12 md:pb-20">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <span className="font-display text-xs tracking-widest text-cyan uppercase bg-black px-2.5 py-1">
-                MONOGRAPH 004
-              </span>
-              <span className="font-display text-xs tracking-widest text-charcoal uppercase">
-                ESTABLISHED 2026 // INDIA
-              </span>
-            </div>
-            <h1 className="font-display text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter uppercase text-black max-w-5xl leading-[0.9]">
-              ARCHITECTURAL FORM. UNCOMPROMISING DRAPE.
-            </h1>
-          </div>
-          <p className="font-body text-base md:text-xl text-charcoal max-w-3xl mt-8 leading-relaxed">
-            {CONFIG.brandName} operates at the nexus of brutalist spatial geometry and artisanal Indian textile engineering.
-            Every artifact is designed as a wearable monolith—sculpted with structural weight, refined drop shoulders, and 
-            intentional permanence.
+    <main className="min-h-screen bg-[#FAFAF8] text-[#111111]">
+      {/* 1. Hero Section */}
+      <section className="pt-24 md:pt-36 pb-16 md:pb-20 px-6 max-w-[1280px] mx-auto">
+        <div className="max-w-3xl">
+          <span className="text-[13px] text-[#6B6B6B] font-medium tracking-normal block mb-4">
+            Our story
+          </span>
+          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-medium tracking-[-0.02em] leading-[1.1] text-[#111111] max-w-[18ch] text-balance">
+            Considered clothing, made in India.
+          </h1>
+          <p className="text-[16px] md:text-[18px] text-[#6B6B6B] max-w-[560px] leading-[1.6] mt-6">
+            ATELIER 00 is a clothing label built on clean silhouettes, honest fabrics and skilled Indian craftsmanship. Every piece is designed to be worn often and kept for years.
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* Narrative Split */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-6 relative aspect-[4/5] bg-offwhite border-2 border-black overflow-hidden shadow-[8px_8px_0px_0px_#111111]">
-            <Image
-              src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&auto=format&fit=crop&q=85"
-              alt="Atelier drape craftsmanship"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-            <div className="absolute bottom-4 left-4 right-4 bg-black/90 p-4 border border-grey/30">
-              <span className="font-display text-xs tracking-widest text-cyan uppercase block mb-1">
-                STUDIO DISPATCH // ATELIER
-              </span>
-              <p className="font-body text-xs text-cream">
-                Pattern cutters and master tailors refining structural seams in our Mumbai design chamber.
-              </p>
-            </div>
-          </div>
+      {/* 2. Full-Width Editorial Image */}
+      <section id="atelier" className="px-6 max-w-[1280px] mx-auto pb-16 md:pb-24">
+        <div className="relative w-full aspect-[4/5] md:aspect-[16/9] bg-[#F3F2EF] rounded-[2px] overflow-hidden">
+          <Image
+            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600&auto=format&fit=crop&q=85"
+            alt="Pattern cutters and master tailors refining seams in our Mumbai studio"
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="object-cover"
+          />
+        </div>
+        <p className="mt-3 text-[13px] text-[#6B6B6B] leading-relaxed">
+          Pattern cutters and master tailors refining seams in our Mumbai studio.
+        </p>
+      </section>
 
-          <div className="lg:col-span-6 space-y-8">
-            <div className="space-y-4">
-              <span className="font-display text-xs font-bold tracking-widest text-cyan uppercase">
-                01 // THE MANIFESTO
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight uppercase">
-                REJECTING SEASONAL DISPOSABILITY
-              </h2>
-              <p className="font-body text-sm md:text-base text-charcoal leading-relaxed">
-                Conventional fashion demands obsolescence. We engineer our garments with 320 to 450 GSM weights,
-                double-faced French Terry weaves, and reinforced bar-tacks to withstand decades, not seasons.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <span className="font-display text-xs font-bold tracking-widest text-cyan uppercase">
-                02 // DOMESTIC PROVENANCE
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight uppercase">
-                WOVEN AND ASSEMBLED IN INDIA
-              </h2>
-              <p className="font-body text-sm md:text-base text-charcoal leading-relaxed">
-                India possesses an unrivaled heritage of cotton spinning and bespoke tailoring. We collaborate
-                exclusively with ethical certified spinning facilities in Tamil Nadu and master stitching units
-                in Maharashtra, ensuring full living-wage compensation and traceability from seed to garment.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 3 Pillars Grid */}
-        <section className="bg-offwhite border-2 border-black p-8 md:p-16">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <span className="font-display text-xs font-bold tracking-widest text-cyan uppercase mb-2 block">
-              CORE PRINCIPLES
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight uppercase">
-              THE THREE FOUNDATIONS
+      {/* 3. Two Story Sections */}
+      <section className="px-6 max-w-[1280px] mx-auto border-t border-[#E8E6E1]">
+        {/* Story Section 1 */}
+        <div className="py-16 md:py-20 border-b border-[#E8E6E1] grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
+          <div className="md:col-span-5">
+            <h2 className="text-[24px] md:text-[28px] font-medium text-[#111111] leading-tight tracking-[-0.01em]">
+              Made to last, not to be replaced
             </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 divide-y md:divide-y-0 md:divide-x divide-grey">
-            <div className="pt-6 md:pt-0 md:px-6 space-y-4">
-              <div className="w-12 h-12 bg-black text-cyan flex items-center justify-center font-display font-bold text-lg">
-                <Compass className="w-6 h-6" />
-              </div>
-              <h3 className="font-display text-lg font-bold tracking-wider uppercase">
-                GEOMETRIC PRECISION
-              </h3>
-              <p className="font-body text-xs md:text-sm text-charcoal leading-relaxed">
-                Patterns drafted with clean brutalist lines. Exaggerated drop-shoulders and boxy torsos designed
-                to drape effortlessly regardless of body type.
-              </p>
-            </div>
-
-            <div className="pt-6 md:pt-0 md:px-6 space-y-4">
-              <div className="w-12 h-12 bg-black text-cyan flex items-center justify-center font-display font-bold text-lg">
-                <Shield className="w-6 h-6" />
-              </div>
-              <h3 className="font-display text-lg font-bold tracking-wider uppercase">
-                TACTILE HEAVYWEIGHTS
-              </h3>
-              <p className="font-body text-xs md:text-sm text-charcoal leading-relaxed">
-                We never compromise on fabric density. Our 100% organic cotton fabrics possess substantial heft
-                that hangs with sculptural rigidity and feels remarkably comfortable.
-              </p>
-            </div>
-
-            <div className="pt-6 md:pt-0 md:px-6 space-y-4">
-              <div className="w-12 h-12 bg-black text-cyan flex items-center justify-center font-display font-bold text-lg">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <h3 className="font-display text-lg font-bold tracking-wider uppercase">
-                LIMITED MONOGRAPHS
-              </h3>
-              <p className="font-body text-xs md:text-sm text-charcoal leading-relaxed">
-                Releases are produced in strictly quantified limited runs. Each piece is serial-tracked to eliminate
-                overproduction and ensure collector value.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Banner */}
-        <section className="bg-black text-cream p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 border-2 border-black">
-          <div className="space-y-2 text-center md:text-left">
-            <h2 className="font-display text-2xl md:text-4xl font-bold tracking-tight uppercase text-cream">
-              EXPLORE MONOGRAPH 004 PIECES
-            </h2>
-            <p className="font-body text-sm text-grey">
-              Curated architectural garments currently available for dispatch across India.
+          <div className="md:col-span-7">
+            <p className="text-[16px] text-[#444444] max-w-[560px] leading-[1.7]">
+              We design for longevity. Our garments use 320-450 GSM fabrics, double-faced French terry and reinforced stitching, so they hold their shape season after season.
             </p>
           </div>
-          <Link href="/shop" className="w-full md:w-auto">
-            <Button variant="primary" size="lg" className="w-full bg-cyan text-black hover:bg-cream">
-              ENTER EXHIBITION <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
-        </section>
-      </div>
+        </div>
+
+        {/* Story Section 2 */}
+        <div className="py-16 md:py-20 border-b border-[#E8E6E1] grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
+          <div className="md:col-span-5">
+            <h2 className="text-[24px] md:text-[28px] font-medium text-[#111111] leading-tight tracking-[-0.01em]">
+              Woven and assembled in India
+            </h2>
+          </div>
+          <div className="md:col-span-7">
+            <p className="text-[16px] text-[#444444] max-w-[560px] leading-[1.7]">
+              We work with cotton spinners in Tamil Nadu and master tailoring units in Maharashtra, paying fair, living wages and tracing every garment from fibre to finished piece.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Values Section */}
+      <section className="px-6 max-w-[1280px] mx-auto py-16 md:py-24">
+        <h2 className="text-[28px] md:text-[32px] font-medium text-[#111111] tracking-[-0.01em] mb-12 md:mb-16">
+          What we stand for
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+          {/* Pillar 1 */}
+          <div className="flex flex-col gap-4">
+            <div className="w-10 h-10 flex items-center justify-start text-[#111111]">
+              <Ruler className="w-6 h-6 text-[#111111]" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-[16px] font-medium text-[#111111]">
+              Precise fit
+            </h3>
+            <p className="text-[14px] md:text-[15px] text-[#6B6B6B] leading-relaxed max-w-[320px]">
+              Clean lines and relaxed drop shoulders cut to drape comfortably on every body.
+            </p>
+          </div>
+
+          {/* Pillar 2 */}
+          <div className="flex flex-col gap-4">
+            <div className="w-10 h-10 flex items-center justify-start text-[#111111]">
+              <Layers className="w-6 h-6 text-[#111111]" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-[16px] font-medium text-[#111111]">
+              Substantial fabrics
+            </h3>
+            <p className="text-[14px] md:text-[15px] text-[#6B6B6B] leading-relaxed max-w-[320px]">
+              Dense, high-quality cotton and wool with real weight, structure and comfort.
+            </p>
+          </div>
+
+          {/* Pillar 3 */}
+          <div className="flex flex-col gap-4">
+            <div className="w-10 h-10 flex items-center justify-start text-[#111111]">
+              <BadgeCheck className="w-6 h-6 text-[#111111]" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-[16px] font-medium text-[#111111]">
+              Small batches
+            </h3>
+            <p className="text-[14px] md:text-[15px] text-[#6B6B6B] leading-relaxed max-w-[320px]">
+              Limited, serial-numbered runs that reduce overproduction and keep each piece special.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Closing CTA */}
+      <section className="bg-[#F3F2EF] py-20 md:py-24 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-[28px] font-medium text-[#111111] tracking-[-0.01em]">
+            Explore the collection
+          </h2>
+          <p className="text-[15px] text-[#6B6B6B] mt-3 mb-8">
+            Thoughtfully made pieces, available across India.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/shop" className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" className="w-full sm:w-auto min-w-[160px]">
+                Shop all
+              </Button>
+            </Link>
+            <Link href="/collections/new-arrivals" className="w-full sm:w-auto">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto min-w-[180px]">
+                Shop new arrivals
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

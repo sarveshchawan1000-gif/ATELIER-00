@@ -77,40 +77,40 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-cream border-b border-black p-6 md:p-10 w-full shadow-2xl animate-in slide-in-from-top duration-200">
+      <div className="bg-[#FAFAF8] border-b border-[#E8E6E1] p-6 md:p-10 w-full shadow-lg animate-in slide-in-from-top duration-200">
         <div className="max-w-4xl mx-auto flex flex-col gap-6">
           {/* Header Row */}
           <div className="flex items-center justify-between">
-            <span className="font-display text-xs font-bold tracking-widest text-charcoal uppercase">
-              WHAT ARE YOU LOOKING FOR?
+            <span className="text-xs font-medium tracking-wider text-[#6B6B6B] uppercase">
+              Search the Atelier
             </span>
             <button
               onClick={onClose}
               aria-label="Close search overlay"
-              className="p-2 text-black hover:bg-cyan font-bold text-sm transition-colors border border-black"
+              className="p-1.5 text-[#111] hover:text-[#6B6B6B] transition-colors rounded-sm"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 stroke-[1.5]" />
             </button>
           </div>
 
           {/* Search Form */}
           <form onSubmit={handleSubmit} className="relative flex items-center">
-            <Search className="absolute left-4 w-6 h-6 text-black pointer-events-none" />
+            <Search className="absolute left-4 w-5 h-5 text-[#6B6B6B] stroke-[1.5] pointer-events-none" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="SEARCH EXHIBITION PRODUCTS, CATEGORIES, SKUS..."
-              className="w-full bg-offwhite border-2 border-black pl-14 pr-12 py-4 font-display text-sm md:text-base font-bold text-black uppercase tracking-wider placeholder:text-charcoal/50 rounded-none focus:outline-none focus:border-black"
+              placeholder="Search products, categories, styles..."
+              className="w-full bg-white border border-[#E8E6E1] pl-12 pr-16 py-3.5 text-sm md:text-base text-[#111] placeholder:text-[#6B6B6B]/60 rounded-none focus:outline-none focus:border-[#111] transition-colors"
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                className="absolute right-4 text-xs font-bold font-display uppercase hover:text-error-red"
+                className="absolute right-4 text-xs font-medium text-[#6B6B6B] hover:text-[#111] transition-colors"
               >
-                CLEAR
+                Clear
               </button>
             )}
           </form>
@@ -118,15 +118,15 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
           {/* Quick Popular Search Tags */}
           {!query && (
             <div className="flex flex-col gap-2 pt-2">
-              <span className="font-display text-[10px] font-bold text-charcoal tracking-widest uppercase">
-                POPULAR SEARCHES:
+              <span className="text-[11px] font-medium text-[#6B6B6B] tracking-wider uppercase">
+                Popular searches
               </span>
               <div className="flex flex-wrap gap-2">
                 {popularSearches.map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setQuery(tag)}
-                    className="px-3 py-1 bg-offwhite border border-grey hover:border-black hover:bg-cyan font-display text-xs tracking-wider uppercase transition-colors"
+                    className="px-3.5 py-1.5 bg-transparent border border-[#D9D6D0] hover:border-[#111] hover:text-[#111] text-xs text-[#6B6B6B] rounded-full transition-colors"
                   >
                     {tag}
                   </button>
@@ -137,51 +137,51 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
           {/* Live Search Results */}
           {query.trim() && (
-            <div className="flex flex-col gap-4 pt-4 border-t border-grey">
+            <div className="flex flex-col gap-4 pt-4 border-t border-[#E8E6E1]">
               <div className="flex items-center justify-between">
-                <span className="font-display text-xs font-bold tracking-wider uppercase text-black">
-                  {isSearching ? 'SEARCHING...' : `FOUND ${results.length} RESULTS`}
+                <span className="text-xs font-medium text-[#6B6B6B]">
+                  {isSearching ? 'Searching...' : `${results.length} results`}
                 </span>
                 {results.length > 0 && (
                   <button
                     onClick={handleSubmit}
-                    className="font-display text-xs font-bold text-black hover:text-cyan uppercase underline"
+                    className="text-xs font-medium text-[#111] hover:text-[#6B6B6B] underline underline-offset-4 transition-colors"
                   >
-                    VIEW ALL RESULTS →
+                    View all results →
                   </button>
                 )}
               </div>
 
               {results.length === 0 && !isSearching ? (
-                <div className="py-8 text-center flex flex-col items-center gap-2">
-                  <p className="font-display text-sm font-bold text-black uppercase">
-                    NOTHING HERE. TRY ANOTHER CATEGORY OR SEARCH.
+                <div className="py-8 text-center flex flex-col items-center gap-1.5">
+                  <p className="text-sm font-medium text-[#111]">
+                    No garments found
                   </p>
-                  <p className="font-body text-xs text-charcoal">
-                    No garments found matching &quot;{query}&quot;.
+                  <p className="text-xs text-[#6B6B6B]">
+                    No garments matching &quot;{query}&quot;. Try another search term.
                   </p>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
                   {results.map((product) => (
                     <Link
                       key={product.id}
                       href={`/product/${product.slug}`}
                       onClick={onClose}
-                      className="group flex flex-col gap-2 border border-grey bg-offwhite p-2 hover:border-black transition-colors"
+                      className="group flex flex-col gap-2 transition-colors"
                     >
-                      <div className="relative aspect-[4/5] bg-grey/20 overflow-hidden">
+                      <div className="relative aspect-[3/4] bg-[#F3F2EF] overflow-hidden">
                         <Image
                           src={product.images[0]?.url || ''}
                           alt={product.name}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform"
+                          className="object-cover group-hover:scale-[1.03] transition-transform duration-400 ease-out"
                         />
                       </div>
-                      <h4 className="font-display text-[11px] font-bold text-black uppercase line-clamp-1 group-hover:text-cyan">
+                      <h4 className="text-xs font-medium text-[#111] line-clamp-1">
                         {product.name}
                       </h4>
-                      <span className="font-display text-[10px] font-bold text-charcoal">
+                      <span className="text-xs text-[#6B6B6B]">
                         {formatINR(product.sale_price || product.mrp)}
                       </span>
                     </Link>

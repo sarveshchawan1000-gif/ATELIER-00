@@ -153,31 +153,31 @@ export default function CheckoutPage() {
 
   if (orderPlaced) {
     return (
-      <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8">
+      <main className="min-h-screen bg-[#FAFAF8] pt-24 md:pt-32 pb-20 px-4 md:px-8">
         <div className="max-w-2xl mx-auto text-center py-20 flex flex-col items-center gap-8">
-          <div className="w-20 h-20 border-2 border-cyan bg-cyan/10 flex items-center justify-center">
-            <span className="text-3xl">✓</span>
+          <div className="w-16 h-16 rounded-full bg-[#111] text-white flex items-center justify-center">
+            <span className="text-2xl">✓</span>
           </div>
-          <div className="flex flex-col gap-3">
-            <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tighter uppercase">
-              ORDER CONFIRMED
+          <div className="flex flex-col gap-2">
+            <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-[#111]">
+              Order Confirmed
             </h1>
-            <p className="font-display text-sm text-charcoal tracking-wider uppercase">
-              ORDER #{confirmedOrderNo || 'BRD-2026-CONFIRMED'}
+            <p className="text-xs text-[#6B6B6B] tracking-wider uppercase">
+              Order #{confirmedOrderNo || 'BRD-2026-CONFIRMED'}
             </p>
           </div>
-          <p className="font-body text-sm text-charcoal max-w-md">
+          <p className="text-sm text-[#6B6B6B] max-w-md">
             Thank you for your order. We&apos;ll send a confirmation email with tracking
-            details to <span className="font-bold text-black">{form.email || 'your email'}</span>.
+            details to <span className="font-medium text-[#111]">{form.email || 'your email'}</span>.
           </p>
-          <div className="bg-offwhite border border-grey p-6 w-full max-w-sm">
-            <div className="flex items-center gap-2 font-display text-xs tracking-wider uppercase text-charcoal">
-              <Truck className="w-4 h-4 text-cyan" />
+          <div className="bg-white border border-[#E8E6E1] p-5 w-full max-w-sm rounded-sm">
+            <div className="flex items-center justify-center gap-2 text-xs text-[#6B6B6B]">
+              <Truck className="w-4 h-4 stroke-[1.5]" />
               Estimated delivery: {CONFIG.shipping.estimatedDays}
             </div>
           </div>
           <Link href="/shop">
-            <Button variant="primary" size="lg">CONTINUE SHOPPING</Button>
+            <Button variant="primary" size="lg">Continue Shopping</Button>
           </Link>
         </div>
       </main>
@@ -185,24 +185,24 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8">
+    <main className="min-h-screen bg-[#FAFAF8] pt-24 md:pt-32 pb-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Breadcrumb Steps */}
-        <nav className="flex items-center gap-2 mb-8 font-display text-xs tracking-wider uppercase">
-          <Link href="/cart" className="text-charcoal hover:text-black transition-colors">
-            BAG
+        <nav className="flex items-center gap-2 mb-8 text-xs text-[#6B6B6B]">
+          <Link href="/cart" className="hover:text-[#111] transition-colors">
+            Bag
           </Link>
           {STEPS.map((step, i) => (
             <React.Fragment key={step}>
-              <ChevronRight className="w-3 h-3 text-grey" />
+              <ChevronRight className="w-3 h-3 text-[#6B6B6B] stroke-[1.5]" />
               <button
                 onClick={() => i <= currentStepIndex && setCurrentStep(step)}
                 className={`transition-colors ${
                   step === currentStep
-                    ? 'text-black font-bold border-b-2 border-cyan pb-0.5'
+                    ? 'text-[#111] font-medium border-b border-[#111] pb-0.5'
                     : i < currentStepIndex
-                    ? 'text-charcoal hover:text-black cursor-pointer'
-                    : 'text-grey cursor-default'
+                    ? 'text-[#6B6B6B] hover:text-[#111] cursor-pointer'
+                    : 'text-[#6B6B6B]/50 cursor-default'
                 }`}
                 disabled={i > currentStepIndex}
               >
@@ -218,18 +218,18 @@ export default function CheckoutPage() {
             {/* STEP 1: Information */}
             {currentStep === 'information' && (
               <div className="flex flex-col gap-6">
-                <h2 className="font-display text-xl font-bold tracking-wider uppercase border-b border-black pb-3">
-                  CONTACT & SHIPPING
+                <h2 className="text-xl font-medium text-[#111] border-b border-[#E8E6E1] pb-3">
+                  Contact & Shipping
                 </h2>
 
-                <div className="flex flex-col gap-4">
-                  <h3 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">
-                    CONTACT DETAILS
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-xs font-medium text-[#111]">
+                    Contact details
                   </h3>
                   <Input
                     name="email"
                     type="email"
-                    placeholder="EMAIL ADDRESS *"
+                    placeholder="Email address *"
                     value={form.email}
                     onChange={handleInputChange}
                     required
@@ -237,69 +237,69 @@ export default function CheckoutPage() {
                   <Input
                     name="phone"
                     type="tel"
-                    placeholder="PHONE NUMBER *"
+                    placeholder="Phone number *"
                     value={form.phone}
                     onChange={handleInputChange}
                     required
                   />
                 </div>
 
-                <div className="flex flex-col gap-4">
-                  <h3 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">
-                    DELIVERY ADDRESS
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-xs font-medium text-[#111]">
+                    Delivery address
                   </h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3">
                     <Input
                       name="firstName"
-                      placeholder="FIRST NAME *"
+                      placeholder="First name *"
                       value={form.firstName}
                       onChange={handleInputChange}
                       required
                     />
                     <Input
                       name="lastName"
-                      placeholder="LAST NAME"
+                      placeholder="Last name"
                       value={form.lastName}
                       onChange={handleInputChange}
                     />
                   </div>
                   <Input
                     name="address1"
-                    placeholder="ADDRESS LINE 1 *"
+                    placeholder="Address line 1 *"
                     value={form.address1}
                     onChange={handleInputChange}
                     required
                   />
                   <Input
                     name="address2"
-                    placeholder="ADDRESS LINE 2"
+                    placeholder="Address line 2"
                     value={form.address2}
                     onChange={handleInputChange}
                   />
                   <Input
                     name="landmark"
-                    placeholder="LANDMARK (OPTIONAL)"
+                    placeholder="Landmark (optional)"
                     value={form.landmark}
                     onChange={handleInputChange}
                   />
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-3">
                     <Input
                       name="city"
-                      placeholder="CITY *"
+                      placeholder="City *"
                       value={form.city}
                       onChange={handleInputChange}
                       required
                     />
                     <Input
                       name="state"
-                      placeholder="STATE *"
+                      placeholder="State *"
                       value={form.state}
                       onChange={handleInputChange}
                       required
                     />
                     <Input
                       name="pincode"
-                      placeholder="PINCODE *"
+                      placeholder="PIN code *"
                       value={form.pincode}
                       onChange={handleInputChange}
                       required
@@ -308,8 +308,8 @@ export default function CheckoutPage() {
                 </div>
 
                 <Button variant="primary" size="lg" onClick={handleNext} fullWidth>
-                  CONTINUE TO SHIPPING
-                  <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
+                  Continue to Shipping
+                  <ArrowLeft className="w-4 h-4 ml-2 rotate-180 stroke-[1.5]" />
                 </Button>
               </div>
             )}
@@ -317,17 +317,17 @@ export default function CheckoutPage() {
             {/* STEP 2: Shipping Method */}
             {currentStep === 'shipping' && (
               <div className="flex flex-col gap-6">
-                <h2 className="font-display text-xl font-bold tracking-wider uppercase border-b border-black pb-3">
-                  SHIPPING METHOD
+                <h2 className="text-xl font-medium text-[#111] border-b border-[#E8E6E1] pb-3">
+                  Shipping Method
                 </h2>
 
                 {/* Address Summary */}
-                <div className="bg-offwhite border border-grey p-4 flex justify-between items-start">
+                <div className="bg-white border border-[#E8E6E1] p-4 flex justify-between items-start rounded-sm">
                   <div>
-                    <p className="font-display text-xs font-bold tracking-wider uppercase mb-1">
-                      SHIP TO
+                    <p className="text-xs font-medium text-[#111] mb-1">
+                      Ship to
                     </p>
-                    <p className="font-body text-sm text-charcoal">
+                    <p className="text-xs text-[#6B6B6B]">
                       {form.firstName} {form.lastName}<br />
                       {form.address1}{form.address2 ? `, ${form.address2}` : ''}<br />
                       {form.city}, {form.state} — {form.pincode}
@@ -335,30 +335,30 @@ export default function CheckoutPage() {
                   </div>
                   <button
                     onClick={() => setCurrentStep('information')}
-                    className="font-display text-xs tracking-wider text-cyan underline"
+                    className="text-xs text-[#111] underline underline-offset-4 hover:text-[#6B6B6B]"
                   >
-                    CHANGE
+                    Change
                   </button>
                 </div>
 
                 {/* Shipping Options */}
                 <div className="flex flex-col gap-3">
-                  <label className="flex items-center justify-between border-2 border-black bg-offwhite p-4 cursor-pointer">
+                  <label className="flex items-center justify-between border border-[#E8E6E1] bg-white p-4 cursor-pointer rounded-sm">
                     <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 border-2 border-black bg-cyan flex items-center justify-center">
-                        <span className="text-black text-xs font-bold">✓</span>
+                      <div className="w-4 h-4 rounded-full border border-[#111] bg-[#111] flex items-center justify-center">
+                        <span className="text-white text-[10px]">✓</span>
                       </div>
                       <div>
-                        <span className="font-display text-xs font-bold tracking-wider uppercase block">
-                          STANDARD DELIVERY
+                        <span className="text-xs font-medium text-[#111] block">
+                          Standard Delivery
                         </span>
-                        <span className="font-body text-[11px] text-charcoal">
+                        <span className="text-[11px] text-[#6B6B6B]">
                           {CONFIG.shipping.estimatedDays}
                         </span>
                       </div>
                     </div>
-                    <span className="font-display text-sm font-bold">
-                      {shippingPaise === 0 ? 'FREE' : formatINR(shippingPaise)}
+                    <span className="text-xs font-medium text-[#111]">
+                      {shippingPaise === 0 ? 'Free' : formatINR(shippingPaise)}
                     </span>
                   </label>
                 </div>
@@ -370,11 +370,11 @@ export default function CheckoutPage() {
                     onClick={() => setCurrentStep('information')}
                     className="flex-shrink-0"
                   >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    BACK
+                    <ArrowLeft className="w-4 h-4 mr-2 stroke-[1.5]" />
+                    Back
                   </Button>
                   <Button variant="primary" size="lg" onClick={handleNext} fullWidth>
-                    CONTINUE TO PAYMENT
+                    Continue to Payment
                   </Button>
                 </div>
               </div>
@@ -383,30 +383,30 @@ export default function CheckoutPage() {
             {/* STEP 3: Payment */}
             {currentStep === 'payment' && (
               <div className="flex flex-col gap-6">
-                <h2 className="font-display text-xl font-bold tracking-wider uppercase border-b border-black pb-3">
-                  PAYMENT
+                <h2 className="text-xl font-medium text-[#111] border-b border-[#E8E6E1] pb-3">
+                  Payment
                 </h2>
 
-                <div className="bg-offwhite border border-grey p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Lock className="w-5 h-5 text-cyan" />
-                    <span className="font-display text-xs font-bold tracking-wider uppercase">
-                      SECURE PAYMENT VIA RAZORPAY
+                <div className="bg-white border border-[#E8E6E1] p-6 rounded-sm">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Lock className="w-4 h-4 text-[#111] stroke-[1.5]" />
+                    <span className="text-xs font-medium text-[#111]">
+                      Secure payment via Razorpay
                     </span>
                   </div>
-                  <p className="font-body text-sm text-charcoal mb-6">
+                  <p className="text-xs text-[#6B6B6B] mb-6">
                     You will be redirected to Razorpay&apos;s secure gateway to complete your payment.
                     We support UPI, Credit/Debit Cards, Net Banking, and Wallets.
                   </p>
 
-                  <div className="flex items-center gap-4 border-t border-grey pt-4">
-                    <div className="flex items-center gap-2 font-display text-[10px] tracking-wider text-charcoal uppercase">
-                      <CreditCard className="w-4 h-4" />
+                  <div className="flex items-center gap-4 border-t border-[#E8E6E1] pt-4">
+                    <div className="flex items-center gap-2 text-[11px] text-[#6B6B6B]">
+                      <CreditCard className="w-4 h-4 stroke-[1.5]" />
                       Cards
                     </div>
-                    <span className="font-display text-[10px] tracking-wider text-charcoal uppercase">UPI</span>
-                    <span className="font-display text-[10px] tracking-wider text-charcoal uppercase">Net Banking</span>
-                    <span className="font-display text-[10px] tracking-wider text-charcoal uppercase">Wallets</span>
+                    <span className="text-[11px] text-[#6B6B6B]">UPI</span>
+                    <span className="text-[11px] text-[#6B6B6B]">Net Banking</span>
+                    <span className="text-[11px] text-[#6B6B6B]">Wallets</span>
                   </div>
                 </div>
 
@@ -417,8 +417,8 @@ export default function CheckoutPage() {
                     onClick={() => setCurrentStep('shipping')}
                     className="flex-shrink-0"
                   >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    BACK
+                    <ArrowLeft className="w-4 h-4 mr-2 stroke-[1.5]" />
+                    Back
                   </Button>
                   <Button
                     variant="primary"
@@ -427,30 +427,30 @@ export default function CheckoutPage() {
                     fullWidth
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'INITIALIZING RAZORPAY...' : `PAY ${formatINR(totalPaise)}`}
+                    {isSubmitting ? 'Processing...' : `Pay ${formatINR(totalPaise)}`}
                   </Button>
                 </div>
               </div>
             )}
 
             {/* Security Info */}
-            <div className="mt-8 flex items-center gap-2 text-xs text-charcoal font-body">
-              <ShieldCheck className="w-4 h-4 text-cyan flex-shrink-0" />
+            <div className="mt-8 flex items-center gap-2 text-xs text-[#6B6B6B]">
+              <ShieldCheck className="w-4 h-4 stroke-[1.5] flex-shrink-0" />
               <span>All transactions are encrypted and processed securely via Razorpay PCI-DSS certified infrastructure.</span>
             </div>
           </div>
 
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-5">
-            <div className="bg-offwhite border-2 border-black p-6 sticky top-24">
-              <h2 className="font-display text-sm font-bold tracking-wider uppercase border-b border-black pb-3 mb-4">
-                ORDER SUMMARY [{items.length}]
+            <div className="bg-white border border-[#E8E6E1] p-6 sticky top-28 rounded-sm">
+              <h2 className="text-base font-medium text-[#111] border-b border-[#E8E6E1] pb-3 mb-4">
+                Order Summary ({items.length})
               </h2>
 
               <div className="flex flex-col gap-4 max-h-64 overflow-y-auto mb-4 pr-1">
                 {items.map((item) => (
                   <div key={item.variantId} className="flex gap-3">
-                    <div className="w-16 h-20 bg-grey/20 border border-grey flex-shrink-0 relative overflow-hidden">
+                    <div className="w-14 h-18 bg-[#F3F2EF] flex-shrink-0 relative overflow-hidden rounded-sm">
                       {item.imageUrl && item.imageUrl.startsWith('http') ? (
                         <Image
                           src={item.imageUrl}
@@ -460,24 +460,24 @@ export default function CheckoutPage() {
                           sizes="64px"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-[9px] text-charcoal">
-                          IMG
+                        <div className="w-full h-full flex items-center justify-center text-[9px] text-[#6B6B6B]">
+                          3:4
                         </div>
                       )}
-                      <span className="absolute -top-0.5 -right-0.5 bg-black text-cream font-display text-[9px] w-5 h-5 flex items-center justify-center">
+                      <span className="absolute -top-0.5 -right-0.5 bg-[#111] text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">
                         {item.quantity}
                       </span>
                     </div>
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
-                        <p className="font-display text-[11px] font-bold tracking-wider uppercase line-clamp-1">
+                        <p className="text-xs font-medium text-[#111] line-clamp-1">
                           {item.productName}
                         </p>
-                        <p className="font-body text-[10px] text-charcoal uppercase">
+                        <p className="text-[11px] text-[#6B6B6B]">
                           {item.colour} / {item.size}
                         </p>
                       </div>
-                      <p className="font-display text-xs font-bold">
+                      <p className="text-xs font-medium text-[#111]">
                         {formatINR(item.unitPricePaise * item.quantity)}
                       </p>
                     </div>
@@ -485,22 +485,22 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              <div className="border-t border-grey pt-3 flex flex-col gap-2">
-                <div className="flex justify-between font-body text-sm">
-                  <span className="text-charcoal">Subtotal</span>
-                  <span className="font-bold">{formatINR(subtotalPaise)}</span>
+              <div className="border-t border-[#E8E6E1] pt-3 flex flex-col gap-2">
+                <div className="flex justify-between text-xs">
+                  <span className="text-[#6B6B6B]">Subtotal</span>
+                  <span className="font-medium text-[#111]">{formatINR(subtotalPaise)}</span>
                 </div>
-                <div className="flex justify-between font-body text-sm">
-                  <span className="text-charcoal">Shipping</span>
-                  <span className="font-bold">
-                    {shippingPaise === 0 ? 'FREE' : formatINR(shippingPaise)}
+                <div className="flex justify-between text-xs">
+                  <span className="text-[#6B6B6B]">Shipping</span>
+                  <span className="font-medium text-[#111]">
+                    {shippingPaise === 0 ? 'Free' : formatINR(shippingPaise)}
                   </span>
                 </div>
-                <div className="flex justify-between font-display text-base font-bold uppercase border-t border-black pt-3 mt-1">
-                  <span>TOTAL</span>
+                <div className="flex justify-between text-sm font-medium text-[#111] border-t border-[#E8E6E1] pt-3 mt-1">
+                  <span>Total</span>
                   <span>{formatINR(totalPaise)}</span>
                 </div>
-                <p className="font-body text-[10px] text-charcoal">
+                <p className="text-[10px] text-[#6B6B6B]">
                   {CONFIG.taxes.gstInclusiveNote}
                 </p>
               </div>

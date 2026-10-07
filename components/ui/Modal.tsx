@@ -77,18 +77,18 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = 'md' }: Mod
     >
       <div
         ref={modalRef}
-        className={`w-full ${maxWidthClasses[maxWidth]} bg-offwhite border border-black p-6 relative shadow-2xl animate-in fade-in zoom-in-95 duration-200`}
+        className={`w-full ${maxWidthClasses[maxWidth]} bg-[#FAFAF8] border border-[#E8E6E1] p-6 relative shadow-xl animate-in fade-in zoom-in-95 duration-200`}
       >
-        <div className="flex items-center justify-between border-b border-grey pb-4 mb-4">
+        <div className="flex items-center justify-between border-b border-[#E8E6E1] pb-4 mb-4">
           {title && (
-            <h2 id="modal-title" className="font-display text-base font-bold tracking-wider text-black uppercase">
+            <h2 id="modal-title" className="text-base font-medium text-[#111111]">
               {title}
             </h2>
           )}
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-2 -mr-2 text-black hover:bg-cyan hover:text-black transition-colors border border-transparent font-bold text-sm"
+            className="p-2 -mr-2 text-[#111111] hover:text-[#6B6B6B] transition-colors text-sm"
           >
             ✕
           </button>

@@ -72,11 +72,11 @@ export function Drawer({ isOpen, onClose, title, children, position = 'right' }:
     >
       <div
         ref={drawerRef}
-        className={`fixed top-0 bottom-0 ${positionClasses} w-full max-w-md bg-offwhite border-black flex flex-col z-50 shadow-2xl animate-in slide-in-from-${position} duration-200`}
+        className={`fixed top-0 bottom-0 ${positionClasses} w-full max-w-md bg-[#FAFAF8] border-[#E8E6E1] flex flex-col z-50 shadow-xl animate-in slide-in-from-${position} duration-200`}
       >
-        <div className="flex items-center justify-between p-6 border-b border-grey">
+        <div className="flex items-center justify-between p-6 border-b border-[#E8E6E1]">
           {title ? (
-            <h2 id="drawer-title" className="font-display text-sm font-bold tracking-widest text-black uppercase">
+            <h2 id="drawer-title" className="text-base font-medium text-[#111111]">
               {title}
             </h2>
           ) : (
@@ -85,7 +85,7 @@ export function Drawer({ isOpen, onClose, title, children, position = 'right' }:
           <button
             onClick={onClose}
             aria-label="Close drawer"
-            className="p-2 -mr-2 text-black hover:bg-cyan hover:text-black transition-colors font-bold text-sm"
+            className="p-2 -mr-2 text-[#111111] hover:text-[#6B6B6B] transition-colors text-sm"
           >
             ✕
           </button>

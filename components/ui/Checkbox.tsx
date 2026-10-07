@@ -18,9 +18,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <div className="flex flex-col gap-1">
         <label
           htmlFor={inputId}
-          className="inline-flex items-center gap-3 cursor-pointer select-none min-h-[44px] py-1 text-xs font-body text-black"
+          className="inline-flex items-center gap-2.5 cursor-pointer select-none min-h-[44px] py-1 text-xs text-[#111111]"
         >
-          <div className="relative w-5 h-5 flex items-center justify-center border border-black bg-offwhite flex-shrink-0">
+          <div className="relative w-4 h-4 flex items-center justify-center border border-[#D9D6D0] hover:border-[#111111] bg-white flex-shrink-0 transition-colors">
             <input
               ref={ref}
               type="checkbox"
@@ -29,11 +29,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               className="sr-only peer"
               {...props}
             />
-            <div className="w-3 h-3 bg-black opacity-0 peer-checked:opacity-100 transition-opacity rounded-none" />
+            <div className="w-2.5 h-2.5 bg-[#111111] opacity-0 peer-checked:opacity-100 transition-opacity rounded-none" />
           </div>
           {label && <span className="leading-snug">{label}</span>}
         </label>
-        {error && <p className="text-xs text-error-red font-medium pl-8">{error}</p>}
+        {error && <p className="text-xs text-error-red pl-7">{error}</p>}
       </div>
     );
   }

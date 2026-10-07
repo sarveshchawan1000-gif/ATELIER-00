@@ -31,23 +31,20 @@ export function MiniBagDrawer() {
   };
 
   return (
-    <Drawer isOpen={isOpen} onClose={closeCart} title={`YOUR BAG [${items.length}]`}>
+    <Drawer isOpen={isOpen} onClose={closeCart} title={`Shopping bag (${items.length})`}>
       {items.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center py-16 gap-6">
-          <div className="w-16 h-16 border border-black flex items-center justify-center text-2xl">
-            🛍
-          </div>
           <div className="flex flex-col gap-2">
-            <h3 className="font-display text-sm font-bold tracking-widest uppercase">
-              YOUR BAG IS EMPTY.
+            <h3 className="text-base font-medium text-[#111111]">
+              Your bag is empty
             </h3>
-            <p className="font-body text-xs text-charcoal max-w-xs">
-              Discover something you&apos;ll love from our latest exhibition drop.
+            <p className="text-xs text-[#6B6B6B] max-w-xs leading-relaxed">
+              Explore our latest collection to discover considered everyday garments.
             </p>
           </div>
           <Link href="/shop" onClick={closeCart} className="w-full">
             <Button variant="primary" fullWidth>
-              SHOP PRODUCTS
+              Shop collection
             </Button>
           </Link>
         </div>
@@ -55,39 +52,47 @@ export function MiniBagDrawer() {
         <div className="flex flex-col h-full justify-between gap-6">
           {/* Free Shipping Hint */}
           {freeShippingNeeded > 0 ? (
-            <div className="bg-cyan/20 border border-cyan p-3 text-xs font-display tracking-wider uppercase text-black">
-              ADD {formatINR(freeShippingNeeded)} MORE FOR FREE SHIPPING
+            <div className="bg-[#F3F2EF] p-3 text-xs text-[#111111]">
+              Add {formatINR(freeShippingNeeded)} more for free shipping
             </div>
           ) : (
-            <div className="bg-black text-cyan p-3 text-xs font-display tracking-wider uppercase">
-              ✓ YOU HAVE QUALIFIED FOR FREE SHIPPING
+            <div className="bg-[#111111] text-white p-3 text-xs">
+              ✓ You qualify for free shipping
             </div>
           )}
 
           {/* Items List */}
-          <div className="flex-1 overflow-y-auto flex flex-col gap-4 divide-y divide-grey pr-1">
+          <div className="flex-1 overflow-y-auto flex flex-col gap-4 divide-y divide-[#E8E6E1] pr-1">
             {items.map((item) => (
               <div key={item.variantId} className="pt-4 first:pt-0 flex gap-4">
-                <div className="w-20 h-24 bg-grey/20 border border-grey flex-shrink-0 relative overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center font-display text-[10px] text-charcoal bg-offwhite">
-                    4:5 IMAGE
-                  </div>
+                <div className="w-20 h-24 bg-[#F3F2EF] flex-shrink-0 relative overflow-hidden">
+                  {item.imageUrl ? (
+                    <img
+                      src={item.imageUrl}
+                      alt={item.productName}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-[11px] text-[#6B6B6B]">
+                      Item
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex-1 flex flex-col justify-between">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <h4 className="font-display text-xs font-bold tracking-wider uppercase text-black">
+                      <h4 className="text-[13px] font-medium text-[#111111]">
                         {item.productName}
                       </h4>
-                      <p className="font-body text-[11px] text-charcoal uppercase mt-0.5">
+                      <p className="text-[12px] text-[#6B6B6B] mt-0.5">
                         {item.colour} / {item.size}
                       </p>
                     </div>
                     <button
                       onClick={() => handleRemove(item.variantId, item.productName)}
                       aria-label={`Remove ${item.productName} from bag`}
-                      className="text-xs text-charcoal hover:text-error-red p-1"
+                      className="text-xs text-[#6B6B6B] hover:text-[#111111] p-1"
                     >
                       ✕
                     </button>
@@ -95,27 +100,27 @@ export function MiniBagDrawer() {
 
                   <div className="flex items-center justify-between mt-3">
                     {/* Stepper */}
-                    <div className="flex items-center border border-black bg-offwhite">
+                    <div className="flex items-center border border-[#E8E6E1]">
                       <button
                         onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                        className="px-2 py-1 text-xs font-bold hover:bg-cyan transition-colors min-w-[28px]"
+                        className="px-2 py-1 text-xs hover:bg-[#F3F2EF] transition-colors min-w-[28px]"
                         aria-label="Decrease quantity"
                       >
                         -
                       </button>
-                      <span className="px-3 py-1 font-display text-xs font-bold border-x border-black">
+                      <span className="px-3 py-1 text-xs font-normal border-x border-[#E8E6E1]">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                        className="px-2 py-1 text-xs font-bold hover:bg-cyan transition-colors min-w-[28px]"
+                        className="px-2 py-1 text-xs hover:bg-[#F3F2EF] transition-colors min-w-[28px]"
                         aria-label="Increase quantity"
                       >
                         +
                       </button>
                     </div>
 
-                    <span className="font-display text-xs font-bold text-black">
+                    <span className="text-[13px] font-normal text-[#111111]">
                       {formatINR(item.unitPricePaise * item.quantity)}
                     </span>
                   </div>
@@ -125,33 +130,33 @@ export function MiniBagDrawer() {
           </div>
 
           {/* Footer Summary */}
-          <div className="border-t border-black pt-4 flex flex-col gap-3">
-            <div className="flex justify-between font-display text-xs font-bold uppercase">
-              <span>SUBTOTAL</span>
-              <span>{formatINR(subtotalPaise)}</span>
+          <div className="border-t border-[#E8E6E1] pt-4 flex flex-col gap-3">
+            <div className="flex justify-between text-xs text-[#6B6B6B]">
+              <span>Subtotal</span>
+              <span className="text-[#111111]">{formatINR(subtotalPaise)}</span>
             </div>
-            <div className="flex justify-between font-display text-xs uppercase text-charcoal">
-              <span>ESTIMATED SHIPPING</span>
-              <span>{shippingPaise === 0 ? 'FREE' : formatINR(shippingPaise)}</span>
+            <div className="flex justify-between text-xs text-[#6B6B6B]">
+              <span>Estimated shipping</span>
+              <span className="text-[#111111]">{shippingPaise === 0 ? 'Free' : formatINR(shippingPaise)}</span>
             </div>
-            <div className="flex justify-between font-display text-sm font-bold uppercase border-t border-grey pt-2 text-black">
-              <span>TOTAL</span>
+            <div className="flex justify-between text-sm font-medium border-t border-[#E8E6E1] pt-2 text-[#111111]">
+              <span>Total</span>
               <span>{formatINR(totalPaise)}</span>
             </div>
 
-            <p className="font-body text-[10px] text-charcoal text-center">
+            <p className="text-[11px] text-[#6B6B6B] text-center">
               {CONFIG.taxes.gstInclusiveNote}
             </p>
 
             <Link href="/checkout" onClick={closeCart} className="w-full mt-1">
               <Button variant="primary" fullWidth size="lg">
-                PROCEED TO CHECKOUT
+                Proceed to checkout
               </Button>
             </Link>
 
             <Link href="/cart" onClick={closeCart} className="w-full">
               <Button variant="ghost" fullWidth size="sm">
-                VIEW FULL BAG
+                View full bag
               </Button>
             </Link>
           </div>
