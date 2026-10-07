@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { CONFIG } from '@/lib/config';
 import { useCartStore } from '@/lib/cart-store';
 import { useWishlistStore } from '@/lib/wishlist-store';
@@ -53,108 +54,109 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  const pathname = usePathname();
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 border-b ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 border-b border-[#E8E6E1] ${
           isScrolled
-            ? 'bg-cream/95 backdrop-blur-md border-grey text-black shadow-sm'
-            : 'bg-transparent border-transparent text-black'
+            ? 'bg-[#FAFAF8]/95 backdrop-blur-md text-[#111111]'
+            : 'bg-[#FAFAF8]/90 backdrop-blur-sm text-[#111111]'
         } ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
-          {/* LEFT SIDE: Brand Logo + Shifted MALE, FEMALE, KIDS Sections + Kinds of Cloth */}
-          <div className="flex items-center gap-4 lg:gap-6">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-18 flex items-center justify-between">
+          {/* LEFT SIDE: Brand Logo + Nav Links */}
+          <div className="flex items-center gap-6 lg:gap-10">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Open navigation menu"
-                className="md:hidden p-2 -ml-2 text-black hover:bg-cyan transition-colors"
+                className="md:hidden p-2 -ml-2 text-[#111111] hover:text-[#6B6B6B] transition-colors"
               >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5 stroke-[1.5]" />
               </button>
               <Link
                 href="/"
-                className="font-display text-xl md:text-2xl font-bold tracking-tighter text-black uppercase whitespace-nowrap"
+                className="text-base md:text-lg font-medium tracking-[0.04em] text-[#111111] whitespace-nowrap"
               >
                 {CONFIG.brandName}
               </Link>
             </div>
 
-            {/* Shifted to the LEFT: MALE, FEMALE, KIDS Sections */}
-            <nav className="hidden md:flex items-center gap-2 lg:gap-3 font-display text-xs tracking-widest font-bold uppercase border-l-2 border-black pl-4">
+            {/* Clean, evenly spaced 13px nav links */}
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-[13px] tracking-[0.04em]">
               <Link
                 href="/shop?gender=male"
-                className="hover:text-cyan hover:bg-black py-1.5 px-2.5 border border-transparent hover:border-black transition-colors"
+                className="text-[#6B6B6B] hover:text-[#111111] transition-colors py-1 hover:underline underline-offset-4 decoration-1"
               >
-                MALE
+                Men
               </Link>
               <Link
                 href="/shop?gender=female"
-                className="hover:text-cyan hover:bg-black py-1.5 px-2.5 border border-transparent hover:border-black transition-colors"
+                className="text-[#6B6B6B] hover:text-[#111111] transition-colors py-1 hover:underline underline-offset-4 decoration-1"
               >
-                FEMALE
+                Women
               </Link>
               <Link
                 href="/shop?gender=kids"
-                className="hover:text-cyan hover:bg-black py-1.5 px-2.5 border border-transparent hover:border-black transition-colors"
+                className="text-[#6B6B6B] hover:text-[#111111] transition-colors py-1 hover:underline underline-offset-4 decoration-1"
               >
-                KIDS
+                Kids
               </Link>
-              <span className="text-grey select-none">|</span>
 
-              {/* Different Kinds of Cloth on Left */}
-              <div className="hidden xl:flex items-center gap-2 text-[11px] text-charcoal font-semibold">
-                <Link href="/shop/t-shirts" className="hover:text-black hover:underline px-1 py-1">
-                  TEES
+              <span className="w-px h-3.5 bg-[#E8E6E1] select-none" />
+
+              <div className="hidden lg:flex items-center gap-6 text-[13px] text-[#6B6B6B]">
+                <Link href="/shop/t-shirts" className="hover:text-[#111111] transition-colors hover:underline underline-offset-4 decoration-1">
+                  Tees
                 </Link>
-                <Link href="/shop/shirts" className="hover:text-black hover:underline px-1 py-1">
-                  SHIRTS
+                <Link href="/shop/shirts" className="hover:text-[#111111] transition-colors hover:underline underline-offset-4 decoration-1">
+                  Shirts
                 </Link>
-                <Link href="/shop/hoodies" className="hover:text-black hover:underline px-1 py-1">
-                  HOODIES
+                <Link href="/shop/hoodies" className="hover:text-[#111111] transition-colors hover:underline underline-offset-4 decoration-1">
+                  Hoodies
                 </Link>
-                <Link href="/shop/jackets" className="hover:text-black hover:underline px-1 py-1">
-                  JACKETS
+                <Link href="/shop/jackets" className="hover:text-[#111111] transition-colors hover:underline underline-offset-4 decoration-1">
+                  Jackets
                 </Link>
-                <Link href="/shop/bottoms" className="hover:text-black hover:underline px-1 py-1">
-                  BOTTOMS
+                <Link href="/shop/bottoms" className="hover:text-[#111111] transition-colors hover:underline underline-offset-4 decoration-1">
+                  Bottoms
                 </Link>
               </div>
             </nav>
           </div>
 
-          {/* RIGHT SIDE: Owner Add Photo button + Search + Wishlist + Account + Bag */}
-          <div className="flex items-center gap-2 md:gap-3 font-display text-xs tracking-wider">
-            {/* Owner Add Photo Action */}
+          {/* RIGHT SIDE: Ghost Add Photo button + Search + Wishlist + Account + Bag */}
+          <div className="flex items-center gap-1 sm:gap-2 text-[13px]">
+            {/* Ghost Add Photo action */}
             <button
               onClick={() => setAddPhotoModalOpen(true)}
-              className="flex items-center gap-1.5 bg-black text-cyan hover:bg-cyan hover:text-black px-2.5 py-1.5 border border-black font-display text-[10px] font-bold uppercase transition-colors"
-              title="Add garment photo as owner"
+              className="flex items-center gap-1.5 text-[#6B6B6B] hover:text-[#111111] px-2 py-1 text-[13px] transition-colors rounded-none focus-visible:outline-2 focus-visible:outline-black"
+              title="Add photo"
             >
-              <Camera className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">+ ADD PHOTO</span>
+              <Camera className="w-4 h-4 stroke-[1.5]" />
+              <span className="hidden xl:inline text-xs font-normal">Add photo</span>
             </button>
+
             {/* Search */}
             <Link
               href="/search"
               aria-label="Search items"
-              className="p-2 text-black hover:bg-cyan transition-colors rounded-none"
+              className="p-2 text-[#111111] hover:text-[#6B6B6B] transition-colors focus-visible:outline-2 focus-visible:outline-black"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5 stroke-[1.5]" />
             </Link>
 
             {/* Wishlist */}
             <Link
               href="/wishlist"
               aria-label={`Wishlist with ${displayWishlistCount} items`}
-              className="p-2 text-black hover:bg-cyan transition-colors relative"
+              className="p-2 text-[#111111] hover:text-[#6B6B6B] transition-colors relative focus-visible:outline-2 focus-visible:outline-black"
             >
-              <Heart className={`w-5 h-5 ${displayWishlistCount > 0 ? 'fill-black' : ''}`} />
+              <Heart className={`w-5 h-5 stroke-[1.5] ${displayWishlistCount > 0 ? 'fill-black' : ''}`} />
               {displayWishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-cyan text-black font-bold text-[10px] w-4 h-4 flex items-center justify-center rounded-none">
-                  {displayWishlistCount}
-                </span>
+                <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#111111]" />
               )}
             </Link>
 
@@ -162,19 +164,19 @@ export function Header() {
             <Link
               href="/account"
               aria-label="Customer Account"
-              className="hidden md:flex p-2 text-black hover:bg-cyan transition-colors"
+              className="hidden md:flex p-2 text-[#111111] hover:text-[#6B6B6B] transition-colors focus-visible:outline-2 focus-visible:outline-black"
             >
-              <User className="w-5 h-5" />
+              <User className="w-5 h-5 stroke-[1.5]" />
             </Link>
 
             {/* Bag Drawer Trigger */}
             <button
               onClick={openCart}
               aria-label={`Shopping bag with ${displayCartCount} items`}
-              className="p-2 text-black hover:bg-cyan transition-colors flex items-center gap-1.5 font-bold"
+              className="p-2 text-[#111111] hover:text-[#6B6B6B] transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-black"
             >
-              <ShoppingBag className="w-5 h-5" />
-              <span className="font-display text-xs tracking-wider">[{displayCartCount.toString().padStart(2, '0')}]</span>
+              <ShoppingBag className="w-5 h-5 stroke-[1.5]" />
+              <span className="text-[13px] font-normal text-[#111111]">({displayCartCount})</span>
             </button>
           </div>
         </div>

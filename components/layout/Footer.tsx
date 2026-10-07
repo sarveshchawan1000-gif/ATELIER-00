@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { CONFIG } from '@/lib/config';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
 import { Checkbox } from '@/components/ui/Checkbox';
 
 export function Footer() {
@@ -29,88 +27,91 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-black text-cream border-t border-black pt-16 pb-12 px-6 md:px-12 mt-auto">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-charcoal/40">
+    <footer className="bg-[#FAFAF8] text-[#111111] border-t border-[#E8E6E1] pt-16 pb-12 px-6 md:px-12 mt-auto">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-[#E8E6E1]">
         {/* Brand & Newsletter Column */}
-        <div className="md:col-span-5 flex flex-col gap-6">
-          <h2 className="font-display text-4xl font-bold tracking-tighter uppercase text-cream">
+        <div className="md:col-span-5 flex flex-col gap-5">
+          <Link href="/" className="text-xl font-medium tracking-[0.04em] text-[#111111]">
             {CONFIG.brandName}
-          </h2>
-          <p className="font-body text-xs text-grey max-w-md leading-relaxed">
-            A luxury digital fashion showroom curated in India. Architectural garment engineering meets high-contrast editorial curation.
+          </Link>
+          <p className="text-xs md:text-sm text-[#6B6B6B] max-w-sm leading-relaxed">
+            Minimal, architectural garments engineered with pure materials and refined silhouettes.
           </p>
 
-          {/* Newsletter Form */}
-          <div className="mt-2 bg-charcoal/20 border border-charcoal/60 p-5">
-            <h3 className="font-display text-xs font-bold tracking-widest text-cyan uppercase mb-2">
-              EXHIBITION EDITIONS NEWSLETTER
-            </h3>
+          {/* Minimal Newsletter Form with underline-only field */}
+          <div className="mt-2 max-w-md">
+            <span className="text-[13px] font-medium text-[#111111] block mb-2">
+              Newsletter
+            </span>
             {submitted ? (
-              <p className="font-body text-xs text-cyan">
+              <p className="text-xs text-[#111111]">
                 ✓ Thank you. You are subscribed to upcoming collection drops.
               </p>
             ) : (
               <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3">
-                <div className="flex gap-2">
-                  <Input
+                <div className="flex items-center gap-3 border-b border-[#111111] pb-1">
+                  <input
                     type="email"
-                    placeholder="ENTER YOUR EMAIL"
+                    placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-black text-cream border-charcoal text-xs placeholder:text-grey/60"
+                    className="w-full bg-transparent text-sm text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none py-1"
                   />
-                  <Button type="submit" variant="primary" size="sm" className="bg-cyan text-black hover:bg-cream">
-                    JOIN
-                  </Button>
+                  <button
+                    type="submit"
+                    className="text-xs font-medium text-[#111111] hover:text-[#6B6B6B] transition-colors uppercase tracking-wider py-1 shrink-0"
+                  >
+                    Subscribe
+                  </button>
                 </div>
                 <Checkbox
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   label={
-                    <span className="text-[11px] text-grey">
-                      I agree to receive transactional drop updates & editorial releases per the{' '}
-                      <Link href="/privacy" className="underline hover:text-cyan">
+                    <span className="text-[11px] text-[#6B6B6B]">
+                      I agree to receive collection drop updates per the{' '}
+                      <Link href="/privacy" className="underline hover:text-[#111111]">
                         Privacy Policy
                       </Link>
                       .
                     </span>
                   }
                 />
-                {error && <p className="text-xs text-error-red font-medium">{error}</p>}
+                {error && <p className="text-xs text-error-red">{error}</p>}
               </form>
             )}
           </div>
         </div>
 
-        {/* Links Grid */}
+        {/* Links Grid: 4 Tidy Columns */}
         <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Shop */}
           <div className="flex flex-col gap-3">
-            <h4 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">SHOP</h4>
-            <ul className="flex flex-col gap-2 font-body text-xs text-grey">
+            <h4 className="text-[13px] font-medium text-[#111111]">Shop</h4>
+            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
               <li>
-                <Link href="/shop?gender=male" className="hover:text-cyan font-bold text-cream transition-colors">
-                  01 // MALE (MENSWEAR)
+                <Link href="/shop?gender=male" className="hover:text-[#111111] transition-colors">
+                  Men
                 </Link>
               </li>
               <li>
-                <Link href="/shop?gender=female" className="hover:text-cyan font-bold text-cream transition-colors">
-                  02 // FEMALE (WOMENSWEAR)
+                <Link href="/shop?gender=female" className="hover:text-[#111111] transition-colors">
+                  Women
                 </Link>
               </li>
               <li>
-                <Link href="/shop?gender=kids" className="hover:text-cyan font-bold text-cream transition-colors">
-                  03 // KIDS (JUNIOR)
-                </Link>
-              </li>
-              <li className="border-t border-charcoal/40 my-1 pt-1">
-                <Link href="/collections/new-arrivals" className="hover:text-cream transition-colors">
-                  NEW ARRIVALS
+                <Link href="/shop?gender=kids" className="hover:text-[#111111] transition-colors">
+                  Kids
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="hover:text-cream transition-colors">
-                  ALL PIECES ARCHIVE
+                <Link href="/collections/new-arrivals" className="hover:text-[#111111] transition-colors">
+                  New Arrivals
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop" className="hover:text-[#111111] transition-colors">
+                  All Garments
                 </Link>
               </li>
             </ul>
@@ -118,21 +119,21 @@ export function Footer() {
 
           {/* About */}
           <div className="flex flex-col gap-3">
-            <h4 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">ABOUT</h4>
-            <ul className="flex flex-col gap-2 font-body text-xs text-grey">
+            <h4 className="text-[13px] font-medium text-[#111111]">About</h4>
+            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
               <li>
-                <Link href="/about" className="hover:text-cream transition-colors">
-                  OUR STORY
+                <Link href="/about" className="hover:text-[#111111] transition-colors">
+                  Our Story
                 </Link>
               </li>
               <li>
-                <Link href="/about#atelier" className="hover:text-cream transition-colors">
-                  ATELIER
+                <Link href="/about#atelier" className="hover:text-[#111111] transition-colors">
+                  Atelier
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-cream transition-colors">
-                  CONTACT US
+                <Link href="/contact" className="hover:text-[#111111] transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -140,26 +141,26 @@ export function Footer() {
 
           {/* Help */}
           <div className="flex flex-col gap-3">
-            <h4 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">HELP</h4>
-            <ul className="flex flex-col gap-2 font-body text-xs text-grey">
+            <h4 className="text-[13px] font-medium text-[#111111]">Help</h4>
+            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
               <li>
-                <Link href="/shipping" className="hover:text-cream transition-colors">
-                  SHIPPING & DELIVERY
+                <Link href="/shipping" className="hover:text-[#111111] transition-colors">
+                  Shipping & Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/returns" className="hover:text-cream transition-colors">
-                  RETURNS & REFUNDS
+                <Link href="/returns" className="hover:text-[#111111] transition-colors">
+                  Returns & Refunds
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-cream transition-colors">
+                <Link href="/faq" className="hover:text-[#111111] transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/size-guide" className="hover:text-cream transition-colors">
-                  SIZE GUIDE
+                <Link href="/size-guide" className="hover:text-[#111111] transition-colors">
+                  Size Guide
                 </Link>
               </li>
             </ul>
@@ -167,16 +168,16 @@ export function Footer() {
 
           {/* Legal */}
           <div className="flex flex-col gap-3">
-            <h4 className="font-display text-xs font-bold tracking-widest text-cyan uppercase">LEGAL</h4>
-            <ul className="flex flex-col gap-2 font-body text-xs text-grey">
+            <h4 className="text-[13px] font-medium text-[#111111]">Legal</h4>
+            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
               <li>
-                <Link href="/privacy" className="hover:text-cream transition-colors">
-                  PRIVACY POLICY
+                <Link href="/privacy" className="hover:text-[#111111] transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-cream transition-colors">
-                  TERMS & CONDITIONS
+                <Link href="/terms" className="hover:text-[#111111] transition-colors">
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>
@@ -185,22 +186,22 @@ export function Footer() {
       </div>
 
       {/* Footer Bottom Metadata Bar */}
-      <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-display text-[11px] tracking-wider text-grey/80 uppercase">
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
-          <p>© 2026 {CONFIG.brandName}. ALL RIGHTS RESERVED.</p>
-          <p>{CONFIG.taxes.gstInclusiveNote} | {CONFIG.taxes.gstNumberPlaceholder}</p>
+      <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#6B6B6B]">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+          <p>© 2026 {CONFIG.brandName}. All rights reserved.</p>
+          <p>{CONFIG.taxes.gstInclusiveNote}</p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-4 text-cyan font-bold">
-          <Link href="/account/orders/BRD-2026-981245" className="hover:underline">
-            ORDER TRACKING
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <Link href="/account/orders/BRD-2026-981245" className="hover:text-[#111111] hover:underline">
+            Track Order
           </Link>
-          <span className="text-charcoal">/</span>
-          <Link href="/admin" className="hover:underline">
-            ATELIER CONSOLE [ADMIN]
+          <span className="text-[#E8E6E1]">/</span>
+          <Link href="/admin" className="hover:text-[#111111] hover:underline">
+            Console
           </Link>
-          <span className="text-charcoal">/</span>
-          <Link href="/dev/styleguide" className="hover:underline">
-            STYLEGUIDE
+          <span className="text-[#E8E6E1]">/</span>
+          <Link href="/dev/styleguide" className="hover:text-[#111111] hover:underline">
+            Styleguide
           </Link>
         </div>
       </div>

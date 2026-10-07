@@ -38,7 +38,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className="pointer-events-auto bg-black text-cream px-5 py-3.5 border-l-4 border-cyan font-display text-xs tracking-wider uppercase flex items-center justify-between shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-200"
+            className="pointer-events-auto bg-[#111111] text-[#FAFAF8] px-5 py-3 text-xs font-normal flex items-center justify-between shadow-lg border border-[#333333] rounded-none animate-in fade-in slide-in-from-bottom-2 duration-200"
           >
             <span>{toast.message}</span>
             {toast.actionLabel && (
@@ -47,7 +47,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                   toast.onAction?.();
                   setToasts((prev) => prev.filter((t) => t.id !== toast.id));
                 }}
-                className="ml-4 font-bold text-cyan hover:underline uppercase"
+                className="ml-4 text-xs font-normal text-white hover:text-white/80 underline"
               >
                 {toast.actionLabel}
               </button>

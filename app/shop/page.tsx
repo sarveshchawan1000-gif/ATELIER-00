@@ -1,18 +1,16 @@
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
+import Link from 'next/link';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { getProducts, getCategories, getCollections } from '@/lib/db';
 import { ProductWithDetails, Category, Collection } from '@/lib/db/types';
 import { ProductCard } from '@/components/product/ProductCard';
 import { ProductCardSkeleton } from '@/components/ui/Skeleton';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
-import { Select } from '@/components/ui/Select';
-import { Checkbox } from '@/components/ui/Checkbox';
 import { Drawer } from '@/components/ui/Drawer';
 import { AddProductPhotoModal } from '@/components/admin/AddProductPhotoModal';
-import { Filter, X, Camera } from 'lucide-react';
+import { Filter, X, ChevronDown, Plus } from 'lucide-react';
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -27,13 +25,18 @@ function ShopContent() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [addPhotoModalOpen, setAddPhotoModalOpen] = useState(false);
 
+  // Accordion open/close state
+  const [departmentOpen, setDepartmentOpen] = useState(true);
+  const [categoryOpen, setCategoryOpen] = useState(true);
+  const [sizeOpen, setSizeOpen] = useState(true);
+
   // Filter & Sort State from URL params
   const genderParam = searchParams.get('gender') || '';
   const categoryParam = searchParams.get('category') || '';
   const collectionParam = searchParams.get('collection') || '';
   const sizeParam = searchParams.get('size') || '';
   const colorParam = searchParams.get('color') || '';
-  const sortParam = (searchParams.get('sort') as any) || 'recommended';
+  const sortParam = searchParams.get('sort') || 'recommended';
   const pageParam = parseInt(searchParams.get('page') || '1', 10);
 
   useEffect(() => {
@@ -46,7 +49,7 @@ function ShopContent() {
           categorySlug: categoryParam,
           collectionSlug: collectionParam,
           gender: genderParam,
-          sortBy: sortParam,
+          sortBy: (sortParam as 'recommended' | 'newest' | 'price-asc' | 'price-desc' | 'rating') || 'recommended',
           page: pageParam,
           limit: 24,
         }),
@@ -88,233 +91,286 @@ function ShopContent() {
 
   const hasActiveFilters = categoryParam || collectionParam || sizeParam || colorParam || genderParam;
 
+  // Title mapping: male -> Men, female -> Women, kids -> Kids
+  const getPageTitle = () => {
+    if (genderParam === 'male') return 'Men';
+    if (genderParam === 'female') return 'Women';
+    if (genderParam === 'kids') return 'Kids';
+    if (categoryParam) {
+      const cat = categories.find((c) => c.slug === categoryParam);
+      if (cat) return cat.name;
+      return categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
+    }
+    if (collectionParam) {
+      const col = collections.find((c) => c.slug === collectionParam);
+      if (col) return col.name;
+      return collectionParam.charAt(0).toUpperCase() + collectionParam.slice(1);
+    }
+    return 'All Garments';
+  };
+
+  const pageTitle = getPageTitle();
+
   return (
-    <main className="flex-1 bg-cream min-h-screen pt-28 pb-20 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto flex flex-col gap-8">
-        {/* Header Title & Count */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-black pb-6 gap-4">
-          <div>
-            <span className="font-display text-xs font-bold text-cyan tracking-widest uppercase block mb-1">
-              DIGITAL EXHIBITION CATALOGUE {genderParam && `// ${genderParam.toUpperCase()}`}
-            </span>
-            <h1 className="font-display text-3xl md:text-5xl font-bold tracking-tight uppercase text-black">
-              {genderParam ? `${genderParam.toUpperCase()} ARCHIVE` : 'SHOP ARCHIVE'} ({totalCount})
+    <main className="flex-1 bg-[#FAFAF8] min-h-screen pt-24 md:pt-28 pb-20 px-4 sm:px-6 md:px-12">
+      <div className="max-w-7xl mx-auto flex flex-col gap-6 md:gap-8">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-[#6B6B6B]">
+          <Link href="/" className="hover:text-[#111111] transition-colors">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-[#111111]">{pageTitle}</span>
+        </nav>
+
+        {/* Page Header: Title + Item Count + Sort / Filter Controls */}
+        <div className="flex flex-col md:flex-row md:items-baseline justify-between border-b border-[#E8E6E1] pb-6 gap-4">
+          <div className="flex items-baseline gap-3">
+            <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-[#111111]">
+              {pageTitle}
             </h1>
+            <span className="text-sm text-[#6B6B6B]">
+              {totalCount} {totalCount === 1 ? 'item' : 'items'}
+            </span>
           </div>
 
-          {/* Sort Dropdown & Mobile Filter Button */}
-          <div className="flex items-center gap-4">
+          {/* Desktop Sort Dropdown + Mobile Buttons */}
+          <div className="flex items-center gap-3">
+            {/* Mobile Filter Trigger */}
             <button
               onClick={() => setMobileFiltersOpen(true)}
-              className="md:hidden flex items-center gap-2 border border-black bg-offwhite px-4 py-3 font-display text-xs font-bold uppercase"
+              className="md:hidden flex-1 flex items-center justify-center gap-2 border border-[#E8E6E1] bg-white px-4 py-2.5 text-[13px] text-[#111111]"
             >
-              <Filter className="w-4 h-4" />
-              FILTERS {hasActiveFilters && '•'}
+              <Filter className="w-4 h-4 stroke-[1.5]" />
+              <span>Filters {hasActiveFilters && '•'}</span>
             </button>
 
-            <Select
-              value={sortParam}
-              onChange={(e) => updateParam('sort', e.target.value)}
-              className="w-48 bg-offwhite text-xs font-bold font-display uppercase border-black"
-              options={[
-                { label: 'SORT: RECOMMENDED', value: 'recommended' },
-                { label: 'SORT: NEWEST ARRIVALS', value: 'newest' },
-                { label: 'PRICE: LOW TO HIGH', value: 'price-asc' },
-                { label: 'PRICE: HIGH TO LOW', value: 'price-desc' },
-                { label: 'SORT: BEST RATED', value: 'rating' },
-              ]}
-            />
+            {/* Sort Control */}
+            <div className="relative">
+              <select
+                aria-label="Sort products"
+                value={sortParam}
+                onChange={(e) => updateParam('sort', e.target.value)}
+                className="appearance-none bg-transparent hover:border-[#111111] border border-[#E8E6E1] text-[13px] md:text-[14px] text-[#111111] py-2.5 pl-3 pr-8 cursor-pointer focus:outline-none focus:border-black rounded-none transition-colors"
+              >
+                <option value="recommended">Sort by: Recommended</option>
+                <option value="newest">Sort by: Newest</option>
+                <option value="price-asc">Price: Low to high</option>
+                <option value="price-desc">Price: High to low</option>
+                <option value="rating">Sort by: Best rated</option>
+              </select>
+              <ChevronDown className="w-4 h-4 stroke-[1.5] text-[#111111] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
           </div>
         </div>
 
-        {/* Removable Active Filter Chips (SHOP-4) */}
+        {/* Removable Active Filter Chips: transparent background, 1px #D9D6D0 border, 999px radius */}
         {hasActiveFilters && (
-          <div className="flex flex-wrap items-center gap-2 bg-offwhite border border-grey p-3">
-            <span className="font-display text-[11px] font-bold text-charcoal uppercase mr-2">
-              ACTIVE FILTERS:
-            </span>
+          <div className="flex flex-wrap items-center gap-2 pt-1">
             {genderParam && (
-              <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('gender', '')}>
-                SECTION: {genderParam.toUpperCase()} <X className="w-3 h-3" />
-              </Badge>
+              <button
+                onClick={() => updateParam('gender', '')}
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-[#D9D6D0] rounded-full text-[13px] text-[#111111] hover:border-[#111111] transition-colors"
+              >
+                <span>Department: {genderParam === 'male' ? 'Men' : genderParam === 'female' ? 'Women' : 'Kids'}</span>
+                <X className="w-3.5 h-3.5 stroke-[1.5]" />
+              </button>
             )}
             {categoryParam && (
-              <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('category', '')}>
-                CATEGORY: {categoryParam} <X className="w-3 h-3" />
-              </Badge>
+              <button
+                onClick={() => updateParam('category', '')}
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-[#D9D6D0] rounded-full text-[13px] text-[#111111] hover:border-[#111111] transition-colors"
+              >
+                <span>
+                  Category: {categories.find((c) => c.slug === categoryParam)?.name || categoryParam}
+                </span>
+                <X className="w-3.5 h-3.5 stroke-[1.5]" />
+              </button>
             )}
             {collectionParam && (
-              <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('collection', '')}>
-                COLLECTION: {collectionParam} <X className="w-3 h-3" />
-              </Badge>
+              <button
+                onClick={() => updateParam('collection', '')}
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-[#D9D6D0] rounded-full text-[13px] text-[#111111] hover:border-[#111111] transition-colors"
+              >
+                <span>Collection: {collections.find((c) => c.slug === collectionParam)?.name || collectionParam}</span>
+                <X className="w-3.5 h-3.5 stroke-[1.5]" />
+              </button>
             )}
             {sizeParam && (
-              <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('size', '')}>
-                SIZE: {sizeParam} <X className="w-3 h-3" />
-              </Badge>
+              <button
+                onClick={() => updateParam('size', '')}
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-[#D9D6D0] rounded-full text-[13px] text-[#111111] hover:border-[#111111] transition-colors"
+              >
+                <span>Size: {sizeParam}</span>
+                <X className="w-3.5 h-3.5 stroke-[1.5]" />
+              </button>
             )}
             {colorParam && (
-              <Badge variant="accent" className="flex items-center gap-1 cursor-pointer" onClick={() => updateParam('color', '')}>
-                COLOR: {colorParam} <X className="w-3 h-3" />
-              </Badge>
+              <button
+                onClick={() => updateParam('color', '')}
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-[#D9D6D0] rounded-full text-[13px] text-[#111111] hover:border-[#111111] transition-colors"
+              >
+                <span>Color: {colorParam}</span>
+                <X className="w-3.5 h-3.5 stroke-[1.5]" />
+              </button>
             )}
             <button
               onClick={clearAllFilters}
-              className="font-display text-[11px] font-bold text-black hover:text-error-red uppercase underline ml-auto"
+              className="text-[13px] text-[#6B6B6B] hover:text-[#111111] underline underline-offset-4 ml-2"
             >
-              CLEAR ALL
+              Clear all
             </button>
           </div>
         )}
 
-        {/* Main Shop Layout: Left Sidebar + Right Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* Desktop Filters Sidebar Shifted to Left Side (PRD §6.3 SHOP-2) */}
-          <aside className="hidden md:flex md:col-span-3 flex-col gap-6 sticky top-28 bg-offwhite border-2 border-black p-6 shadow-[4px_4px_0px_0px_#111111]">
-            {/* OWNER STUDIO ACTION: PHOTO ADDER */}
-            <div className="bg-black text-cream p-4 border border-black flex flex-col gap-2">
-              <span className="font-display text-[10px] font-bold text-cyan tracking-widest uppercase">
-                ATELIER OWNER STUDIO
-              </span>
+        {/* Main Shop Layout: Left Sticky Sidebar + Right Product Grid */}
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
+          {/* Desktop Filters Sidebar: ~240px wide transparent sticky column */}
+          <aside className="hidden md:flex w-60 flex-shrink-0 flex-col sticky top-24">
+            {/* Department Accordion */}
+            <div className="pb-6">
+              <button
+                onClick={() => setDepartmentOpen(!departmentOpen)}
+                className="w-full flex items-center justify-between text-[13px] font-semibold text-[#111111] py-1 text-left"
+              >
+                <span>Department</span>
+                <ChevronDown
+                  className={`w-4 h-4 stroke-[1.5] transition-transform duration-200 ${
+                    departmentOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {departmentOpen && (
+                <div className="flex flex-col gap-1 pt-3 text-[14px]">
+                  <button
+                    type="button"
+                    onClick={() => updateParam('gender', '')}
+                    className={`text-left py-1.5 transition-colors flex items-center gap-2 ${
+                      !genderParam
+                        ? 'text-[#111111] font-medium before:content-[""] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#111111]'
+                        : 'text-[#444444] hover:text-[#111111]'
+                    }`}
+                  >
+                    <span>All Departments</span>
+                  </button>
+                  {[
+                    { id: 'male', label: 'Men' },
+                    { id: 'female', label: 'Women' },
+                    { id: 'kids', label: 'Kids' },
+                  ].map((sec) => (
+                    <button
+                      key={sec.id}
+                      type="button"
+                      onClick={() => updateParam('gender', sec.id)}
+                      className={`text-left py-1.5 transition-colors flex items-center gap-2 ${
+                        genderParam === sec.id
+                          ? 'text-[#111111] font-medium before:content-[""] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#111111]'
+                          : 'text-[#444444] hover:text-[#111111]'
+                      }`}
+                    >
+                      <span>{sec.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Category Accordion */}
+            <div className="border-t border-[#E8E6E1] pt-6 pb-6">
+              <button
+                onClick={() => setCategoryOpen(!categoryOpen)}
+                className="w-full flex items-center justify-between text-[13px] font-semibold text-[#111111] py-1 text-left"
+              >
+                <span>Category</span>
+                <ChevronDown
+                  className={`w-4 h-4 stroke-[1.5] transition-transform duration-200 ${
+                    categoryOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {categoryOpen && (
+                <div className="flex flex-col gap-1 pt-3 text-[14px]">
+                  <button
+                    type="button"
+                    onClick={() => updateParam('category', '')}
+                    className={`text-left py-1.5 transition-colors flex items-center gap-2 ${
+                      !categoryParam
+                        ? 'text-[#111111] font-medium before:content-[""] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#111111]'
+                        : 'text-[#444444] hover:text-[#111111]'
+                    }`}
+                  >
+                    <span>All Categories</span>
+                  </button>
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => updateParam('category', cat.slug)}
+                      className={`text-left py-1.5 transition-colors flex items-center gap-2 ${
+                        categoryParam === cat.slug
+                          ? 'text-[#111111] font-medium before:content-[""] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#111111]'
+                          : 'text-[#444444] hover:text-[#111111]'
+                      }`}
+                    >
+                      <span>{cat.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Size Accordion */}
+            <div className="border-t border-[#E8E6E1] pt-6 pb-6">
+              <button
+                onClick={() => setSizeOpen(!sizeOpen)}
+                className="w-full flex items-center justify-between text-[13px] font-semibold text-[#111111] py-1 text-left"
+              >
+                <span>Size</span>
+                <ChevronDown
+                  className={`w-4 h-4 stroke-[1.5] transition-transform duration-200 ${
+                    sizeOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {sizeOpen && (
+                <div className="grid grid-cols-3 gap-1.5 pt-3">
+                  {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((sz) => (
+                    <button
+                      key={sz}
+                      onClick={() => updateParam('size', sizeParam === sz ? '' : sz)}
+                      className={`py-2 text-xs border transition-colors ${
+                        sizeParam === sz
+                          ? 'bg-[#111111] text-white border-[#111111]'
+                          : 'bg-transparent text-[#111111] border-[#E8E6E1] hover:border-[#111111]'
+                      }`}
+                    >
+                      {sz}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Small Ghost Button for Admin to Add Garment */}
+            <div className="border-t border-[#E8E6E1] pt-6">
               <button
                 type="button"
                 onClick={() => setAddPhotoModalOpen(true)}
-                className="w-full flex items-center justify-center gap-2 bg-cyan text-black hover:bg-cream font-display text-xs font-bold py-2.5 px-3 uppercase transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs text-[#6B6B6B] hover:text-[#111111] transition-colors py-1 hover:underline"
               >
-                <Camera className="w-4 h-4" />
-                <span>+ ADD PHOTO / GARMENT</span>
+                <Plus className="w-3.5 h-3.5 stroke-[1.5]" />
+                <span>Add garment</span>
               </button>
-            </div>
-
-            <h3 className="font-display text-sm font-bold tracking-widest text-black uppercase border-b-2 border-black pb-2">
-              SECTIONS & CLOTH TYPES
-            </h3>
-
-            {/* 1. DEPARTMENTS SHIFTED TO THE LEFT */}
-            <div className="flex flex-col gap-2">
-              <span className="font-display text-xs font-bold text-black uppercase tracking-wider flex items-center justify-between">
-                <span>01 // DEPARTMENTS</span>
-                <span className="text-[9px] text-cyan bg-black px-1.5 py-0.5 font-bold uppercase">LEFT NAV</span>
-              </span>
-              <div className="flex flex-col gap-1.5 pl-1 font-display text-xs">
-                <button
-                  type="button"
-                  onClick={() => updateParam('gender', '')}
-                  className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
-                    !genderParam
-                      ? 'bg-black text-cyan font-bold border-black'
-                      : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
-                  }`}
-                >
-                  ALL DEPARTMENTS
-                </button>
-                {[
-                  { id: 'male', label: '1. MALE (MENSWEAR)' },
-                  { id: 'female', label: '2. FEMALE (WOMENSWEAR)' },
-                  { id: 'kids', label: '3. KIDS (JUNIOR)' },
-                ].map((sec) => (
-                  <button
-                    key={sec.id}
-                    type="button"
-                    onClick={() => updateParam('gender', sec.id)}
-                    className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
-                      genderParam === sec.id
-                        ? 'bg-black text-cyan font-bold border-black shadow-[2px_2px_0px_0px_#00D9FF]'
-                        : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
-                    }`}
-                  >
-                    {sec.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 2. DIFFERENT KINDS OF CLOTH (CATEGORIES) ON THE LEFT */}
-            <div className="flex flex-col gap-2 border-t-2 border-grey pt-4">
-              <span className="font-display text-xs font-bold text-black uppercase tracking-wider">
-                02 // KINDS OF CLOTH
-              </span>
-              <div className="flex flex-col gap-1.5 pl-1 font-display text-xs">
-                <button
-                  type="button"
-                  onClick={() => updateParam('category', '')}
-                  className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
-                    !categoryParam
-                      ? 'bg-black text-cyan font-bold border-black'
-                      : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
-                  }`}
-                >
-                  ALL KINDS OF CLOTH
-                </button>
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    onClick={() => updateParam('category', cat.slug)}
-                    className={`text-left uppercase py-1.5 px-2.5 border transition-colors ${
-                      categoryParam === cat.slug
-                        ? 'bg-black text-cyan font-bold border-black shadow-[2px_2px_0px_0px_#00D9FF]'
-                        : 'bg-offwhite text-charcoal border-transparent hover:border-black hover:text-black'
-                    }`}
-                  >
-                    {cat.slug === 't-shirts' && '👕 '}
-                    {cat.slug === 'shirts' && '👔 '}
-                    {cat.slug === 'hoodies' && '🧥 '}
-                    {cat.slug === 'jackets' && '🧥 '}
-                    {cat.slug === 'bottoms' && '👖 '}
-                    {cat.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Collections */}
-            <div className="flex flex-col gap-2 border-t border-grey pt-4">
-              <span className="font-display text-xs font-bold text-charcoal uppercase">COLLECTION</span>
-              <div className="flex flex-col gap-1 pl-2 font-display text-xs">
-                <button
-                  onClick={() => updateParam('collection', '')}
-                  className={`text-left uppercase py-1 ${!collectionParam ? 'font-bold text-black' : 'text-charcoal hover:text-black'}`}
-                >
-                  ALL COLLECTIONS
-                </button>
-                {collections.map((col) => (
-                  <button
-                    key={col.id}
-                    onClick={() => updateParam('collection', col.slug)}
-                    className={`text-left uppercase py-1 ${collectionParam === col.slug ? 'font-bold text-cyan bg-black px-2' : 'text-charcoal hover:text-black'}`}
-                  >
-                    {col.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Size Selector Filter */}
-            <div className="flex flex-col gap-2 border-t border-grey pt-4">
-              <span className="font-display text-xs font-bold text-charcoal uppercase">SIZE</span>
-              <div className="grid grid-cols-3 gap-1.5">
-                {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((sz) => (
-                  <button
-                    key={sz}
-                    onClick={() => updateParam('size', sizeParam === sz ? '' : sz)}
-                    className={`py-2 text-xs font-display font-bold border transition-colors ${
-                      sizeParam === sz
-                        ? 'bg-cyan text-black border-cyan font-bold'
-                        : 'bg-cream text-black border-black/30 hover:border-black'
-                    }`}
-                  >
-                    {sz}
-                  </button>
-                ))}
-              </div>
             </div>
           </aside>
 
           {/* Right Product Grid */}
-          <section className="md:col-span-9 flex flex-col gap-8">
+          <section className="flex-1 w-full flex flex-col gap-8">
             {loading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <ProductCardSkeleton />
                 <ProductCardSkeleton />
                 <ProductCardSkeleton />
@@ -323,37 +379,38 @@ function ShopContent() {
                 <ProductCardSkeleton />
               </div>
             ) : products.length === 0 ? (
-              <div className="py-20 text-center flex flex-col items-center gap-4 bg-offwhite border border-black p-8">
-                <h3 className="font-display text-lg font-bold text-black uppercase">
-                  NOTHING HERE. TRY ANOTHER CATEGORY OR SEARCH.
+              <div className="py-24 text-center flex flex-col items-center gap-3 bg-white p-8 border border-[#E8E6E1]">
+                <h3 className="text-lg font-medium text-[#111111]">
+                  No products found
                 </h3>
-                <p className="font-body text-xs text-charcoal max-w-md">
-                  No garments match your active filters. Try clearing your selected category or size filter.
+                <p className="text-sm text-[#6B6B6B] max-w-sm">
+                  We couldn&apos;t find any garments matching your selected filters. Try clearing your filters to see more results.
                 </p>
-                <Button variant="primary" onClick={clearAllFilters}>
-                  CLEAR ALL FILTERS
+                <Button variant="secondary" size="sm" onClick={clearAllFilters} className="mt-2">
+                  Clear all filters
                 </Button>
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                {/* 3 cols desktop beside sidebar, 2 tablet, 2 mobile */}
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {products.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
                 </div>
 
-                {/* Load More Pagination (SHOP-6) */}
+                {/* Load More Pagination */}
                 {products.length < totalCount && (
-                  <div className="flex flex-col items-center justify-center pt-8 border-t border-grey gap-2">
-                    <span className="font-display text-xs text-charcoal uppercase">
-                      SHOWING {products.length} OF {totalCount} EXHIBITION ITEMS
+                  <div className="flex flex-col items-center justify-center pt-8 border-t border-[#E8E6E1] gap-3">
+                    <span className="text-xs text-[#6B6B6B]">
+                      Showing {products.length} of {totalCount} items
                     </span>
                     <Button
-                      variant="primary"
-                      size="lg"
+                      variant="secondary"
+                      size="md"
                       onClick={() => updateParam('page', (pageParam + 1).toString())}
                     >
-                      LOAD MORE PRODUCTS
+                      Load more
                     </Button>
                   </div>
                 )}
@@ -363,55 +420,66 @@ function ShopContent() {
         </div>
       </div>
 
-      {/* Mobile Bottom Sheet Filters Drawer (SHOP-5) */}
+      {/* Mobile Bottom Sheet Filters Drawer */}
       <Drawer
         isOpen={mobileFiltersOpen}
         onClose={() => setMobileFiltersOpen(false)}
-        title="FILTERS & FACETS"
+        title="Filter"
         position="left"
       >
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <span className="font-display text-xs font-bold text-charcoal uppercase">SECTION / DEPARTMENT</span>
-            {[
-              { id: 'male', label: '1. MALE (MENSWEAR)' },
-              { id: 'female', label: '2. FEMALE (WOMENSWEAR)' },
-              { id: 'kids', label: '3. KIDS (JUNIOR)' },
-            ].map((sec) => (
-              <Checkbox
-                key={sec.id}
-                label={sec.label}
-                checked={genderParam === sec.id}
-                onChange={() => {
-                  updateParam('gender', genderParam === sec.id ? '' : sec.id);
-                }}
-              />
-            ))}
+        <div className="flex flex-col gap-6 pt-2">
+          {/* Department */}
+          <div className="flex flex-col gap-3">
+            <span className="text-[13px] font-semibold text-[#111111]">Department</span>
+            <div className="flex flex-col gap-2">
+              {[
+                { id: 'male', label: 'Men' },
+                { id: 'female', label: 'Women' },
+                { id: 'kids', label: 'Kids' },
+              ].map((sec) => (
+                <button
+                  key={sec.id}
+                  onClick={() => updateParam('gender', genderParam === sec.id ? '' : sec.id)}
+                  className={`text-left text-sm py-1.5 flex items-center justify-between ${
+                    genderParam === sec.id ? 'font-medium text-[#111111]' : 'text-[#6B6B6B]'
+                  }`}
+                >
+                  <span>{sec.label}</span>
+                  {genderParam === sec.id && <span>✓</span>}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2 border-t border-grey pt-4">
-            <span className="font-display text-xs font-bold text-charcoal uppercase">CATEGORY</span>
-            {categories.map((cat) => (
-              <Checkbox
-                key={cat.id}
-                label={cat.name}
-                checked={categoryParam === cat.slug}
-                onChange={() => {
-                  updateParam('category', categoryParam === cat.slug ? '' : cat.slug);
-                }}
-              />
-            ))}
+          {/* Category */}
+          <div className="flex flex-col gap-3 border-t border-[#E8E6E1] pt-4">
+            <span className="text-[13px] font-semibold text-[#111111]">Category</span>
+            <div className="flex flex-col gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => updateParam('category', categoryParam === cat.slug ? '' : cat.slug)}
+                  className={`text-left text-sm py-1.5 flex items-center justify-between ${
+                    categoryParam === cat.slug ? 'font-medium text-[#111111]' : 'text-[#6B6B6B]'
+                  }`}
+                >
+                  <span>{cat.name}</span>
+                  {categoryParam === cat.slug && <span>✓</span>}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2 border-t border-grey pt-4">
-            <span className="font-display text-xs font-bold text-charcoal uppercase">SIZE</span>
+          {/* Size */}
+          <div className="flex flex-col gap-3 border-t border-[#E8E6E1] pt-4">
+            <span className="text-[13px] font-semibold text-[#111111]">Size</span>
             <div className="grid grid-cols-3 gap-2">
               {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((sz) => (
                 <button
                   key={sz}
                   onClick={() => updateParam('size', sizeParam === sz ? '' : sz)}
-                  className={`py-2 text-xs font-display font-bold border ${
-                    sizeParam === sz ? 'bg-cyan text-black border-cyan' : 'bg-offwhite border-black'
+                  className={`py-2 text-xs border ${
+                    sizeParam === sz ? 'bg-[#111111] text-white border-[#111111]' : 'bg-white border-[#E8E6E1] text-[#111111]'
                   }`}
                 >
                   {sz}
@@ -420,13 +488,25 @@ function ShopContent() {
             </div>
           </div>
 
-          <Button variant="primary" fullWidth onClick={() => setMobileFiltersOpen(false)}>
-            SHOW {totalCount} RESULTS
-          </Button>
+          <div className="pt-4 border-t border-[#E8E6E1] flex gap-3">
+            <Button
+              variant="secondary"
+              fullWidth
+              onClick={() => {
+                clearAllFilters();
+                setMobileFiltersOpen(false);
+              }}
+            >
+              Reset
+            </Button>
+            <Button variant="primary" fullWidth onClick={() => setMobileFiltersOpen(false)}>
+              Show {totalCount} items
+            </Button>
+          </div>
         </div>
       </Drawer>
 
-      {/* Owner Add Photo & Garment Modal */}
+      {/* Owner Add Photo Modal */}
       <AddProductPhotoModal
         isOpen={addPhotoModalOpen}
         onClose={() => setAddPhotoModalOpen(false)}
@@ -444,7 +524,7 @@ function ShopContent() {
 
 export default function ShopPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-cream pt-32 text-center">LOADING EXHIBITION ARCHIVE...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#FAFAF8] pt-32 text-center text-sm text-[#6B6B6B]">Loading catalogue...</div>}>
       <ShopContent />
     </Suspense>
   );

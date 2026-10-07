@@ -26,19 +26,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-display uppercase tracking-wider font-bold transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none min-h-[44px] rounded-none';
+      'inline-flex items-center justify-center font-medium text-[14px] transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none min-h-[44px] rounded-[2px] focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-2';
 
     const variantStyles = {
-      primary: 'bg-black text-cream hover:bg-cyan hover:text-black active:bg-cyan/90 border border-black',
-      secondary: 'bg-transparent text-black border border-black hover:bg-black hover:text-cream active:bg-black/90',
-      ghost: 'bg-transparent text-black underline underline-offset-4 hover:bg-cyan hover:text-black border border-transparent',
-      danger: 'bg-error-red text-cream hover:bg-black hover:text-cream border border-error-red',
+      primary: 'bg-[#111111] text-white hover:bg-[#333333] active:bg-[#222222] border-0',
+      secondary: 'bg-transparent text-[#111111] border border-[#111111] hover:bg-[#111111] hover:text-white active:bg-[#222222]',
+      ghost: 'bg-transparent text-[#111111] hover:text-[#6B6B6B] border border-transparent underline-offset-4 hover:underline',
+      danger: 'bg-error-red text-white hover:bg-black border-0',
     };
 
     const sizeStyles = {
-      sm: 'px-4 py-2 text-xs leading-none',
-      md: 'px-6 py-3.5 text-xs leading-none',
-      lg: 'px-8 py-4 text-sm leading-none',
+      sm: 'px-4 py-2 text-[13px] leading-tight min-h-[38px]',
+      md: 'px-7 py-3.5 text-[14px] leading-tight min-h-[44px]',
+      lg: 'px-8 py-3.5 text-[15px] leading-tight min-h-[48px] tracking-[0.01em]',
     };
 
     return (
@@ -71,7 +71,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <span>LOADING...</span>
+            <span>Loading...</span>
           </span>
         ) : (
           children

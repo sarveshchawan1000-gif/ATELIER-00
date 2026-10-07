@@ -31,12 +31,12 @@ export function Skeleton({ className, aspectRatio }: SkeletonProps) {
 
 export function ProductCardSkeleton() {
   return (
-    <div className="flex flex-col gap-3 w-full border border-grey/30 bg-offwhite p-3">
-      <Skeleton aspectRatio="4/5" className="w-full" />
+    <div className="flex flex-col gap-3 w-full bg-transparent">
+      <Skeleton className="w-full aspect-[3/4] bg-[#F3F2EF]" />
       <div className="flex flex-col gap-1.5 pt-1">
-        <Skeleton className="h-4 w-3/4" />
-        <Skeleton className="h-3 w-1/2" />
-        <Skeleton className="h-4 w-1/3 mt-1" />
+        <Skeleton className="h-3 w-1/3 bg-[#E8E6E1]" />
+        <Skeleton className="h-4 w-3/4 bg-[#E8E6E1]" />
+        <Skeleton className="h-4 w-1/4 bg-[#E8E6E1] mt-1" />
       </div>
     </div>
   );

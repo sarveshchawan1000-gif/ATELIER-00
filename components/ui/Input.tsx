@@ -8,10 +8,25 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   helperText?: string;
+  rightSlot?: React.ReactNode;
+  reserveHelperSpace?: boolean;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helperText, className, id, required, ...props }, ref) => {
+  (
+    {
+      label,
+      error,
+      helperText,
+      rightSlot,
+      reserveHelperSpace = false,
+      className,
+      id,
+      required,
+      ...props
+    },
+    ref
+  ) => {
     const generatedId = useId();
     const inputId = id || generatedId;
     const errorId = `${inputId}-error`;
@@ -22,37 +37,48 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="font-display text-[11px] font-bold tracking-widest text-charcoal uppercase flex items-center gap-1"
+            className="text-[13px] font-medium text-[#111111] flex items-center justify-between"
           >
-            {label}
-            {required && <span className="text-error-red">*</span>}
+            <span>{label}</span>
+            {required && <span className="text-[#6B6B6B] text-[11px] font-normal">Required</span>}
           </label>
         )}
-        <input
-          ref={ref}
-          id={inputId}
-          aria-invalid={Boolean(error)}
-          aria-describedby={error ? errorId : helperText ? helperId : undefined}
-          required={required}
-          className={twMerge(
-            clsx(
-              'w-full min-h-[44px] px-4 py-3 bg-offwhite text-black text-sm font-body border border-black placeholder:text-charcoal/50 rounded-none transition-colors focus:bg-offwhite',
-              error && 'border-error-red focus:border-error-red',
-              className
-            )
+        <div className="relative w-full">
+          <input
+            ref={ref}
+            id={inputId}
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? errorId : helperText ? helperId : undefined}
+            required={required}
+            className={twMerge(
+              clsx(
+                'w-full min-h-[48px] px-4 py-3 bg-white text-[#111111] text-[15px] border border-[#D9D6D0] hover:border-[#111111] placeholder:text-[#6B6B6B]/60 rounded-[2px] transition-colors focus:border-[#111111] focus:ring-2 focus:ring-[#111111] focus:ring-offset-2 focus:outline-none disabled:opacity-50 disabled:bg-[#FAFAF8]',
+                rightSlot && 'pr-11',
+                error && 'border-[#B3261E] focus:border-[#B3261E] focus:ring-[#B3261E]',
+                className
+              )
+            )}
+            {...props}
+          />
+          {rightSlot && (
+            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center">
+              {rightSlot}
+            </div>
           )}
-          {...props}
-        />
-        {error && (
-          <p id={errorId} className="text-xs font-body text-error-red font-medium flex items-center gap-1">
-            <span aria-hidden="true">⚠</span>
-            <span>{error}</span>
-          </p>
-        )}
-        {!error && helperText && (
-          <p id={helperId} className="text-xs font-body text-charcoal/80">
-            {helperText}
-          </p>
+        </div>
+        {(reserveHelperSpace || error || helperText) && (
+          <div className="min-h-[18px]">
+            {error && (
+              <p id={errorId} aria-live="polite" className="text-[12px] text-[#B3261E]">
+                {error}
+              </p>
+            )}
+            {!error && helperText && (
+              <p id={helperId} className="text-[12px] text-[#6B6B6B]">
+                {helperText}
+              </p>
+            )}
+          </div>
         )}
       </div>
     );

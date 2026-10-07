@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { CONFIG } from '@/lib/config';
+import { X } from 'lucide-react';
 
 export interface MobileMenuProps {
   isOpen: boolean;
@@ -53,140 +54,144 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       tabIndex={-1}
       role="dialog"
       aria-modal="true"
-      aria-label="Mobile Navigation Menu"
-      className="fixed inset-0 z-50 bg-cream flex flex-col p-6 animate-in fade-in duration-200"
+      aria-label="Navigation Menu"
+      className="fixed inset-0 z-50 bg-[#FAFAF8] flex flex-col p-6 animate-in fade-in duration-200"
     >
       {/* Top Header Row in Menu */}
-      <div className="flex items-center justify-between border-b border-grey pb-4">
+      <div className="flex items-center justify-between border-b border-[#E8E6E1] pb-4">
         <Link
           href="/"
           onClick={onClose}
-          className="font-display text-lg font-bold tracking-widest text-black uppercase"
+          className="text-lg font-medium tracking-[0.04em] text-[#111111]"
         >
           {CONFIG.brandName}
         </Link>
         <button
           onClick={onClose}
           aria-label="Close menu"
-          className="p-2.5 text-black hover:bg-cyan hover:text-black font-bold text-base transition-colors border border-black"
+          className="p-2 text-[#111111] hover:text-[#6B6B6B] transition-colors"
         >
-          ✕ CLOSE
+          <X className="w-5 h-5 stroke-[1.5]" />
         </button>
       </div>
 
       {/* Main Links List */}
-      <nav className="flex-1 flex flex-col justify-center gap-4 my-6 overflow-y-auto">
-        {/* The 3 Core Sections: MALE, FEMALE, KIDS */}
-        <div className="flex flex-col gap-2 pb-4 border-b border-grey">
-          <span className="font-display text-[10px] font-bold text-cyan tracking-widest uppercase">
-            DEPARTMENTS // SECTIONS
+      <nav className="flex-1 flex flex-col justify-start gap-6 my-6 overflow-y-auto pt-4">
+        {/* The 3 Core Sections: Men, Women, Kids */}
+        <div className="flex flex-col gap-3 pb-6 border-b border-[#E8E6E1]">
+          <span className="text-[12px] font-medium text-[#6B6B6B] tracking-[0.04em]">
+            Departments
           </span>
-          <Link
-            href="/shop?gender=male"
-            onClick={onClose}
-            className="font-display text-2xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase flex items-center justify-between py-1"
-          >
-            <span>01 // MALE</span>
-            <span className="text-cyan font-bold">→</span>
-          </Link>
-          <Link
-            href="/shop?gender=female"
-            onClick={onClose}
-            className="font-display text-2xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase flex items-center justify-between py-1"
-          >
-            <span>02 // FEMALE</span>
-            <span className="text-cyan font-bold">→</span>
-          </Link>
-          <Link
-            href="/shop?gender=kids"
-            onClick={onClose}
-            className="font-display text-2xl font-bold tracking-tight text-black hover:text-cyan transition-colors uppercase flex items-center justify-between py-1"
-          >
-            <span>03 // KIDS</span>
-            <span className="text-cyan font-bold">→</span>
-          </Link>
-        </div>
-
-        {/* Kinds of Cloth Sections */}
-        <div className="flex flex-col gap-1.5 pb-4 border-b border-grey">
-          <span className="font-display text-[10px] font-bold text-charcoal tracking-widest uppercase">
-            KINDS OF CLOTH // CATEGORIES
-          </span>
-          <div className="grid grid-cols-2 gap-2 text-xs font-display font-bold uppercase">
+          <div className="flex flex-col gap-2">
             <Link
-              href="/shop/t-shirts"
+              href="/shop?gender=male"
               onClick={onClose}
-              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+              className="text-xl font-normal text-[#111111] hover:text-[#6B6B6B] transition-colors flex items-center justify-between py-1"
             >
-              👕 TEES
+              <span>Men</span>
+              <span className="text-sm text-[#6B6B6B]">→</span>
             </Link>
             <Link
-              href="/shop/shirts"
+              href="/shop?gender=female"
               onClick={onClose}
-              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+              className="text-xl font-normal text-[#111111] hover:text-[#6B6B6B] transition-colors flex items-center justify-between py-1"
             >
-              👔 SHIRTS
+              <span>Women</span>
+              <span className="text-sm text-[#6B6B6B]">→</span>
             </Link>
             <Link
-              href="/shop/hoodies"
+              href="/shop?gender=kids"
               onClick={onClose}
-              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
+              className="text-xl font-normal text-[#111111] hover:text-[#6B6B6B] transition-colors flex items-center justify-between py-1"
             >
-              🧥 HOODIES
-            </Link>
-            <Link
-              href="/shop/jackets"
-              onClick={onClose}
-              className="py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors"
-            >
-              🧥 JACKETS
-            </Link>
-            <Link
-              href="/shop/bottoms"
-              onClick={onClose}
-              className="col-span-2 py-1.5 px-2 bg-offwhite border border-grey hover:border-black hover:text-cyan hover:bg-black transition-colors text-center"
-            >
-              👖 BOTTOMS / PANTS
+              <span>Kids</span>
+              <span className="text-sm text-[#6B6B6B]">→</span>
             </Link>
           </div>
         </div>
 
-        <Link
-          href="/shop"
-          onClick={onClose}
-          className="font-display text-lg font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
-        >
-          ALL ARCHIVE CATALOGUE
-        </Link>
-        <Link
-          href="/collections"
-          onClick={onClose}
-          className="font-display text-lg font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
-        >
-          COLLECTIONS
-        </Link>
-        <Link
-          href="/about"
-          onClick={onClose}
-          className="font-display text-lg font-bold tracking-tight text-charcoal hover:text-black transition-colors uppercase py-1"
-        >
-          ABOUT ATELIER
-        </Link>
+        {/* Categories */}
+        <div className="flex flex-col gap-3 pb-6 border-b border-[#E8E6E1]">
+          <span className="text-[12px] font-medium text-[#6B6B6B] tracking-[0.04em]">
+            Categories
+          </span>
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <Link
+              href="/shop/t-shirts"
+              onClick={onClose}
+              className="py-2 px-3 bg-[#F3F2EF] text-[#111111] hover:bg-[#E8E6E1] transition-colors rounded-none"
+            >
+              Tees & Basics
+            </Link>
+            <Link
+              href="/shop/shirts"
+              onClick={onClose}
+              className="py-2 px-3 bg-[#F3F2EF] text-[#111111] hover:bg-[#E8E6E1] transition-colors rounded-none"
+            >
+              Tailored Shirts
+            </Link>
+            <Link
+              href="/shop/hoodies"
+              onClick={onClose}
+              className="py-2 px-3 bg-[#F3F2EF] text-[#111111] hover:bg-[#E8E6E1] transition-colors rounded-none"
+            >
+              Hoodies & Fleece
+            </Link>
+            <Link
+              href="/shop/jackets"
+              onClick={onClose}
+              className="py-2 px-3 bg-[#F3F2EF] text-[#111111] hover:bg-[#E8E6E1] transition-colors rounded-none"
+            >
+              Outerwear
+            </Link>
+            <Link
+              href="/shop/bottoms"
+              onClick={onClose}
+              className="col-span-2 py-2 px-3 bg-[#F3F2EF] text-[#111111] hover:bg-[#E8E6E1] transition-colors text-center rounded-none"
+            >
+              Bottoms & Pants
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Link
+            href="/shop"
+            onClick={onClose}
+            className="text-base text-[#111111] hover:text-[#6B6B6B] transition-colors py-1"
+          >
+            All Products
+          </Link>
+          <Link
+            href="/collections"
+            onClick={onClose}
+            className="text-base text-[#111111] hover:text-[#6B6B6B] transition-colors py-1"
+          >
+            Collections
+          </Link>
+          <Link
+            href="/about"
+            onClick={onClose}
+            className="text-base text-[#111111] hover:text-[#6B6B6B] transition-colors py-1"
+          >
+            About Atelier
+          </Link>
+        </div>
       </nav>
 
       {/* Bottom Utility Links */}
-      <div className="pt-6 border-t border-grey flex flex-wrap items-center justify-between gap-3 font-display text-xs tracking-widest text-charcoal uppercase">
-        <Link href="/account" onClick={onClose} className="hover:text-black underline">
-          MY ACCOUNT
+      <div className="pt-4 border-t border-[#E8E6E1] flex flex-wrap items-center justify-between gap-4 text-xs text-[#6B6B6B]">
+        <Link href="/account" onClick={onClose} className="hover:text-[#111111] hover:underline">
+          My Account
         </Link>
-        <Link href="/wishlist" onClick={onClose} className="hover:text-black underline">
-          WISHLIST
+        <Link href="/wishlist" onClick={onClose} className="hover:text-[#111111] hover:underline">
+          Wishlist
         </Link>
-        <Link href="/account/orders/BRD-2026-981245" onClick={onClose} className="hover:text-black underline">
-          TRACK ORDER
+        <Link href="/account/orders/BRD-2026-981245" onClick={onClose} className="hover:text-[#111111] hover:underline">
+          Track Order
         </Link>
-        <Link href="/admin" onClick={onClose} className="text-cyan font-bold hover:underline">
-          ADMIN
+        <Link href="/admin" onClick={onClose} className="hover:text-[#111111] hover:underline">
+          Admin
         </Link>
       </div>
     </div>
