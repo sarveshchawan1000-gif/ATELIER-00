@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { useToast } from '@/components/ui/Toast';
 import { Upload, X } from 'lucide-react';
 import { clsx } from 'clsx';
+import { CONFIG } from '@/lib/config';
 
 interface AddProductPhotoModalProps {
   isOpen: boolean;
@@ -113,7 +114,7 @@ export function AddProductPhotoModal({
       const result = event.target?.result as string;
       setPhotoUrl(result);
       if (!altText) {
-        setAltText(`${name || 'Garment'} photo for ATELIER 00`);
+        setAltText(`${name || 'Garment'} photo for ${CONFIG.brandName}`);
       }
       showToast('Photo attached successfully');
     };
@@ -147,7 +148,7 @@ export function AddProductPhotoModal({
       const result = event.target?.result as string;
       setPhotoUrl(result);
       if (!altText) {
-        setAltText(`${name || 'Garment'} photo for ATELIER 00`);
+        setAltText(`${name || 'Garment'} photo for ${CONFIG.brandName}`);
       }
       showToast('Photo attached successfully');
     };

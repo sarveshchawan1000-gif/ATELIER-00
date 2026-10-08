@@ -24,7 +24,7 @@ export default function WishlistPage() {
     // Get first available variant
     const availableVariant = product.variants.find((v) => v.stock > 0);
     if (!availableVariant) {
-      showToast('SORRY, THIS ITEM IS CURRENTLY OUT OF STOCK');
+      showToast('Sorry, this item is currently out of stock.');
       return;
     }
 
@@ -42,24 +42,24 @@ export default function WishlistPage() {
     });
 
     removeItem(item.productId);
-    showToast(`MOVED ${product.name} TO BAG`);
+    showToast(`Added ${product.name} to bag.`);
   };
 
   const handleRemove = (productId: string, name: string) => {
     removeItem(productId);
-    showToast(`REMOVED ${name} FROM WISHLIST`);
+    showToast(`Removed ${name} from saved items.`);
   };
 
   if (items.length === 0) {
     return (
-      <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center gap-8 py-20">
-          <div className="w-24 h-24 border-2 border-black flex items-center justify-center">
-            <Heart className="w-10 h-10 text-charcoal" />
+      <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8 bg-cream text-black">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center gap-6 py-20">
+          <div className="w-16 h-16 rounded-full bg-offwhite border border-grey/40 flex items-center justify-center text-charcoal">
+            <Heart className="w-7 h-7" />
           </div>
-          <div className="flex flex-col gap-3">
-            <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tighter uppercase">
-              YOUR WISHLIST IS EMPTY
+          <div className="flex flex-col gap-2">
+            <h1 className="font-display text-2xl md:text-3xl font-semibold tracking-tight">
+              Your wishlist is empty
             </h1>
             <p className="font-body text-sm text-charcoal max-w-md mx-auto">
               Save pieces you love by tapping the heart icon on any product.
@@ -67,8 +67,8 @@ export default function WishlistPage() {
             </p>
           </div>
           <Link href="/shop">
-            <Button variant="primary" size="lg">
-              EXPLORE THE COLLECTION
+            <Button variant="primary" size="lg" className="bg-black text-white hover:bg-charcoal rounded-sm font-medium">
+              Explore Collections
             </Button>
           </Link>
         </div>
@@ -77,21 +77,21 @@ export default function WishlistPage() {
   }
 
   return (
-    <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8">
+    <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8 bg-cream text-black">
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
-        <div className="flex items-center justify-between border-b-2 border-black pb-4 mb-8">
-          <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tighter uppercase">
-            SAVED ITEMS [{items.length}]
+        <div className="flex items-center justify-between border-b border-grey/50 pb-4 mb-8">
+          <h1 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-black">
+            Saved Items ({items.length})
           </h1>
           <button
             onClick={() => {
               clearWishlist();
-              showToast('WISHLIST CLEARED');
+              showToast('Wishlist cleared.');
             }}
-            className="font-display text-xs tracking-wider text-charcoal hover:text-error-red transition-colors underline"
+            className="font-body text-xs text-charcoal hover:text-black transition-colors underline underline-offset-4"
           >
-            CLEAR ALL
+            Clear all
           </button>
         </div>
 
@@ -107,72 +107,73 @@ export default function WishlistPage() {
             return (
               <article
                 key={item.productId}
-                className="group bg-offwhite border border-grey/50 hover:border-black transition-all"
+                className="group bg-offwhite border border-grey/40 hover:border-grey rounded-sm overflow-hidden transition-all flex flex-col justify-between"
               >
                 {/* Image */}
                 <Link
                   href={`/product/${item.slug}`}
-                  className="relative block aspect-[4/5] overflow-hidden bg-grey/20"
+                  className="relative block aspect-[4/5] overflow-hidden bg-black/5"
                 >
                   {item.imageUrl && item.imageUrl.startsWith('http') ? (
                     <Image
                       src={item.imageUrl}
                       alt={item.productName}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center font-display text-xs text-charcoal">
-                      4:5 IMAGE
+                    <div className="w-full h-full flex items-center justify-center font-body text-xs text-charcoal">
+                      No Image
                     </div>
                   )}
 
                   {isSoldOut && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                      <span className="font-display text-sm font-bold text-cream tracking-widest uppercase">
-                        SOLD OUT
+                      <span className="font-body text-xs font-medium text-white tracking-widest uppercase">
+                        Sold Out
                       </span>
                     </div>
                   )}
                 </Link>
 
                 {/* Content */}
-                <div className="p-4 flex flex-col gap-3 border-t border-grey/30">
+                <div className="p-4 flex flex-col gap-3">
                   <div>
                     <Link
                       href={`/product/${item.slug}`}
-                      className="font-display text-xs font-bold tracking-wider text-black uppercase hover:text-cyan transition-colors line-clamp-1"
+                      className="font-body text-sm font-medium text-black hover:text-charcoal transition-colors line-clamp-1"
                     >
                       {item.productName}
                     </Link>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="font-display text-sm font-bold text-black">
+                      <span className="font-body text-sm font-semibold text-black">
                         {formatINR(item.salePricePaise || item.mrpPaise)}
                       </span>
                       {item.salePricePaise && item.salePricePaise < item.mrpPaise && (
-                        <span className="font-display text-xs text-charcoal/60 line-through">
+                        <span className="font-body text-xs text-charcoal/60 line-through">
                           {formatINR(item.mrpPaise)}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 pt-2">
                     <Button
                       variant="primary"
                       size="sm"
                       fullWidth
                       onClick={() => handleMoveToCart(item)}
                       disabled={isSoldOut}
+                      className="bg-black text-white hover:bg-charcoal rounded-sm font-medium text-xs"
                     >
                       <ShoppingBag className="w-3.5 h-3.5 mr-1.5" />
-                      {isSoldOut ? 'SOLD OUT' : 'MOVE TO BAG'}
+                      {isSoldOut ? 'Sold Out' : 'Move to Bag'}
                     </Button>
                     <button
                       onClick={() => handleRemove(item.productId, item.productName)}
                       aria-label={`Remove ${item.productName} from wishlist`}
-                      className="p-2 border border-black text-charcoal hover:text-error-red hover:border-error-red transition-colors flex-shrink-0"
+                      className="p-2 border border-grey/40 hover:border-black rounded-sm text-charcoal hover:text-black transition-colors flex-shrink-0"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -184,10 +185,10 @@ export default function WishlistPage() {
         </div>
 
         {/* Continue Shopping */}
-        <div className="mt-12 text-center">
+        <div className="mt-14 text-center">
           <Link href="/shop">
-            <Button variant="ghost" size="lg">
-              CONTINUE SHOPPING
+            <Button variant="ghost" size="lg" className="rounded-sm font-medium hover:text-black">
+              Continue Shopping
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>

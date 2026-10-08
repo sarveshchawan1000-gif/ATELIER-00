@@ -1,55 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  /* Minimal Premium Design Tokens */
-  --bg-page: #FAFAF8;          /* Off-white background */
-  --bg-surface: #FFFFFF;       /* Clean white surface */
-  --bg-muted: #F3F2EF;         /* Light grey image / tile background */
-  --text-primary: #111111;     /* Near-black text */
-  --text-secondary: #6B6B6B;   /* Muted grey secondary text */
-  --border-hairline: #E8E6E1;  /* Hairline divider */
-  --border-pill: #D9D6D0;      /* Subtle border for pills & chips */
-  --error-red: #B3261E;
+  /* ZIPUP NATION Color Tokens */
+  --cream: #F5F0E8;          /* Page background */
+  --offwhite: #FFFDF8;       /* Cards, panels, inputs */
+  --black: #111111;          /* Text, primary buttons */
+  --charcoal: #555555;       /* Secondary text */
+  --grey: #D8D5CF;           /* Decorative dividers, disabled */
+  --cyan: #00D9FF;           /* Minimal accent highlight */
+  --error: #B3261E;          /* Validation/error */
 
-  /* Legacy mappings mapped cleanly to minimal palette */
-  --cream: var(--bg-page);
-  --offwhite: var(--bg-surface);
-  --black: var(--text-primary);
-  --charcoal: var(--text-secondary);
-  --grey: var(--border-hairline);
-  --cyan: var(--text-primary);
+  /* Legacy aliases */
+  --bg-page: var(--cream);
+  --bg-surface: var(--offwhite);
+  --bg-muted: #EFEAE1;
+  --text-primary: var(--black);
+  --text-secondary: var(--charcoal);
+  --border-hairline: var(--grey);
+  --border-pill: var(--grey);
+  --error-red: var(--error);
 
   /* Motion Tokens */
   --ease-out-custom: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-micro: 200ms;
-  --duration-reveal: 400ms;
+  --duration-reveal: 600ms;
 }
 
 @theme {
-  --color-page: var(--bg-page);
   --color-cream: var(--cream);
   --color-offwhite: var(--offwhite);
-  --color-surface: var(--bg-surface);
-  --color-muted: var(--bg-muted);
   --color-black: var(--black);
   --color-charcoal: var(--charcoal);
   --color-grey: var(--grey);
-  --color-hairline: var(--border-hairline);
-  --color-pill: var(--border-pill);
-  --color-cyan: var(--black);
-  --color-error-red: var(--error-red);
+  --color-cyan: var(--cyan);
+  --color-error: var(--error);
+  --color-error-red: var(--error);
 
-  --font-display: var(--font-inter), "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: var(--font-inter), "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-page: var(--cream);
+  --color-surface: var(--offwhite);
+  --color-muted: var(--bg-muted);
+  --color-hairline: var(--grey);
+  --color-pill: var(--grey);
+
+  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-body: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --ease-out-custom: var(--ease-out-custom);
 }
 
 /* Base Document Setup */
 html {
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-  font-family: var(--font-inter), "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--cream);
+  color: var(--black);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -57,28 +60,25 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: var(--bg-page);
-  color: var(--text-primary);
+  background-color: var(--cream);
+  color: var(--black);
   overflow-x: hidden;
 }
 
-/* Typography Hierarchy - Clean, Light-weight & Sentence Case */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-inter), "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
+/* Typography Hierarchy */
 .font-display {
-  font-family: var(--font-inter), "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  letter-spacing: -0.02em;
 }
 
-/* Accessible Visible Focus Ring (2px black outline, 2px offset) */
+.font-body {
+  font-family: var(--font-inter), "Inter", sans-serif;
+}
+
+/* Accessible Focus Ring */
 :focus-visible {
-  outline: 2px solid var(--text-primary) !important;
-  outline-offset: 2px !important;
-  box-shadow: none !important;
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
 }
 
 /* Reduced Motion Fallbacks */
@@ -91,18 +91,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Clean Minimal Scrollbar */
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-page);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-pill);
-  border-radius: 2px;
+  background: var(--grey);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+  background: var(--charcoal);
+}
+
+/* Selection */
+::selection {
+  background: var(--black);
+  color: var(--cream);
 }

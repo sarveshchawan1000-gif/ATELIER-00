@@ -7,145 +7,141 @@ import { Button } from '@/components/ui/Button';
 import { Truck, ShieldCheck, Clock, MapPin, Package, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shipping & Delivery Policy',
+  title: 'Shipping & Delivery',
   description: `Domestic delivery across India. Free shipping over ${formatINR(CONFIG.shipping.freeShippingThresholdPaise)}.`,
 };
 
 export default function ShippingPage() {
   return (
     <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto space-y-16">
+      <div className="max-w-4xl mx-auto space-y-14">
         {/* Header */}
-        <div className="border-b-2 border-black pb-8">
-          <span className="font-display text-xs tracking-widest text-cyan uppercase bg-black px-2.5 py-1 inline-block mb-3">
-            LOGISTICS & DISPATCH
+        <div className="border-b border-grey/60 pb-8">
+          <span className="font-body text-xs font-medium tracking-wider text-charcoal uppercase block mb-3">
+            Logistics & Dispatch
           </span>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tighter uppercase text-black">
-            SHIPPING & DELIVERY
+          <h1 className="font-display text-3xl sm:text-5xl font-semibold tracking-tight text-black">
+            Shipping & Delivery
           </h1>
-          <p className="font-body text-sm md:text-base text-charcoal max-w-2xl mt-4">
+          <p className="font-body text-sm md:text-base text-charcoal max-w-2xl mt-4 leading-relaxed">
             All orders are processed from our Mumbai logistics hub using climate-sealed, 
-            tamper-evident luxury packaging and insured transit partners.
+            tamper-evident packaging and insured transit partners.
           </p>
         </div>
 
-        {/* Quick Rate Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-offwhite border-2 border-black p-6 space-y-3">
-            <span className="font-display text-xs font-bold text-cyan uppercase tracking-wider block">
-              STANDARD DOMESTIC
+        {/* Rate Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="bg-offwhite border border-grey/50 rounded-sm p-6 space-y-3">
+            <span className="font-body text-xs font-medium text-charcoal uppercase tracking-wider block">
+              Standard Domestic
             </span>
-            <div className="font-display text-2xl font-bold text-black">
+            <div className="font-display text-2xl font-semibold text-black">
               {formatINR(CONFIG.shipping.flatRatePaise)}
             </div>
-            <p className="font-body text-xs text-charcoal">
+            <p className="font-body text-xs text-charcoal leading-relaxed">
               Flat rate for orders below {formatINR(CONFIG.shipping.freeShippingThresholdPaise)}.
             </p>
           </div>
 
-          <div className="bg-black text-cream border-2 border-black p-6 space-y-3">
-            <span className="font-display text-xs font-bold text-cyan uppercase tracking-wider block">
-              COMPLIMENTARY DISPATCH
+          <div className="bg-black text-cream rounded-sm p-6 space-y-3">
+            <span className="font-body text-xs font-medium text-white/50 uppercase tracking-wider block">
+              Free Shipping
             </span>
-            <div className="font-display text-2xl font-bold text-cyan">
-              FREE
+            <div className="font-display text-2xl font-semibold text-white">
+              Free
             </div>
-            <p className="font-body text-xs text-grey">
+            <p className="font-body text-xs text-white/50 leading-relaxed">
               Automatically applied on orders totaling {formatINR(CONFIG.shipping.freeShippingThresholdPaise)} or above.
             </p>
           </div>
 
-          <div className="bg-offwhite border-2 border-black p-6 space-y-3">
-            <span className="font-display text-xs font-bold text-cyan uppercase tracking-wider block">
-              TRANSIT WINDOW
+          <div className="bg-offwhite border border-grey/50 rounded-sm p-6 space-y-3">
+            <span className="font-body text-xs font-medium text-charcoal uppercase tracking-wider block">
+              Transit Window
             </span>
-            <div className="font-display text-2xl font-bold text-black">
+            <div className="font-display text-2xl font-semibold text-black">
               {CONFIG.shipping.estimatedDays}
             </div>
-            <p className="font-body text-xs text-charcoal">
-              Metro cities: 2-3 business days. Non-metro & tier-2/3 regions: 4-5 business days.
+            <p className="font-body text-xs text-charcoal leading-relaxed">
+              Metro cities: 2–3 days. Non-metro & tier-2/3 regions: 4–5 days.
             </p>
           </div>
         </div>
 
-        {/* Policy Content Sections */}
-        <div className="space-y-12 divide-y divide-grey">
-          {/* 1. Fulfillment */}
-          <div className="pt-8 first:pt-0 space-y-4">
+        {/* Policy Content */}
+        <div className="space-y-10">
+          <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <Package className="w-5 h-5 text-black" />
-              <h2 className="font-display text-lg font-bold tracking-wider uppercase">
-                1. DISPATCH & PROCESSING SCHEDULE
+              <Package className="w-4 h-4 text-charcoal" />
+              <h2 className="font-display text-base font-semibold tracking-tight">
+                1. Dispatch & Processing
               </h2>
             </div>
-            <p className="font-body text-sm text-charcoal leading-relaxed">
+            <p className="font-body text-sm text-charcoal leading-relaxed pl-7">
               Orders placed before 14:00 IST Monday through Friday are processed and handed to 
               our logistics partners on the same business day. Orders placed on weekends or national holidays 
-              are dispatched on the immediate following business working day.
+              are dispatched on the next business day.
             </p>
-            <p className="font-body text-sm text-charcoal leading-relaxed">
-              Upon dispatch, a confirmed AWB tracking link is generated and sent via SMS and Email to the 
-              contact coordinates provided at checkout.
+            <p className="font-body text-sm text-charcoal leading-relaxed pl-7">
+              Upon dispatch, a confirmed AWB tracking link is sent via SMS and email to the 
+              contact details provided at checkout.
             </p>
           </div>
 
-          {/* 2. Coverage & Couriers */}
-          <div className="pt-8 space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-black" />
-              <h2 className="font-display text-lg font-bold tracking-wider uppercase">
-                2. SERVICED PINCODES & TRANSIT PARTNERS
+              <MapPin className="w-4 h-4 text-charcoal" />
+              <h2 className="font-display text-base font-semibold tracking-tight">
+                2. Coverage & Couriers
               </h2>
             </div>
-            <p className="font-body text-sm text-charcoal leading-relaxed">
+            <p className="font-body text-sm text-charcoal leading-relaxed pl-7">
               We service over 19,000+ PIN codes across all 28 states and 8 union territories in India 
               via premium tier-1 courier partners (Blue Dart, Delhivery Express, and DTDC Air). 
-              Deliveries require an OTP or physical signature to ensure strict custody transfer.
+              Deliveries require an OTP or physical signature for secure handover.
             </p>
           </div>
 
-          {/* 3. Luxury Packaging */}
-          <div className="pt-8 space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <ShieldCheck className="w-5 h-5 text-black" />
-              <h2 className="font-display text-lg font-bold tracking-wider uppercase">
-                3. ARCHIVAL PACKAGING & TRANSIT SECURITY
+              <ShieldCheck className="w-4 h-4 text-charcoal" />
+              <h2 className="font-display text-base font-semibold tracking-tight">
+                3. Packaging & Transit Security
               </h2>
             </div>
-            <p className="font-body text-sm text-charcoal leading-relaxed">
-              Every garment is folded in acid-free tissue paper, encased in a matte black waterproof bio-degradable 
-              garment sleeve, and packaged inside an architectural rigid cardboard carton with reinforced security tape. 
-              If your external security seal appears broken upon delivery, please decline receipt and notify us immediately.
+            <p className="font-body text-sm text-charcoal leading-relaxed pl-7">
+              Every garment is folded in acid-free tissue paper, encased in a waterproof bio-degradable 
+              garment sleeve, and packaged inside a rigid cardboard carton with reinforced security tape. 
+              If your security seal appears broken upon delivery, please decline receipt and notify us immediately.
             </p>
           </div>
 
-          {/* 4. Taxes & Duties */}
-          <div className="pt-8 space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <Clock className="w-5 h-5 text-black" />
-              <h2 className="font-display text-lg font-bold tracking-wider uppercase">
-                4. TAXES & STATUTORY COMPLIANCE
+              <Clock className="w-4 h-4 text-charcoal" />
+              <h2 className="font-display text-base font-semibold tracking-tight">
+                4. Taxes & Compliance
               </h2>
             </div>
-            <p className="font-body text-sm text-charcoal leading-relaxed">
-              {CONFIG.taxes.gstInclusiveNote}. There are zero hidden destination surcharges or surprise courier charges at delivery.
+            <p className="font-body text-sm text-charcoal leading-relaxed pl-7">
+              {CONFIG.taxes.gstInclusiveNote}. There are no hidden destination surcharges or surprise courier charges at delivery.
             </p>
           </div>
         </div>
 
         {/* Support Callout */}
-        <div className="bg-offwhite border-2 border-black p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-offwhite border border-grey/40 rounded-sm p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-display text-lg font-bold uppercase tracking-wider">
-              NEED IMMEDIATE TRANSIT ASSISTANCE?
+            <h3 className="font-display text-base font-semibold text-black">
+              Need transit assistance?
             </h3>
-            <p className="font-body text-xs text-charcoal mt-1">
-              Have your order number or AWB ready for expedited concierge lookup.
+            <p className="font-body text-sm text-charcoal mt-1">
+              Have your order number or AWB ready for quick lookup.
             </p>
           </div>
           <Link href="/contact">
-            <Button variant="primary">
-              CONTACT CONCIERGE <ArrowRight className="w-4 h-4 ml-2" />
+            <Button variant="primary" className="bg-black text-white hover:bg-charcoal font-medium transition-all">
+              Contact Support <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
         </div>

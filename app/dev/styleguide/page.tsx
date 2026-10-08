@@ -11,6 +11,7 @@ import { Skeleton, ProductCardSkeleton } from '@/components/ui/Skeleton';
 import { Modal } from '@/components/ui/Modal';
 import { Drawer } from '@/components/ui/Drawer';
 import { useToast } from '@/components/ui/Toast';
+import { CONFIG } from '@/lib/config';
 
 export default function StyleguidePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -123,7 +124,7 @@ export default function StyleguidePage() {
           <div>
             <span className="font-display text-[10px] text-charcoal">DISPLAY HERO (~12vw / fluid)</span>
             <p className="font-display text-4xl md:text-6xl font-bold tracking-tighter uppercase">
-              ATELIER 00 2026
+              {CONFIG.brandName} 2026
             </p>
           </div>
           <div>

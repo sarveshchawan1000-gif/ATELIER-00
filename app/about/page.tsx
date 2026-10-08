@@ -6,24 +6,24 @@ import { Button } from '@/components/ui/Button';
 import { Ruler, Layers, BadgeCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Our Story',
-  description: 'Considered clothing, made in India. Clean silhouettes, honest fabrics and skilled craftsmanship.',
+  title: 'Movement Manifesto',
+  description: 'ZIPUP NATION — We do not follow the movement. We build it. Premium streetwear built for the next generation.',
 };
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#FAFAF8] text-[#111111]">
+    <main className="min-h-screen bg-cream text-black">
       {/* 1. Hero Section */}
       <section className="pt-24 md:pt-36 pb-16 md:pb-20 px-6 max-w-[1280px] mx-auto">
         <div className="max-w-3xl">
-          <span className="text-[13px] text-[#6B6B6B] font-medium tracking-normal block mb-4">
-            Our story
+          <span className="font-display text-xs font-bold tracking-widest text-charcoal uppercase block mb-4">
+            MOVEMENT MANIFESTO
           </span>
-          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-medium tracking-[-0.02em] leading-[1.1] text-[#111111] max-w-[18ch] text-balance">
-            Considered clothing, made in India.
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter uppercase leading-[1.05] text-black">
+            BUILT FOR THE NEXT GENERATION.
           </h1>
-          <p className="text-[16px] md:text-[18px] text-[#6B6B6B] max-w-[560px] leading-[1.6] mt-6">
-            ATELIER 00 is a clothing label built on clean silhouettes, honest fabrics and skilled Indian craftsmanship. Every piece is designed to be worn often and kept for years.
+          <p className="font-body text-base md:text-lg text-charcoal max-w-[560px] leading-relaxed mt-6">
+            ZIPUP NATION is a premium streetwear movement. We don’t follow the movement. We build it. Every garment is engineered with monolithic cuts, heavyweight textiles, and uncompromising street architecture.
           </p>
         </div>
       </section>

@@ -9,60 +9,60 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8">
+    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8 bg-cream text-black">
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Header */}
-        <div className="border-b-2 border-black pb-8">
-          <span className="font-display text-xs tracking-widest text-cyan uppercase bg-black px-2.5 py-1 inline-block mb-3">
-            LEGAL PROTOCOL
+        <div className="border-b border-grey/60 pb-8">
+          <span className="font-body text-xs font-medium tracking-wider text-charcoal uppercase block mb-3">
+            Legal Protocol
           </span>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tighter uppercase text-black">
-            TERMS & CONDITIONS
+          <h1 className="font-display text-3xl sm:text-5xl font-semibold tracking-tight text-black">
+            Terms &amp; Conditions
           </h1>
-          <p className="font-body text-xs text-charcoal uppercase tracking-wider mt-4">
-            LAST REVISED: OCTOBER 2026 // JURISDICTION: MUMBAI, MAHARASHTRA, INDIA
+          <p className="font-body text-xs text-charcoal/80 uppercase tracking-wider mt-4">
+            Last Revised: October 2026 · Jurisdiction: Mumbai, Maharashtra, India
           </p>
         </div>
 
         {/* Content */}
-        <div className="space-y-8 font-body text-xs md:text-sm text-charcoal leading-relaxed divide-y divide-grey">
+        <div className="space-y-8 font-body text-xs md:text-sm text-charcoal leading-relaxed divide-y divide-grey/30">
           <section className="space-y-3">
-            <h2 className="font-display text-base font-bold uppercase tracking-wider text-black">
-              1. ACCEPTANCE OF DIGITAL STOREFRONT TERMS
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              1. Acceptance of Terms
             </h2>
             <p>
-              By accessing, browsing, or purchasing garments through this digital exhibition website ({CONFIG.brandName}), 
+              By accessing, browsing, or purchasing garments through this digital storefront ({CONFIG.brandName}), 
               you confirm that you are at least {CONFIG.auth.minimumAge} years of age and legally competent to enter into binding 
               contracts under the Indian Contract Act, 1872.
             </p>
           </section>
 
           <section className="pt-6 space-y-3">
-            <h2 className="font-display text-base font-bold uppercase tracking-wider text-black">
-              2. PRICING, CURRENCY & STATUTORY TAXATION
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              2. Pricing, Currency &amp; Statutory Taxation
             </h2>
             <p>
               All prices displayed on the storefront are denominated exclusively in Indian Rupees ({CONFIG.currency}). 
-              {CONFIG.taxes.gstInclusiveNote}. We reserve the explicit right to adjust monograph prices or correct typographical 
+              {CONFIG.taxes.gstInclusiveNote}. We reserve the explicit right to adjust garment prices or correct typographical 
               clerical errors prior to order acceptance. In the rare event of an incorrect price display, you will be notified 
-              and provided the opportunity to confirm the revised transaction or receive an immediate 100% refund.
+              and provided the opportunity to confirm the revised transaction or receive an immediate full refund.
             </p>
           </section>
 
           <section className="pt-6 space-y-3">
-            <h2 className="font-display text-base font-bold uppercase tracking-wider text-black">
-              3. INVENTORY ALLOCATION & ORDER ACCEPTANCE
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              3. Inventory Allocation &amp; Order Acceptance
             </h2>
             <p>
-              Our collections are produced in finite, limited-run monograph allocations. Adding an item to your digital bag does 
+              Our collections are produced in finite, limited-run allocations. Adding an item to your digital bag does 
               not constitute a reserved holding until checkout payment is authoritatively captured by Razorpay. An order confirmation 
               email represents acknowledgment of your offer; acceptance is finalized upon physical dispatch from our fulfillment facility.
             </p>
           </section>
 
           <section className="pt-6 space-y-3">
-            <h2 className="font-display text-base font-bold uppercase tracking-wider text-black">
-              4. DELIVERY, TRANSIT & RISK PASSING
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              4. Delivery, Transit &amp; Risk Passing
             </h2>
             <p>
               Delivery timeframes ({CONFIG.shipping.estimatedDays}) represent estimated logistics windows. Title and risk of loss 
@@ -72,19 +72,19 @@ export default function TermsPage() {
           </section>
 
           <section className="pt-6 space-y-3">
-            <h2 className="font-display text-base font-bold uppercase tracking-wider text-black">
-              5. INTELLECTUAL PROPERTY RIGHTS
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              5. Intellectual Property Rights
             </h2>
             <p>
-              All trademarks, typography designs, bespoke garment silhouettes, pattern blueprints, photography monograph assets, 
+              All trademarks, typography designs, bespoke garment silhouettes, pattern blueprints, photography assets, 
               and editorial copy displayed on this website are the proprietary intellectual property of {CONFIG.brandName}. 
               Any reproduction, redistribution, or commercial exploitation without prior written authorization is strictly prohibited.
             </p>
           </section>
 
           <section className="pt-6 space-y-3">
-            <h2 className="font-display text-base font-bold uppercase tracking-wider text-black">
-              6. GOVERNING LAW & DISPUTE RESOLUTION
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              6. Governing Law &amp; Dispute Resolution
             </h2>
             <p>
               These Terms and Conditions shall be governed by and interpreted in accordance with the substantive laws of the 

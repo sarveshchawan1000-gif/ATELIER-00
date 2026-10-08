@@ -40,23 +40,23 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center gap-8 py-20">
-          <div className="w-24 h-24 border-2 border-black flex items-center justify-center">
-            <ShoppingBag className="w-10 h-10 text-charcoal" />
+      <main className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-8 bg-cream text-black">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center gap-6 py-20">
+          <div className="w-16 h-16 rounded-full bg-offwhite border border-grey/40 flex items-center justify-center text-charcoal">
+            <ShoppingBag className="w-7 h-7" />
           </div>
-          <div className="flex flex-col gap-3">
-            <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tighter uppercase">
-              YOUR BAG IS EMPTY
+          <div className="flex flex-col gap-2">
+            <h1 className="font-display text-2xl md:text-3xl font-semibold tracking-tight">
+              Your bag is empty
             </h1>
             <p className="font-body text-sm text-charcoal max-w-md mx-auto">
               It looks like you haven&apos;t added anything to your bag yet.
-              Discover pieces from our latest exhibition drop.
+              Discover pieces from our latest collections.
             </p>
           </div>
           <Link href="/shop">
-            <Button variant="primary" size="lg">
-              CONTINUE SHOPPING
+            <Button variant="primary" size="lg" className="bg-black text-white hover:bg-charcoal rounded-sm font-medium">
+              Continue Shopping
             </Button>
           </Link>
         </div>

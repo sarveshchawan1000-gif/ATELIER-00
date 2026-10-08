@@ -286,7 +286,7 @@ export function UpdateProductPhotoModal({
             <input
               id="update-alt-input"
               type="text"
-              placeholder="e.g. Atelier front angle view"
+              placeholder="e.g. Studio front angle view"
               value={altText}
               onChange={(e) => setAltText(e.target.value)}
               className="w-full h-[44px] px-3.5 bg-white text-[#111111] text-[14px] border border-[#D9D6D0] hover:border-[#B8B5AE] placeholder:text-[#9A9A9A] rounded-[2px] transition-colors focus:border-[#111111] focus:ring-2 focus:ring-[#111111] focus:ring-offset-2 focus:outline-none"

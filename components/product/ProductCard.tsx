@@ -27,9 +27,13 @@ export function ProductCard({ product }: ProductCardProps) {
   const primaryImage = product.images.find((i) => i.is_primary) || product.images[0];
   const secondaryImage = product.images.find((i) => !i.is_primary) || (product.images.length > 1 ? product.images[1] : null);
 
-  // Determine stock status
+  // Calculate total stock and low-stock count
   const totalStock = product.variants.reduce((acc, v) => acc + v.stock, 0);
   const isSoldOut = totalStock === 0;
+  const isLowStock = !isSoldOut && totalStock <= 3;
+  const discountPercent = product.sale_price && product.sale_price < product.mrp
+    ? Math.round(((product.mrp - product.sale_price) / product.mrp) * 100)
+    : 0;
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -84,15 +88,15 @@ export function ProductCard({ product }: ProductCardProps) {
         setShowSizePicker(false);
       }}
     >
-      {/* Product Image Container (3:4 Aspect Ratio, #F3F2EF background, no border) */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#F3F2EF] rounded-none">
-        <Link href={`/product/${product.slug}`} className="block w-full h-full relative">
+      {/* Product Image Container (4:5 Aspect Ratio, #EFEAE1 background) */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#EFEAE1] rounded-none">
+        <Link href={`/product/${product.slug}`} className="block w-full h-full relative focus-visible:outline-2 focus-visible:outline-black">
           <Image
             src={primaryImage.url}
             alt={primaryImage.alt_text || product.name}
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className={`object-cover transition-all duration-400 ease-out group-hover:scale-[1.03] ${
+            className={`object-cover transition-all duration-400 ease-out group-hover:scale-[1.04] ${
               hovered && secondaryImage ? 'opacity-0' : 'opacity-100'
             }`}
             priority={false}
@@ -103,7 +107,7 @@ export function ProductCard({ product }: ProductCardProps) {
               alt={secondaryImage.alt_text || product.name}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className={`object-cover transition-all duration-400 ease-out group-hover:scale-[1.03] absolute inset-0 ${
+              className={`object-cover transition-all duration-400 ease-out group-hover:scale-[1.04] absolute inset-0 ${
                 hovered ? 'opacity-100' : 'opacity-0'
               }`}
               priority={false}
@@ -111,31 +115,42 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
         </Link>
 
-        {/* Minimal Badges if needed (e.g. Sold Out) */}
-        {isSoldOut && (
-          <span className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 text-[11px] font-normal tracking-[0.04em] bg-[#111111]/80 text-white backdrop-blur-xs">
-            Sold out
-          </span>
-        )}
+        {/* Stock & Discount Badges */}
+        <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1">
+          {isSoldOut ? (
+            <span className="px-2 py-0.5 font-display text-[10px] font-bold tracking-widest bg-black text-white uppercase">
+              Sold out
+            </span>
+          ) : isLowStock ? (
+            <span className="px-2 py-0.5 font-display text-[10px] font-bold tracking-widest bg-cyan text-black uppercase">
+              Only {totalStock} left
+            </span>
+          ) : null}
+          {discountPercent > 0 && !isSoldOut && (
+            <span className="px-2 py-0.5 font-display text-[10px] font-bold tracking-widest bg-black text-white uppercase">
+              -{discountPercent}%
+            </span>
+          )}
+        </div>
 
-        {/* Wishlist Heart Button: 36px white 70% translucent circular background */}
+        {/* Wishlist Heart Button */}
         <button
           onClick={handleWishlistToggle}
           aria-label={isSaved ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
-          className={`absolute top-2.5 right-2.5 z-20 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-[#111111] hover:bg-white transition-all cursor-pointer ${
-            isSaved ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+          className={`absolute top-2.5 right-2.5 z-20 w-9 h-9 rounded-full bg-white/80 backdrop-blur-xs flex items-center justify-center text-black hover:bg-white transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-black ${
+            isSaved ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 focus-visible:opacity-100'
           }`}
         >
-          <Heart className={`w-5 h-5 stroke-[1.5] ${isSaved ? 'fill-[#111111] text-[#111111]' : ''}`} />
+          <Heart className={`w-4 h-4 stroke-[2] ${isSaved ? 'fill-black text-black' : ''}`} />
         </button>
 
-        {/* Desktop Quick Add Bar: slides up from bottom on hover */}
+        {/* Desktop Quick Add Bar */}
         {!isSoldOut && !showSizePicker && (
           <button
             onClick={handleQuickAddBarClick}
-            className="hidden md:flex absolute inset-x-0 bottom-0 z-20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 backdrop-blur-sm text-[#111111] hover:bg-[#111111] hover:text-white py-3 text-[13px] font-normal items-center justify-center cursor-pointer shadow-xs"
+            className="hidden md:flex absolute inset-x-0 bottom-0 z-20 translate-y-full group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-300 ease-out bg-black text-white hover:bg-charcoal py-3 font-display text-xs font-bold tracking-widest uppercase items-center justify-center cursor-pointer shadow-xs focus-visible:outline-2 focus-visible:outline-cyan"
           >
-            Quick add
+            Quick Add +
           </button>
         )}
 
@@ -144,26 +159,27 @@ export function ProductCard({ product }: ProductCardProps) {
           <button
             onClick={handleQuickAddBarClick}
             aria-label={`Quick add ${product.name}`}
-            className="md:hidden absolute bottom-2.5 right-2.5 z-20 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#111111] shadow-xs"
+            className="md:hidden absolute bottom-2.5 right-2.5 z-20 w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs cursor-pointer focus-visible:outline-2 focus-visible:outline-cyan"
           >
-            <Plus className="w-4 h-4 stroke-[1.5]" />
+            <Plus className="w-4 h-4 stroke-[2]" />
           </button>
         )}
 
-        {/* Size Selection Overlay if multiple sizes */}
+        {/* Size Selection Overlay */}
         {showSizePicker && (
           <div
-            className="absolute inset-x-0 bottom-0 z-30 bg-white/95 backdrop-blur-sm p-3 flex flex-col gap-2 animate-in slide-in-from-bottom duration-200"
+            className="absolute inset-x-0 bottom-0 z-30 bg-offwhite p-3 flex flex-col gap-2 border-t-2 border-black animate-in slide-in-from-bottom duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between text-[11px] text-[#6B6B6B]">
-              <span>Select size</span>
+            <div className="flex items-center justify-between font-display text-[10px] font-bold tracking-widest uppercase text-charcoal">
+              <span>Select Size</span>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowSizePicker(false);
                 }}
-                className="p-1 text-[#111111] hover:text-[#6B6B6B]"
+                className="p-1 text-black hover:text-charcoal focus-visible:outline-2 focus-visible:outline-black"
+                aria-label="Close size picker"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -176,10 +192,10 @@ export function ProductCard({ product }: ProductCardProps) {
                     key={variant.id}
                     disabled={!inStock}
                     onClick={(e) => handleQuickAdd(e, variant.size, variant.id)}
-                    className={`px-3 py-1.5 text-xs border transition-colors ${
+                    className={`px-3 py-1.5 font-display text-xs font-bold uppercase border transition-colors ${
                       inStock
-                        ? 'border-[#E8E6E1] text-[#111111] hover:bg-[#111111] hover:text-white hover:border-[#111111]'
-                        : 'border-[#E8E6E1]/50 text-[#6B6B6B]/40 line-through cursor-not-allowed'
+                        ? 'border-black text-black hover:bg-black hover:text-white cursor-pointer'
+                        : 'border-grey text-charcoal/40 line-through cursor-not-allowed bg-cream/40'
                     }`}
                   >
                     {variant.size}
@@ -191,21 +207,24 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
       </div>
 
-      {/* Product Content Details (12px padding-top, no borders) */}
-      <div className="pt-3 flex flex-col gap-0.5">
-        <span className="text-[12px] text-[#6B6B6B] font-normal leading-tight">
+      {/* Product Content Details */}
+      <div className="pt-3 flex flex-col gap-1">
+        <span className="font-display text-[11px] font-bold tracking-widest uppercase text-charcoal leading-tight">
           {product.category.name}
         </span>
         <Link
           href={`/product/${product.slug}`}
-          className="text-[14px] font-normal text-[#111111] hover:text-[#6B6B6B] transition-colors leading-snug line-clamp-1"
+          className="font-display text-[15px] font-bold tracking-tight text-black hover:text-charcoal transition-colors leading-snug line-clamp-1 flex items-center justify-between group/title focus-visible:outline-2 focus-visible:outline-black"
         >
-          {product.name}
+          <span>{product.name}</span>
+          <span className="text-xs text-charcoal group-hover/title:translate-x-1 group-focus-visible/title:translate-x-1 transition-transform inline-block">
+            →
+          </span>
         </Link>
-        <div className="flex items-center gap-2 text-[14px] text-[#111111] mt-0.5">
+        <div className="flex items-center gap-2 font-display text-[14px] font-bold text-black mt-0.5">
           <span>{formatINR(product.sale_price || product.mrp)}</span>
           {product.sale_price && product.sale_price < product.mrp && (
-            <span className="text-[#6B6B6B] line-through text-[13px]">
+            <span className="text-charcoal/60 line-through text-[13px] font-normal">
               {formatINR(product.mrp)}
             </span>
           )}

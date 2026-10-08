@@ -25,11 +25,34 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: `${CONFIG.brandName} | Premium Fashion E-Commerce`,
+    default: `${CONFIG.brandName} | Built for the Next Generation`,
     template: `%s | ${CONFIG.brandName}`,
   },
-  description: 'Architectural garment engineering meets high-contrast editorial curation in India.',
+  description: 'ZIPUP NATION — Premium streetwear movement. Built for the next generation. Monolithic silhouettes, heavyweight cotton, and structural street architecture.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  openGraph: {
+    title: `${CONFIG.brandName} | Built for the Next Generation`,
+    description: 'ZIPUP NATION — Premium streetwear movement. Built for the next generation.',
+    type: 'website',
+    siteName: CONFIG.brandName,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${CONFIG.brandName} | Built for the Next Generation`,
+    description: 'ZIPUP NATION — Premium streetwear movement. Built for the next generation.',
+  },
+};
+
+const jsonLdOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'ClothingStore',
+  name: CONFIG.brandName,
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  description: 'Premium streetwear movement. Built for the next generation.',
+  brand: {
+    '@type': 'Brand',
+    name: CONFIG.brandName,
+  },
 };
 
 export default function RootLayout({
@@ -39,6 +62,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-cream text-black font-body">
         <ToastProvider>
           <SkipLink />

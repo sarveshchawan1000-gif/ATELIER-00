@@ -8,6 +8,7 @@ import { getProducts } from '@/lib/db';
 import { ProductWithDetails } from '@/lib/db/types';
 import { formatINR } from '@/lib/pricing';
 import { Search, X } from 'lucide-react';
+import { CONFIG } from '@/lib/config';
 
 export interface SearchOverlayProps {
   isOpen: boolean;
@@ -77,17 +78,17 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-[#FAFAF8] border-b border-[#E8E6E1] p-6 md:p-10 w-full shadow-lg animate-in slide-in-from-top duration-200">
+      <div className="bg-cream border-b border-grey p-6 md:p-10 w-full shadow-lg animate-in slide-in-from-top duration-200">
         <div className="max-w-4xl mx-auto flex flex-col gap-6">
           {/* Header Row */}
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium tracking-wider text-[#6B6B6B] uppercase">
-              Search the Atelier
+            <span className="font-display text-xs font-bold tracking-widest text-charcoal uppercase">
+              SEARCH {CONFIG.brandName}
             </span>
             <button
               onClick={onClose}
               aria-label="Close search overlay"
-              className="p-1.5 text-[#111] hover:text-[#6B6B6B] transition-colors rounded-sm"
+              className="p-1.5 text-black hover:text-charcoal transition-colors rounded-sm focus-visible:outline-2 focus-visible:outline-black"
             >
               <X className="w-5 h-5 stroke-[1.5]" />
             </button>
@@ -95,20 +96,20 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
           {/* Search Form */}
           <form onSubmit={handleSubmit} className="relative flex items-center">
-            <Search className="absolute left-4 w-5 h-5 text-[#6B6B6B] stroke-[1.5] pointer-events-none" />
+            <Search className="absolute left-4 w-5 h-5 text-charcoal stroke-[1.5] pointer-events-none" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products, categories, styles..."
-              className="w-full bg-white border border-[#E8E6E1] pl-12 pr-16 py-3.5 text-sm md:text-base text-[#111] placeholder:text-[#6B6B6B]/60 rounded-none focus:outline-none focus:border-[#111] transition-colors"
+              placeholder="SEARCH PRODUCTS, HOODIES, TEES, JACKETS..."
+              className="w-full bg-offwhite border border-grey pl-12 pr-16 py-3.5 font-display text-sm md:text-base text-black placeholder:text-charcoal/60 rounded-none focus:outline-none focus:border-black transition-colors uppercase"
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                className="absolute right-4 text-xs font-medium text-[#6B6B6B] hover:text-[#111] transition-colors"
+                className="absolute right-4 text-xs font-bold text-charcoal hover:text-black transition-colors uppercase"
               >
                 Clear
               </button>
@@ -118,7 +119,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
           {/* Quick Popular Search Tags */}
           {!query && (
             <div className="flex flex-col gap-2 pt-2">
-              <span className="text-[11px] font-medium text-[#6B6B6B] tracking-wider uppercase">
+              <span className="font-display text-[11px] font-bold text-charcoal tracking-wider uppercase">
                 Popular searches
               </span>
               <div className="flex flex-wrap gap-2">
@@ -126,7 +127,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                   <button
                     key={tag}
                     onClick={() => setQuery(tag)}
-                    className="px-3.5 py-1.5 bg-transparent border border-[#D9D6D0] hover:border-[#111] hover:text-[#111] text-xs text-[#6B6B6B] rounded-full transition-colors"
+                    className="px-3.5 py-1.5 bg-offwhite border border-grey hover:border-black hover:text-black font-display text-xs font-bold uppercase text-charcoal rounded-none transition-colors"
                   >
                     {tag}
                   </button>

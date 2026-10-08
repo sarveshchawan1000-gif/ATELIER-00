@@ -19,72 +19,72 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: 'f-1',
     category: 'orders',
-    question: 'WHICH PAYMENT METHODS ARE ACCEPTED?',
+    question: 'Which payment methods are accepted?',
     answer: 'We accept all major Indian payment rails via Razorpay: UPI (Google Pay, PhonePe, Paytm, BHIM), Indian and International Credit/Debit Cards (Visa, MasterCard, RuPay, Amex), Net Banking across 50+ Indian banks, and approved digital wallets.',
   },
   {
     id: 'f-2',
     category: 'orders',
-    question: 'ARE TAXES (GST) INCLUDED IN THE DISPLAYED PRICE?',
+    question: 'Are taxes (GST) included in the displayed price?',
     answer: `Yes. All prices listed on ${CONFIG.brandName} are fully inclusive of statutory Goods and Services Tax (GST). A detailed tax invoice containing our GSTIN number will accompany your dispatch and be emailed upon fulfillment.`,
   },
   {
     id: 'f-3',
     category: 'orders',
-    question: 'DO YOU OFFER CASH ON DELIVERY (COD)?',
-    answer: 'To ensure seamless transit security for limited monograph drops and eliminate high reverse logistics waste, our store operates exclusively on prepaid payment methods at this time.',
+    question: 'Do you offer Cash on Delivery (COD)?',
+    answer: 'To ensure seamless transit security for limited drops and eliminate high reverse logistics waste, our store operates exclusively on prepaid payment methods at this time.',
   },
   {
     id: 'f-4',
     category: 'shipping',
-    question: 'HOW MUCH DOES SHIPPING COST AND HOW LONG DOES IT TAKE?',
+    question: 'How much does shipping cost and how long does it take?',
     answer: `Orders of ${formatINR(CONFIG.shipping.freeShippingThresholdPaise)} or more receive complimentary standard shipping. For orders below this threshold, a flat delivery fee of ${formatINR(CONFIG.shipping.flatRatePaise)} is applied. Deliveries across metropolitan hubs take 2-3 business days, while regional pincodes arrive in 4-5 business days.`,
   },
   {
     id: 'f-5',
     category: 'shipping',
-    question: 'HOW CAN I TRACK MY SHIPMENT?',
+    question: 'How can I track my shipment?',
     answer: 'As soon as your package leaves our Mumbai fulfillment hub, an Airway Bill (AWB) tracking link is dispatched via SMS and email. You can view live checkpoint scans directly through our courier partner portal.',
   },
   {
     id: 'f-6',
     category: 'sizing',
-    question: 'HOW DO YOUR GARMENTS FIT?',
+    question: 'How do your garments fit?',
     answer: 'Our silhouettes feature deliberate architectural draping—typically characterized by dropped shoulder lines, boxy chest measurements, and structured heavy drape. If you prefer a tailored, standard fit, we recommend sizing down one size. Review our comprehensive Size Guide for exact garment measurements.',
   },
   {
     id: 'f-7',
     category: 'sizing',
-    question: 'WHAT DOES "GSM" MEAN FOR YOUR FABRICS?',
+    question: 'What does "GSM" mean for your fabrics?',
     answer: 'GSM (Grams per Square Metre) denotes the density of the knit. Standard commercial tees are 160–180 GSM. Our tees are engineered at 320 GSM, while our hoodies are crafted from 450 GSM French Terry, delivering exceptional structure, durability, and luxury tactile presence.',
   },
   {
     id: 'f-8',
     category: 'returns',
-    question: `WHAT IS YOUR RETURN AND EXCHANGE WINDOW?`,
+    question: `What is your return and exchange window?`,
     answer: `We provide a ${CONFIG.returns.windowDays}-calendar-day return and exchange policy from the verified delivery timestamp. Garments must remain in unworn, unwashed condition with all original security seals and tags attached.`,
   },
   {
     id: 'f-9',
     category: 'returns',
-    question: `HOW LONG DOES A REFUND TAKE TO REFLECT?`,
-    answer: `Once your return passes quality inspection at our atelier, refunds are initiated within 24 hours. UPI payments settle in 24–48 banking hours; credit/debit card refunds typically credit your statement in ${CONFIG.returns.refundTimelineDays}.`,
+    question: `How long does a refund take to reflect?`,
+    answer: `Once your return passes quality inspection, refunds are initiated within 24 hours. UPI payments settle in 24–48 banking hours; credit/debit card refunds typically credit your statement in ${CONFIG.returns.refundTimelineDays}.`,
   },
   {
     id: 'f-10',
     category: 'care',
-    question: 'HOW SHOULD I WASH AND CARE FOR HEAVYWEIGHT ORGANIC COTTON?',
+    question: 'How should I wash and care for heavyweight organic cotton?',
     answer: 'Wash cold inside out at 30°C or below on a gentle cycle with neutral liquid detergent. Do not tumble dry. Dry flat in the shade to preserve garment shape and avoid direct sun bleaching. Use a cool iron on reverse.',
   },
 ];
 
 const CATEGORIES = [
-  { id: 'all', label: 'ALL QUESTIONS' },
-  { id: 'orders', label: 'ORDERS & PAYMENT' },
-  { id: 'shipping', label: 'SHIPPING & LOGISTICS' },
-  { id: 'sizing', label: 'SIZING & FABRIC' },
-  { id: 'returns', label: 'RETURNS & EXCHANGES' },
-  { id: 'care', label: 'GARMENT CARE' },
+  { id: 'all', label: 'All' },
+  { id: 'orders', label: 'Orders & Payment' },
+  { id: 'shipping', label: 'Shipping' },
+  { id: 'sizing', label: 'Sizing & Fabric' },
+  { id: 'returns', label: 'Returns' },
+  { id: 'care', label: 'Garment Care' },
 ];
 
 export default function FAQPage() {
@@ -105,30 +105,29 @@ export default function FAQPage() {
   });
 
   return (
-    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto space-y-12">
+    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8 bg-cream text-black">
+      <div className="max-w-4xl mx-auto space-y-10">
         {/* Header */}
-        <div className="border-b-2 border-black pb-8">
-          <span className="font-display text-xs tracking-widest text-cyan uppercase bg-black px-2.5 py-1 inline-block mb-3">
-            ASSISTANCE ARCHIVE
+        <div className="border-b border-grey/60 pb-8">
+          <span className="font-body text-xs font-medium tracking-wider text-charcoal uppercase block mb-3">
+            Help Center
           </span>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tighter uppercase text-black">
-            FREQUENTLY ASKED QUESTIONS
+          <h1 className="font-display text-3xl sm:text-5xl font-semibold tracking-tight text-black">
+            Frequently Asked Questions
           </h1>
-          <p className="font-body text-sm md:text-base text-charcoal max-w-2xl mt-4">
-            Detailed guidance regarding order fulfillment, sizing specifications, payment rails, 
-            and atelier care protocols.
+          <p className="font-body text-sm md:text-base text-charcoal max-w-2xl mt-4 leading-relaxed">
+            Guidance on orders, sizing, payment, shipping, and garment care.
           </p>
         </div>
 
         {/* Search Bar */}
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-charcoal pointer-events-none" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal/50 pointer-events-none" />
           <Input
-            placeholder="SEARCH QUESTIONS (E.G. GST, SHIPPING, RETURN, SIZING)..."
+            placeholder="Search questions..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-12 py-3.5 bg-offwhite border-2 border-black text-sm uppercase tracking-wider"
+            className="pl-11 py-3 bg-white border border-grey/60 rounded-sm text-sm"
           />
         </div>
 
@@ -138,10 +137,10 @@ export default function FAQPage() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`font-display text-xs font-bold tracking-wider uppercase px-4 py-2 border-2 transition-colors ${
+              className={`font-body text-sm font-medium px-4 py-2 border rounded-full transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-black text-cyan border-black'
-                  : 'bg-offwhite text-black border-grey hover:border-black'
+                  ? 'bg-black text-white border-black'
+                  : 'bg-white text-charcoal border-grey/60 hover:border-black/30'
               }`}
             >
               {cat.label}
@@ -149,19 +148,19 @@ export default function FAQPage() {
           ))}
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="space-y-4">
+        {/* FAQ Accordion */}
+        <div className="space-y-3">
           {filteredFAQs.length === 0 ? (
-            <div className="bg-offwhite border-2 border-black p-12 text-center space-y-4">
-              <HelpCircle className="w-8 h-8 text-charcoal mx-auto" />
-              <p className="font-display text-base font-bold uppercase tracking-wider">
-                NO MATCHING QUESTIONS FOUND
+            <div className="bg-offwhite border border-grey/30 rounded-sm p-12 text-center space-y-4">
+              <HelpCircle className="w-7 h-7 text-charcoal/40 mx-auto" />
+              <p className="font-display text-base font-medium text-black">
+                No matching questions found
               </p>
-              <p className="font-body text-xs text-charcoal">
-                Try searching for a different keyword or reach out directly to our concierge team.
+              <p className="font-body text-sm text-charcoal">
+                Try a different keyword or reach out to our support team.
               </p>
-              <Button variant="ghost" size="sm" onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}>
-                CLEAR SEARCH FILTERS
+              <Button variant="ghost" size="sm" onClick={() => { setSearchQuery(''); setActiveCategory('all'); }} className="font-medium">
+                Clear Filters
               </Button>
             </div>
           ) : (
@@ -170,20 +169,20 @@ export default function FAQPage() {
               return (
                 <div
                   key={faq.id}
-                  className="bg-offwhite border-2 border-black transition-colors"
+                  className="bg-offwhite border border-grey/30 rounded-sm overflow-hidden transition-colors"
                 >
                   <button
                     onClick={() => toggleFAQ(faq.id)}
                     aria-expanded={isOpen}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-display text-sm md:text-base font-bold tracking-wider uppercase text-black hover:text-cyan hover:bg-black/5 transition-colors"
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-body text-sm md:text-base font-medium text-black hover:bg-black/[0.02] transition-colors"
                   >
                     <span>{faq.question}</span>
-                    <span className="p-1 bg-black text-cyan flex-shrink-0">
+                    <span className="text-charcoal/40 flex-shrink-0">
                       {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     </span>
                   </button>
                   {isOpen && (
-                    <div className="px-5 pb-5 pt-1 border-t border-grey font-body text-xs md:text-sm text-charcoal leading-relaxed">
+                    <div className="px-5 pb-5 pt-0 border-t border-grey/20 font-body text-sm text-charcoal leading-relaxed">
                       {faq.answer}
                     </div>
                   )}
@@ -193,19 +192,19 @@ export default function FAQPage() {
           )}
         </div>
 
-        {/* Still Need Help Banner */}
-        <div className="bg-black text-cream p-8 md:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-black">
+        {/* Help Banner */}
+        <div className="bg-black text-white rounded-sm p-8 md:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-display text-xl font-bold uppercase tracking-tight text-cream">
-              HAVE A BESPOKE QUESTION?
+            <h3 className="font-display text-lg font-semibold text-white">
+              Have a specific question?
             </h3>
-            <p className="font-body text-xs text-grey mt-1">
-              Our atelier client advisors are available Monday to Saturday, 10:00 - 19:00 IST.
+            <p className="font-body text-sm text-white/50 mt-1">
+              Our team is available Monday to Saturday, 10:00 – 19:00 IST.
             </p>
           </div>
           <Link href="/contact" className="w-full sm:w-auto">
-            <Button variant="primary" className="bg-cyan text-black hover:bg-cream w-full sm:w-auto">
-              CONTACT CONCIERGE <ArrowRight className="w-4 h-4 ml-2" />
+            <Button variant="primary" className="bg-white text-black hover:bg-white/90 w-full sm:w-auto font-medium transition-all">
+              Contact Support <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
         </div>

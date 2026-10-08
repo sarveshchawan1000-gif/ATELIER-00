@@ -19,7 +19,7 @@ export default function AdminLayout({
       {/* Admin Top Operations Bar */}
       <div className="bg-black text-cream px-4 md:px-8 py-2.5 border-b border-black flex items-center justify-between font-display text-xs tracking-wider uppercase">
         <div className="flex items-center gap-3">
-          <span className="font-bold text-cyan">{CONFIG.brandName} // ATELIER CONSOLE</span>
+          <span className="font-bold text-cyan">{CONFIG.brandName} // STUDIO CONSOLE</span>
           <span className="hidden sm:inline text-grey/50">|</span>
           <span className="hidden sm:inline bg-cyan/20 text-cyan px-2 py-0.5 text-[10px] border border-cyan/40">
             ROLE: OWNER

@@ -3,8 +3,15 @@
  * Authority: PRD v2.0 & Decisions D1, D3, D5, D6, D7, D8, D9
  */
 
+export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || 'ZIPUP NATION';
+export const BRAND_HALVES = {
+  left: 'ZIPUP',
+  right: 'NATION',
+} as const;
+
 export const CONFIG = {
-  brandName: process.env.NEXT_PUBLIC_BRAND_NAME || 'ATELIER 00',
+  brandName: BRAND_NAME,
+  brandHalves: BRAND_HALVES,
   currency: 'INR',
   currencySymbol: '₹',
 

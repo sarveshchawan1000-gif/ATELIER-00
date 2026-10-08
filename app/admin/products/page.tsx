@@ -65,7 +65,7 @@ export default function AdminProductsPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="font-display text-[10px] font-bold text-cyan bg-black px-2 py-0.5 uppercase tracking-widest">
-              ATELIER OWNER STUDIO
+              BRAND STUDIO // GARMENT MANAGER
             </span>
           </div>
           <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight uppercase">

@@ -27,112 +27,113 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#FAFAF8] text-[#111111] border-t border-[#E8E6E1] pt-16 pb-12 px-6 md:px-12 mt-auto">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-[#E8E6E1]">
+    <footer className="bg-cream text-black border-t border-grey/40 pt-16 pb-12 px-6 md:px-12 mt-auto">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-grey/30">
         {/* Brand & Newsletter Column */}
         <div className="md:col-span-5 flex flex-col gap-5">
-          <Link href="/" className="text-xl font-medium tracking-[0.04em] text-[#111111]">
-            {CONFIG.brandName}
+          <Link href="/" className="font-display text-xl font-semibold tracking-tight text-black uppercase flex items-center gap-1">
+            <span>{CONFIG.brandHalves.left}</span>
+            <span className="text-charcoal">{CONFIG.brandHalves.right}</span>
           </Link>
-          <p className="text-xs md:text-sm text-[#6B6B6B] max-w-sm leading-relaxed">
-            Minimal, architectural garments engineered with pure materials and refined silhouettes.
+          <p className="font-body text-sm text-charcoal max-w-sm leading-relaxed">
+            Built for the next generation. Heavyweight silhouettes, monolithic cuts, and structural street architecture.
           </p>
 
-          {/* Minimal Newsletter Form with underline-only field */}
+          {/* Newsletter Form */}
           <div className="mt-2 max-w-md">
-            <span className="text-[13px] font-medium text-[#111111] block mb-2">
-              Newsletter
+            <span className="font-body text-xs font-medium uppercase tracking-wider text-charcoal block mb-2">
+              Join the drop list
             </span>
             {submitted ? (
-              <p className="text-xs text-[#111111]">
-                ✓ Thank you. You are subscribed to upcoming collection drops.
+              <p className="text-sm text-black font-medium">
+                ✓ You&apos;re on the list.
               </p>
             ) : (
               <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3">
-                <div className="flex items-center gap-3 border-b border-[#111111] pb-1">
+                <div className="flex items-center gap-3 border-b border-grey pb-1">
                   <input
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-transparent text-sm text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none py-1"
+                    className="w-full bg-transparent text-sm font-body text-black placeholder:text-charcoal/50 focus:outline-none py-1"
                   />
                   <button
                     type="submit"
-                    className="text-xs font-medium text-[#111111] hover:text-[#6B6B6B] transition-colors uppercase tracking-wider py-1 shrink-0"
+                    className="font-body text-sm font-medium text-black hover:text-charcoal transition-colors py-1 shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-black"
                   >
-                    Subscribe
+                    Join →
                   </button>
                 </div>
                 <Checkbox
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   label={
-                    <span className="text-[11px] text-[#6B6B6B]">
-                      I agree to receive collection drop updates per the{' '}
-                      <Link href="/privacy" className="underline hover:text-[#111111]">
+                    <span className="text-[11px] text-charcoal">
+                      I agree to receive updates per the{' '}
+                      <Link href="/privacy" className="underline hover:text-black">
                         Privacy Policy
                       </Link>
                       .
                     </span>
                   }
                 />
-                {error && <p className="text-xs text-error-red">{error}</p>}
+                {error && <p className="text-xs text-error font-medium">{error}</p>}
               </form>
             )}
           </div>
         </div>
 
-        {/* Links Grid: 4 Tidy Columns */}
-        <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {/* Links Grid */}
+        <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8 font-body">
           {/* Shop */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-[13px] font-medium text-[#111111]">Shop</h4>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
+            <h4 className="text-xs font-medium tracking-wider uppercase text-black">Shop</h4>
+            <ul className="flex flex-col gap-2 text-sm text-charcoal">
               <li>
-                <Link href="/shop?gender=male" className="hover:text-[#111111] transition-colors">
+                <Link href="/shop?gender=male" className="hover:text-black transition-colors">
                   Men
                 </Link>
               </li>
               <li>
-                <Link href="/shop?gender=female" className="hover:text-[#111111] transition-colors">
+                <Link href="/shop?gender=female" className="hover:text-black transition-colors">
                   Women
                 </Link>
               </li>
               <li>
-                <Link href="/shop?gender=kids" className="hover:text-[#111111] transition-colors">
+                <Link href="/shop?gender=kids" className="hover:text-black transition-colors">
                   Kids
                 </Link>
               </li>
               <li>
-                <Link href="/collections/new-arrivals" className="hover:text-[#111111] transition-colors">
+                <Link href="/collections/new-arrivals" className="hover:text-black transition-colors">
                   New Arrivals
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="hover:text-[#111111] transition-colors">
-                  All Garments
+                <Link href="/shop" className="hover:text-black transition-colors">
+                  All Products
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* About */}
+          {/* Movement */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-[13px] font-medium text-[#111111]">About</h4>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
+            <h4 className="text-xs font-medium tracking-wider uppercase text-black">Movement</h4>
+            <ul className="flex flex-col gap-2 text-sm text-charcoal">
               <li>
-                <Link href="/about" className="hover:text-[#111111] transition-colors">
-                  Our Story
+                <Link href="/collections" className="hover:text-black transition-colors">
+                  Collections
                 </Link>
               </li>
               <li>
-                <Link href="/about#atelier" className="hover:text-[#111111] transition-colors">
-                  Atelier
+                <Link href="/about" className="hover:text-black transition-colors">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#111111] transition-colors">
+                <Link href="/contact" className="hover:text-black transition-colors">
                   Contact
                 </Link>
               </li>
@@ -141,25 +142,25 @@ export function Footer() {
 
           {/* Help */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-[13px] font-medium text-[#111111]">Help</h4>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
+            <h4 className="text-xs font-medium tracking-wider uppercase text-black">Help</h4>
+            <ul className="flex flex-col gap-2 text-sm text-charcoal">
               <li>
-                <Link href="/shipping" className="hover:text-[#111111] transition-colors">
+                <Link href="/shipping" className="hover:text-black transition-colors">
                   Shipping & Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/returns" className="hover:text-[#111111] transition-colors">
-                  Returns & Refunds
+                <Link href="/returns" className="hover:text-black transition-colors">
+                  Returns & Exchange
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-[#111111] transition-colors">
+                <Link href="/faq" className="hover:text-black transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/size-guide" className="hover:text-[#111111] transition-colors">
+                <Link href="/size-guide" className="hover:text-black transition-colors">
                   Size Guide
                 </Link>
               </li>
@@ -168,15 +169,15 @@ export function Footer() {
 
           {/* Legal */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-[13px] font-medium text-[#111111]">Legal</h4>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#6B6B6B]">
+            <h4 className="text-xs font-medium tracking-wider uppercase text-black">Legal</h4>
+            <ul className="flex flex-col gap-2 text-sm text-charcoal">
               <li>
-                <Link href="/privacy" className="hover:text-[#111111] transition-colors">
+                <Link href="/privacy" className="hover:text-black transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-[#111111] transition-colors">
+                <Link href="/terms" className="hover:text-black transition-colors">
                   Terms & Conditions
                 </Link>
               </li>
@@ -185,22 +186,22 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Footer Bottom Metadata Bar */}
-      <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#6B6B6B]">
+      {/* Footer Bottom */}
+      <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-charcoal">
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
           <p>© 2026 {CONFIG.brandName}. All rights reserved.</p>
           <p>{CONFIG.taxes.gstInclusiveNote}</p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link href="/account/orders/BRD-2026-981245" className="hover:text-[#111111] hover:underline">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-[11px]">
+          <Link href="/account/orders/BRD-2026-981245" className="hover:text-black transition-colors">
             Track Order
           </Link>
-          <span className="text-[#E8E6E1]">/</span>
-          <Link href="/admin" className="hover:text-[#111111] hover:underline">
-            Console
+          <span className="text-grey">·</span>
+          <Link href="/admin" className="hover:text-black transition-colors">
+            Studio
           </Link>
-          <span className="text-[#E8E6E1]">/</span>
-          <Link href="/dev/styleguide" className="hover:text-[#111111] hover:underline">
+          <span className="text-grey">·</span>
+          <Link href="/dev/styleguide" className="hover:text-black transition-colors">
             Styleguide
           </Link>
         </div>

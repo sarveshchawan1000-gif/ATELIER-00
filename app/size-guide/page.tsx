@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-import { ArrowRight, Ruler, HelpCircle } from 'lucide-react';
+import { ArrowRight, Ruler, Sparkles } from 'lucide-react';
 
 type Unit = 'cm' | 'in';
 
@@ -63,81 +63,81 @@ export default function SizeGuidePage() {
   const unitLabel = unit === 'cm' ? 'CM' : 'INCHES';
 
   return (
-    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto space-y-12">
+    <main className="min-h-screen pt-24 md:pt-32 pb-24 px-4 md:px-8 bg-cream text-black">
+      <div className="max-w-4xl mx-auto space-y-12">
         {/* Header */}
-        <div className="border-b-2 border-black pb-8">
-          <span className="font-display text-xs tracking-widest text-cyan uppercase bg-black px-2.5 py-1 inline-block mb-3">
-            ATELIER METRICS
+        <div className="border-b border-grey/60 pb-8">
+          <span className="font-body text-xs font-medium tracking-wider text-charcoal uppercase block mb-3">
+            Garment Dimensions
           </span>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tighter uppercase text-black">
-            SIZE & PROPORTION GUIDE
+          <h1 className="font-display text-3xl sm:text-5xl font-semibold tracking-tight text-black">
+            Size &amp; Proportion Guide
           </h1>
-          <p className="font-body text-sm md:text-base text-charcoal max-w-2xl mt-4">
-            Our garments feature intentional relaxed boxy architecture with drop shoulders. 
+          <p className="font-body text-sm md:text-base text-charcoal max-w-2xl mt-4 leading-relaxed">
+            Our silhouettes feature deliberate architectural draping with relaxed boxy cuts and dropped shoulders. 
             All measurements reflect actual garment dimensions laid flat.
           </p>
         </div>
 
         {/* Controls Bar: Category Tabs & Unit Toggle */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-black pb-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-grey/40 pb-4">
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setActiveTab('tee')}
-              className={`font-display text-xs font-bold tracking-wider uppercase px-4 py-2 border-2 transition-colors ${
+              className={`font-body text-xs font-medium tracking-wider uppercase px-4 py-2 rounded-full transition-all ${
                 activeTab === 'tee'
-                  ? 'bg-black text-cyan border-black'
-                  : 'bg-offwhite text-black border-grey hover:border-black'
+                  ? 'bg-black text-white'
+                  : 'bg-offwhite text-charcoal border border-grey/40 hover:text-black hover:border-grey'
               }`}
             >
-              OVERSIZED TEES
+              Oversized Tees
             </button>
             <button
               onClick={() => setActiveTab('hoodie')}
-              className={`font-display text-xs font-bold tracking-wider uppercase px-4 py-2 border-2 transition-colors ${
+              className={`font-body text-xs font-medium tracking-wider uppercase px-4 py-2 rounded-full transition-all ${
                 activeTab === 'hoodie'
-                  ? 'bg-black text-cyan border-black'
-                  : 'bg-offwhite text-black border-grey hover:border-black'
+                  ? 'bg-black text-white'
+                  : 'bg-offwhite text-charcoal border border-grey/40 hover:text-black hover:border-grey'
               }`}
             >
-              HEAVY HOODIES
+              Heavy Hoodies
             </button>
             <button
               onClick={() => setActiveTab('shirt')}
-              className={`font-display text-xs font-bold tracking-wider uppercase px-4 py-2 border-2 transition-colors ${
+              className={`font-body text-xs font-medium tracking-wider uppercase px-4 py-2 rounded-full transition-all ${
                 activeTab === 'shirt'
-                  ? 'bg-black text-cyan border-black'
-                  : 'bg-offwhite text-black border-grey hover:border-black'
+                  ? 'bg-black text-white'
+                  : 'bg-offwhite text-charcoal border border-grey/40 hover:text-black hover:border-grey'
               }`}
             >
-              TAILORED SHIRTS
+              Tailored Shirts
             </button>
             <button
               onClick={() => setActiveTab('trouser')}
-              className={`font-display text-xs font-bold tracking-wider uppercase px-4 py-2 border-2 transition-colors ${
+              className={`font-body text-xs font-medium tracking-wider uppercase px-4 py-2 rounded-full transition-all ${
                 activeTab === 'trouser'
-                  ? 'bg-black text-cyan border-black'
-                  : 'bg-offwhite text-black border-grey hover:border-black'
+                  ? 'bg-black text-white'
+                  : 'bg-offwhite text-charcoal border border-grey/40 hover:text-black hover:border-grey'
               }`}
             >
-              PLEATED TROUSERS
+              Pleated Trousers
             </button>
           </div>
 
           {/* Unit Toggle */}
-          <div className="flex items-center border-2 border-black bg-offwhite">
+          <div className="flex items-center p-1 bg-offwhite border border-grey/50 rounded-full">
             <button
               onClick={() => setUnit('cm')}
-              className={`px-3 py-1.5 font-display text-xs font-bold uppercase transition-colors ${
-                unit === 'cm' ? 'bg-cyan text-black' : 'text-charcoal hover:text-black'
+              className={`px-3 py-1 font-body text-xs font-medium rounded-full transition-all ${
+                unit === 'cm' ? 'bg-black text-white' : 'text-charcoal hover:text-black'
               }`}
             >
               CM
             </button>
             <button
               onClick={() => setUnit('in')}
-              className={`px-3 py-1.5 font-display text-xs font-bold uppercase transition-colors ${
-                unit === 'in' ? 'bg-cyan text-black' : 'text-charcoal hover:text-black'
+              className={`px-3 py-1 font-body text-xs font-medium rounded-full transition-all ${
+                unit === 'in' ? 'bg-black text-white' : 'text-charcoal hover:text-black'
               }`}
             >
               INCHES
@@ -146,27 +146,27 @@ export default function SizeGuidePage() {
         </div>
 
         {/* Sizing Table */}
-        <div className="bg-offwhite border-2 border-black overflow-x-auto shadow-[6px_6px_0px_0px_#111111]">
+        <div className="bg-offwhite border border-grey/40 rounded-sm overflow-hidden overflow-x-auto">
           {activeTab !== 'trouser' ? (
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-black text-cream border-b-2 border-black font-display text-xs uppercase tracking-wider">
-                  <th className="p-4 border-r border-grey/30">SIZE</th>
-                  <th className="p-4 border-r border-grey/30">CHEST ({unitLabel})</th>
-                  <th className="p-4 border-r border-grey/30">SHOULDER ({unitLabel})</th>
-                  <th className="p-4 border-r border-grey/30">LENGTH ({unitLabel})</th>
-                  <th className="p-4">SLEEVE ({unitLabel})</th>
+                <tr className="bg-cream/60 border-b border-grey/40 font-body text-xs uppercase tracking-wider text-charcoal">
+                  <th className="p-4 font-semibold text-black">Size</th>
+                  <th className="p-4 font-medium">Chest ({unitLabel})</th>
+                  <th className="p-4 font-medium">Shoulder ({unitLabel})</th>
+                  <th className="p-4 font-medium">Length ({unitLabel})</th>
+                  <th className="p-4 font-medium">Sleeve ({unitLabel})</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-grey font-display text-xs">
+              <tbody className="divide-y divide-grey/20 font-body text-xs">
                 {(activeTab === 'tee' ? TEE_SIZES : activeTab === 'hoodie' ? HOODIE_SIZES : SHIRT_SIZES).map(
                   (row) => (
-                    <tr key={row.size} className="hover:bg-cyan/10 transition-colors">
-                      <td className="p-4 font-bold text-black border-r border-grey">{row.size}</td>
-                      <td className="p-4 border-r border-grey">{row.chest[unitIdx]}</td>
-                      <td className="p-4 border-r border-grey">{row.shoulder[unitIdx]}</td>
-                      <td className="p-4 border-r border-grey">{row.length[unitIdx]}</td>
-                      <td className="p-4">{row.sleeve[unitIdx]}</td>
+                    <tr key={row.size} className="hover:bg-cream/40 transition-colors">
+                      <td className="p-4 font-semibold text-black">{row.size}</td>
+                      <td className="p-4 text-charcoal">{row.chest[unitIdx]}</td>
+                      <td className="p-4 text-charcoal">{row.shoulder[unitIdx]}</td>
+                      <td className="p-4 text-charcoal">{row.length[unitIdx]}</td>
+                      <td className="p-4 text-charcoal">{row.sleeve[unitIdx]}</td>
                     </tr>
                   )
                 )}
@@ -175,22 +175,22 @@ export default function SizeGuidePage() {
           ) : (
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-black text-cream border-b-2 border-black font-display text-xs uppercase tracking-wider">
-                  <th className="p-4 border-r border-grey/30">SIZE</th>
-                  <th className="p-4 border-r border-grey/30">WAIST ({unitLabel})</th>
-                  <th className="p-4 border-r border-grey/30">HIP ({unitLabel})</th>
-                  <th className="p-4 border-r border-grey/30">TOTAL LENGTH ({unitLabel})</th>
-                  <th className="p-4">LEG OPENING ({unitLabel})</th>
+                <tr className="bg-cream/60 border-b border-grey/40 font-body text-xs uppercase tracking-wider text-charcoal">
+                  <th className="p-4 font-semibold text-black">Size</th>
+                  <th className="p-4 font-medium">Waist ({unitLabel})</th>
+                  <th className="p-4 font-medium">Hip ({unitLabel})</th>
+                  <th className="p-4 font-medium">Total Length ({unitLabel})</th>
+                  <th className="p-4 font-medium">Leg Opening ({unitLabel})</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-grey font-display text-xs">
+              <tbody className="divide-y divide-grey/20 font-body text-xs">
                 {TROUSER_SIZES.map((row) => (
-                  <tr key={row.size} className="hover:bg-cyan/10 transition-colors">
-                    <td className="p-4 font-bold text-black border-r border-grey">{row.size}</td>
-                    <td className="p-4 border-r border-grey">{row.waist[unitIdx]}</td>
-                    <td className="p-4 border-r border-grey">{row.hip[unitIdx]}</td>
-                    <td className="p-4 border-r border-grey">{row.length[unitIdx]}</td>
-                    <td className="p-4">{row.legOpening[unitIdx]}</td>
+                  <tr key={row.size} className="hover:bg-cream/40 transition-colors">
+                    <td className="p-4 font-semibold text-black">{row.size}</td>
+                    <td className="p-4 text-charcoal">{row.waist[unitIdx]}</td>
+                    <td className="p-4 text-charcoal">{row.hip[unitIdx]}</td>
+                    <td className="p-4 text-charcoal">{row.length[unitIdx]}</td>
+                    <td className="p-4 text-charcoal">{row.legOpening[unitIdx]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -199,29 +199,29 @@ export default function SizeGuidePage() {
         </div>
 
         {/* Anatomical Measurement Guide */}
-        <div className="bg-offwhite border-2 border-black p-8 space-y-6">
-          <div className="flex items-center gap-3 border-b border-black pb-3">
-            <Ruler className="w-5 h-5 text-black" />
-            <h2 className="font-display text-lg font-bold tracking-wider uppercase">
-              HOW TO MEASURE YOUR BODY
+        <div className="bg-offwhite border border-grey/40 rounded-sm p-6 sm:p-8 space-y-6">
+          <div className="flex items-center gap-3 border-b border-grey/30 pb-3">
+            <Ruler className="w-4 h-4 text-charcoal" />
+            <h2 className="font-display text-base font-semibold tracking-tight text-black">
+              How to Measure
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-body text-xs text-charcoal">
             <div className="space-y-2">
-              <span className="font-display font-bold text-black uppercase block">1. CHEST / BUST</span>
+              <span className="font-medium text-black uppercase tracking-wider block">1. Chest / Bust</span>
               <p className="leading-relaxed">
                 Measure horizontally around the fullest circumference of your chest, keeping the tape flat across your back.
               </p>
             </div>
             <div className="space-y-2">
-              <span className="font-display font-bold text-black uppercase block">2. SHOULDERS</span>
+              <span className="font-medium text-black uppercase tracking-wider block">2. Shoulders</span>
               <p className="leading-relaxed">
                 Measure straight from the edge of one shoulder point across the collar base to the opposite shoulder point.
               </p>
             </div>
             <div className="space-y-2">
-              <span className="font-display font-bold text-black uppercase block">3. BODY LENGTH</span>
+              <span className="font-medium text-black uppercase tracking-wider block">3. Body Length</span>
               <p className="leading-relaxed">
                 Measure vertically from the highest shoulder seam down along your torso to the desired hem finishing point.
               </p>
@@ -230,18 +230,18 @@ export default function SizeGuidePage() {
         </div>
 
         {/* Fit Consultation Banner */}
-        <div className="bg-black text-cream p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-2 border-black">
+        <div className="bg-black text-cream rounded-sm p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1">
-            <h3 className="font-display text-lg font-bold uppercase tracking-wider text-cream">
-              NEED BESPOKE SIZING ADVICE?
+            <h3 className="font-display text-base font-semibold text-white">
+              Need personal sizing advice?
             </h3>
-            <p className="font-body text-xs text-grey">
-              Send your height, weight, and preferred drape to our atelier stylists for immediate fit recommendation.
+            <p className="font-body text-xs text-white/60">
+              Share your height, weight, and desired drape with our concierge for an immediate recommendation.
             </p>
           </div>
           <Link href="/contact">
-            <Button variant="primary" className="bg-cyan text-black hover:bg-cream">
-              CONSULT STYLIST <ArrowRight className="w-4 h-4 ml-2" />
+            <Button variant="primary" className="bg-white text-black hover:bg-cream rounded-sm font-medium transition-all">
+              Consult Stylist <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
         </div>
