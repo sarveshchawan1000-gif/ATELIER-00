@@ -33,7 +33,7 @@ export default function AboutPage() {
         <div className="relative w-full aspect-[4/5] md:aspect-[16/9] bg-[#F3F2EF] rounded-[2px] overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600&auto=format&fit=crop&q=85"
-            alt="Pattern cutters and master tailors refining seams in our Mumbai studio"
+            alt="Pattern cutters and master tailors refining seams"
             fill
             priority
             sizes="(max-width: 1280px) 100vw, 1280px"
@@ -41,7 +41,7 @@ export default function AboutPage() {
           />
         </div>
         <p className="mt-3 text-[13px] text-[#6B6B6B] leading-relaxed">
-          Pattern cutters and master tailors refining seams in our Mumbai studio.
+          Pattern cutters and master tailors refining seams.
         </p>
       </section>
 
