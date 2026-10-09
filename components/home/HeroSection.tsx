@@ -151,40 +151,8 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* Bottom Indicators & Clothing Photo Loop Tracker */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex items-center justify-between font-body text-[11px] font-medium tracking-wider uppercase text-white/60">
-        {/* Photo Pagination & Category */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5" aria-label="Photo carousel indicators">
-            {HERO_CLOTHING_IMAGES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                aria-label={`Jump to look ${i + 1}`}
-                className={`h-1 rounded-full transition-all duration-500 cursor-pointer ${
-                  activeIndex === i
-                    ? 'w-7 bg-white'
-                    : 'w-2 bg-white/40 hover:bg-white/70'
-                }`}
-              />
-            ))}
-          </div>
-
-          <span className="font-mono text-white/80">
-            0{activeIndex + 1} / 0{HERO_CLOTHING_IMAGES.length}
-          </span>
-          <span className="hidden sm:inline-block text-white/40">·</span>
-          <span className="hidden sm:inline-block text-white/70">
-            {HERO_CLOTHING_IMAGES[activeIndex].category}
-          </span>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="flex items-center gap-2 animate-bounce">
-          <span>Scroll</span>
-          <ArrowDown className="w-3.5 h-3.5" aria-hidden="true" />
-        </div>
-      </div>
+      {/* Bottom Spacer */}
+      <div className="relative z-10" />
     </section>
   );
 }

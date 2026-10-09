@@ -124,35 +124,6 @@ export default function InfiniteClothingHero() {
             </Link>
           </div>
         </div>
-
-        {/* PHOTO PROGRESS & PAGINATION */}
-        <div className="pb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/20 pt-6">
-          <div
-            className="flex items-center gap-3"
-            aria-label={`Background image ${activeIndex + 1} of ${HERO_CLOTHING_IMAGES.length}`}
-          >
-            {HERO_CLOTHING_IMAGES.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Select photo ${index + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
-                  activeIndex === index
-                    ? 'w-10 bg-white'
-                    : 'w-4 bg-white/40 hover:bg-white/70'
-                }`}
-              />
-            ))}
-
-            <span className="ml-2 font-mono text-xs tracking-widest text-white/80">
-              0{activeIndex + 1} / 0{HERO_CLOTHING_IMAGES.length}
-            </span>
-          </div>
-
-          <div className="text-xs font-mono tracking-wider text-white/60 uppercase">
-            {HERO_CLOTHING_IMAGES[activeIndex].title}
-          </div>
-        </div>
       </div>
     </section>
   );
