@@ -50,12 +50,15 @@
 
 /* Base Document Setup */
 html {
-  background-color: var(--cream);
+  background-color: var(--black);
   color: var(--black);
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -63,6 +66,9 @@ body {
   background-color: var(--cream);
   color: var(--black);
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
 
 /* Typography Hierarchy */

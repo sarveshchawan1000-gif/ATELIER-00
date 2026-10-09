@@ -64,13 +64,13 @@ export function HeroSection({
 
   return (
     <section
-      className="relative w-full h-[100svh] min-h-[640px] flex flex-col justify-between overflow-hidden bg-cream pt-20 pb-8 px-4 md:px-8 select-none"
+      className="relative w-full h-[100svh] min-h-[640px] flex flex-col justify-between overflow-hidden bg-[#111111] pt-20 pb-8 px-4 md:px-8 select-none"
       aria-label="ZIPUP NATION Hero"
     >
-      {/* Background Campaign Photos (Infinite Crossfade Loop) */}
+      {/* Background Campaign Photos (Infinite Crossfade Loop - Full Bleed Edge to Edge) */}
       <div
         ref={heroImageRef}
-        className="absolute inset-0 z-0 will-change-transform"
+        className="absolute -inset-2 z-0 will-change-transform overflow-hidden pointer-events-none"
       >
         {HERO_CLOTHING_IMAGES.map((img, idx) => {
           const isActive = activeIndex === idx;
@@ -88,18 +88,18 @@ export function HeroSection({
                 fill
                 priority={idx === 0}
                 sizes="100vw"
-                className="object-cover object-center brightness-[0.82] transition-transform duration-[6000ms] ease-out will-change-transform"
+                className="object-cover object-center brightness-[0.80] transition-transform duration-[6000ms] ease-out will-change-transform"
                 style={{
-                  transform: isActive ? 'scale(1.04)' : 'scale(1.0)',
+                  transform: isActive ? 'scale(1.06)' : 'scale(1.02)',
                 }}
               />
             </div>
           );
         })}
 
-        {/* Soft gradient overlay */}
-        <div className="absolute inset-0 z-20 bg-gradient-to-t from-cream/80 via-black/15 to-black/30 pointer-events-none" />
-        <div className="absolute inset-0 z-20 bg-black/20 pointer-events-none" />
+        {/* Cinematic dark overlays - zero white or cream bleed */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/80 via-black/20 to-black/35 pointer-events-none" />
+        <div className="absolute inset-0 z-20 bg-black/25 pointer-events-none" />
       </div>
 
       {/* Top Spacer */}

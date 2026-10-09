@@ -58,7 +58,7 @@ export function Header() {
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
           isScrolled
             ? 'bg-cream/95 backdrop-blur-md text-black border-grey/50 shadow-sm'
-            : 'bg-transparent backdrop-blur-xs text-black border-transparent'
+            : 'bg-transparent backdrop-blur-xs text-white border-transparent'
         } ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
@@ -67,16 +67,26 @@ export function Header() {
             <button
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
-              className="md:hidden p-2 -ml-2 text-black hover:text-charcoal transition-colors focus-visible:outline-2 focus-visible:outline-black"
+              className={`md:hidden p-2 -ml-2 transition-colors focus-visible:outline-2 ${
+                isScrolled
+                  ? 'text-black hover:text-charcoal focus-visible:outline-black'
+                  : 'text-white hover:text-white/70 focus-visible:outline-white'
+              }`}
             >
               <Menu className="w-5 h-5 stroke-[1.5]" />
             </button>
             <Link
               href="/"
-              className="font-display text-lg md:text-xl font-semibold tracking-tight text-black uppercase flex items-center gap-1 group"
+              className={`font-display text-lg md:text-xl font-semibold tracking-tight uppercase flex items-center gap-1 group transition-colors ${
+                isScrolled ? 'text-black' : 'text-white'
+              }`}
             >
               <span>{CONFIG.brandHalves.left}</span>
-              <span className="text-charcoal group-hover:text-black transition-colors">{CONFIG.brandHalves.right}</span>
+              <span className={`transition-colors ${
+                isScrolled
+                  ? 'text-charcoal group-hover:text-black'
+                  : 'text-white/60 group-hover:text-white'
+              }`}>{CONFIG.brandHalves.right}</span>
             </Link>
           </div>
 
@@ -84,19 +94,25 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-8 lg:gap-12 font-body text-sm font-medium tracking-wide">
             <Link
               href="/shop"
-              className="text-charcoal hover:text-black transition-colors py-1"
+              className={`transition-colors py-1 ${
+                isScrolled ? 'text-charcoal hover:text-black' : 'text-white/80 hover:text-white'
+              }`}
             >
               Shop
             </Link>
             <Link
               href="/collections"
-              className="text-charcoal hover:text-black transition-colors py-1"
+              className={`transition-colors py-1 ${
+                isScrolled ? 'text-charcoal hover:text-black' : 'text-white/80 hover:text-white'
+              }`}
             >
               Collections
             </Link>
             <Link
               href="/about"
-              className="text-charcoal hover:text-black transition-colors py-1"
+              className={`transition-colors py-1 ${
+                isScrolled ? 'text-charcoal hover:text-black' : 'text-white/80 hover:text-white'
+              }`}
             >
               About
             </Link>
@@ -107,7 +123,11 @@ export function Header() {
             {/* Ghost Add Photo action */}
             <button
               onClick={() => setAddPhotoModalOpen(true)}
-              className="flex items-center gap-1.5 text-charcoal hover:text-black px-2 py-1 text-[13px] transition-colors rounded-none focus-visible:outline-2 focus-visible:outline-black"
+              className={`flex items-center gap-1.5 px-2 py-1 text-[13px] transition-colors rounded-none focus-visible:outline-2 ${
+                isScrolled
+                  ? 'text-charcoal hover:text-black focus-visible:outline-black'
+                  : 'text-white/70 hover:text-white focus-visible:outline-white'
+              }`}
               title="Add photo"
             >
               <Camera className="w-4 h-4 stroke-[1.5]" />
@@ -118,7 +138,11 @@ export function Header() {
             <Link
               href="/search"
               aria-label="Search items"
-              className="p-2 text-black hover:text-charcoal transition-colors focus-visible:outline-2 focus-visible:outline-black"
+              className={`p-2 transition-colors focus-visible:outline-2 ${
+                isScrolled
+                  ? 'text-black hover:text-charcoal focus-visible:outline-black'
+                  : 'text-white hover:text-white/70 focus-visible:outline-white'
+              }`}
             >
               <Search className="w-5 h-5 stroke-[1.5]" />
             </Link>
@@ -127,11 +151,15 @@ export function Header() {
             <Link
               href="/wishlist"
               aria-label={`Wishlist with ${displayWishlistCount} items`}
-              className="p-2 text-black hover:text-charcoal transition-colors relative focus-visible:outline-2 focus-visible:outline-black"
+              className={`p-2 transition-colors relative focus-visible:outline-2 ${
+                isScrolled
+                  ? 'text-black hover:text-charcoal focus-visible:outline-black'
+                  : 'text-white hover:text-white/70 focus-visible:outline-white'
+              }`}
             >
-              <Heart className={`w-5 h-5 stroke-[1.5] ${displayWishlistCount > 0 ? 'fill-black' : ''}`} />
+              <Heart className={`w-5 h-5 stroke-[1.5] ${displayWishlistCount > 0 ? (isScrolled ? 'fill-black' : 'fill-white') : ''}`} />
               {displayWishlistCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-black" />
+                <span className={`absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full ${isScrolled ? 'bg-black' : 'bg-white'}`} />
               )}
             </Link>
 
@@ -139,7 +167,11 @@ export function Header() {
             <Link
               href="/account"
               aria-label="Customer Account"
-              className="hidden md:flex p-2 text-black hover:text-charcoal transition-colors focus-visible:outline-2 focus-visible:outline-black"
+              className={`hidden md:flex p-2 transition-colors focus-visible:outline-2 ${
+                isScrolled
+                  ? 'text-black hover:text-charcoal focus-visible:outline-black'
+                  : 'text-white hover:text-white/70 focus-visible:outline-white'
+              }`}
             >
               <User className="w-5 h-5 stroke-[1.5]" />
             </Link>
@@ -148,10 +180,14 @@ export function Header() {
             <button
               onClick={openCart}
               aria-label={`Shopping bag with ${displayCartCount} items`}
-              className="p-2 text-black hover:text-charcoal transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-black"
+              className={`p-2 transition-colors flex items-center gap-1 focus-visible:outline-2 ${
+                isScrolled
+                  ? 'text-black hover:text-charcoal focus-visible:outline-black'
+                  : 'text-white hover:text-white/70 focus-visible:outline-white'
+              }`}
             >
               <ShoppingBag className="w-5 h-5 stroke-[1.5]" />
-              <span className="text-[13px] font-normal text-charcoal">({displayCartCount})</span>
+              <span className={`text-[13px] font-normal ${isScrolled ? 'text-charcoal' : 'text-white/60'}`}>({displayCartCount})</span>
             </button>
           </div>
         </div>

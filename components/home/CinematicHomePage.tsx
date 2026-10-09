@@ -107,58 +107,58 @@ export function CinematicHomePage({
         window.addEventListener('keydown', skipEntrance, { once: true });
 
         if (!hasPlayed) {
-          // Elegant, majestic entrance (slowed down for cinematic impact)
+          // Dramatic edge-of-viewport entrance — text flies in from screen edges
           heroTl
             .fromTo(
               heroImageRef.current,
               { scale: 1.08 },
-              { scale: 1.0, duration: 2.2, ease: 'power2.out' },
+              { scale: 1.01, duration: 2.6, ease: 'power2.out' },
               0
             )
             .fromTo(
               wordmarkLeftRef.current,
-              { x: '-35vw', opacity: 0 },
-              { x: 0, opacity: 1, duration: 1.8, ease: 'power3.out' },
-              0.15
+              { x: '-50vw', opacity: 0 },
+              { x: 0, opacity: 1, duration: 2.2, ease: 'power4.out' },
+              0.1
             )
             .fromTo(
               wordmarkRightRef.current,
-              { x: '35vw', opacity: 0 },
-              { x: 0, opacity: 1, duration: 1.8, ease: 'power3.out' },
-              0.15
+              { x: '50vw', opacity: 0 },
+              { x: 0, opacity: 1, duration: 2.2, ease: 'power4.out' },
+              0.1
             )
             .fromTo(
               taglineRef.current,
-              { opacity: 0, y: 20 },
-              { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' },
-              0.9
+              { opacity: 0, y: 25 },
+              { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' },
+              1.4
             );
         } else {
-          // Smooth repeat entry (deliberate & calm, not rushed)
+          // Repeat entry — still dramatic but slightly shorter
           heroTl
             .fromTo(
               heroImageRef.current,
               { scale: 1.04 },
-              { scale: 1.0, duration: 1.2, ease: 'power2.out' },
+              { scale: 1.01, duration: 1.4, ease: 'power2.out' },
               0
             )
             .fromTo(
               wordmarkLeftRef.current,
-              { x: -90, opacity: 0 },
-              { x: 0, opacity: 1, duration: 1.3, ease: 'power3.out' },
+              { x: '-30vw', opacity: 0 },
+              { x: 0, opacity: 1, duration: 1.6, ease: 'power4.out' },
               0.05
             )
             .fromTo(
               wordmarkRightRef.current,
-              { x: 90, opacity: 0 },
-              { x: 0, opacity: 1, duration: 1.3, ease: 'power3.out' },
+              { x: '30vw', opacity: 0 },
+              { x: 0, opacity: 1, duration: 1.6, ease: 'power4.out' },
               0.05
             )
             .fromTo(
               taglineRef.current,
-              { opacity: 0, y: 12 },
-              { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-              0.4
+              { opacity: 0, y: 15 },
+              { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+              0.6
             );
         }
 
@@ -379,21 +379,21 @@ export function CinematicHomePage({
         mobileHeroTl
           .fromTo(
             wordmarkLeftRef.current,
-            { x: -60, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1.2, ease: 'power3.out' },
+            { x: '-45vw', opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.8, ease: 'power4.out' },
             0.1
           )
           .fromTo(
             wordmarkRightRef.current,
-            { x: 60, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1.2, ease: 'power3.out' },
+            { x: '45vw', opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.8, ease: 'power4.out' },
             0.1
           )
           .fromTo(
             taglineRef.current,
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-            0.5
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+            0.8
           );
 
         // Mobile Marquee Track
